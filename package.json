@@ -1,0 +1,28 @@
+{
+  "name": "simpleaccess",
+  "version": "0.1.0",
+  "description": "Website for simpleaccess.io",
+  "keywords": [
+    "Digital",
+    "Accessibility",
+    "A11y",
+    "HTML",
+    "CSS",
+    "WCAG"
+  ],
+  "homepage": "https://github.com/ThirstyHead/simpleaccess#readme",
+  "bugs": {
+    "url": "https://github.com/ThirstyHead/simpleaccess/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThirstyHead/simpleaccess.git"
+  },
+  "license": "CC-BY-4.0",
+  "author": "Scott Davis <scott@thirstyhead.com> (https://thirstyhead.com/)",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
