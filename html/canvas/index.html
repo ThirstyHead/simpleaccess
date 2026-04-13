@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .m-canvas-demo {
+            border: 2px solid #ddd;
+            background: #fff;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Canvas Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;canvas&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;canvas&gt;</code> element provides scripts with a resolution-dependent bitmap canvas, which can be used for rendering graphs, game graphics, art, or other visual images on the fly.
+            </p>
+            
+            <div class="m-canvas-demo">
+                <canvas id="exampleCanvas" width="400" height="100">
+                    <!-- Fallback content for accessibility -->
+                    A simple visual demonstration showing a blue rectangle and a gold circle.
+                </canvas>
+            </div>
+
+            <code class="m-code-block">&lt;canvas id="myCanvas" width="200" height="100"&gt;
+  Your browser does not support the canvas element.
+&lt;/canvas&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The canvas element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Challenge: The Bitmap Problem</h3>
+            <p>
+                Because <code>&lt;canvas&gt;</code> is just a container for pixels, assistive technologies like screen readers cannot "see" what is drawn inside it. This makes it high-risk for accessibility.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Non-text Content</h4>
+                <p>
+                    <strong>Success Criterion 1.1.1 (Level A):</strong> All non-text content that is presented to the user has a text alternative that serves the equivalent purpose.
+                </p>
+                <p>
+                    You <strong>must</strong> provide fallback content inside the <code>&lt;canvas&gt;</code> tags. For complex charts or data, the fallback should be a table or a detailed text description of the data being visualized.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.1.1: Non-text Content
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Interactive Canvas Best Practices</h3>
+            <ul>
+                <li><strong>Interactive Elements:</strong> If the canvas contains interactive buttons or links, you should place real HTML elements (like <code>&lt;button&gt;</code>) inside the canvas tags. These elements will be hidden visually but remain available in the accessibility tree.</li>
+                <li><strong>ARIA Roles:</strong> Use <code>role="img"</code> and an <code>aria-label</code> if the canvas is purely decorative or represents a single image.</li>
+                <li><strong>Dynamic Updates:</strong> If the canvas content changes dynamically, use ARIA live regions to notify screen reader users of important state changes.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: High Contrast Mode</h4>
+                <p>
+                    Pixels drawn in canvas are often ignored by operating system "High Contrast" or "Dark Mode" settings. Always check that your canvas drawings remain legible when these modes are enabled, or use the <code>prefers-color-scheme</code> media query to adjust your script's drawing colors.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to draw on the example canvas
+        window.onload = function() {
+            const canvas = document.getElementById('exampleCanvas');
+            if (canvas.getContext) {
+                const ctx = canvas.getContext('2d');
+                // Draw rectangle
+                ctx.fillStyle = '#002d62';
+                ctx.fillRect(50, 25, 100, 50);
+                // Draw circle
+                ctx.beginPath();
+                ctx.arc(300, 50, 30, 0, Math.PI * 2, true);
+                ctx.fillStyle = '#ffd700';
+                ctx.fill();
+            }
+        };
+    </script>
+</body>
+</html>
