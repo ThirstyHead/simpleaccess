@@ -53,6 +53,13 @@
             font-family: monospace;
         }
 
+        /* Responsive Image Base Rule */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* ==========================================================================
            2. LAYOUT RULES
            ========================================================================== */
@@ -182,6 +189,12 @@
             letter-spacing: 1px;
             margin-bottom: 1rem;
         }
+        .m-hero__image {
+            margin: 3rem auto 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
 
         /* Content Card */
         .m-card {
@@ -252,8 +265,8 @@
            4. STATE & MEDIA QUERIES
            ========================================================================== */
         @media (max-width: 768px) {
-            .m-hero__title { font-size: 2rem; }
-            .m-hero__description { font-size: 1.1rem; }
+            .m-hero__title { font-size: 2.25rem; }
+            .m-hero__description { font-size: 1.15rem; }
             .l-grid { grid-template-columns: 1fr; }
         }
 
@@ -286,15 +299,15 @@
         </ul>
     </nav>
 
-    <!-- NEW HERO MODULE -->
+    <!-- HERO MODULE -->
     <section class="m-hero">
         <div class="l-container">
             <span class="m-hero__tagline">Digital Accessibility</span>
             <h1 class="m-hero__title">The Web is Sight, Sound, and Touch.</h1>
             <p class="m-hero__description">
-                Let's create a web that delights all of the senses. Learn how to make your website sound as good as it looks.
-                Learn how to make the web accessible to everyone. 
+                Let's create a web that delights all of the senses. Learn how to make your website sound as good as it looks and ensure the web is accessible to everyone.
             </p>
+            <img src="sight-sound-touch.jpg" alt="A glass-themed digital interface displaying three glowing panels for Sight, Sound, and Touch" class="m-hero__image">
         </div>
     </section>
 
@@ -352,6 +365,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>SC 1.1.1 (Non-text Content)</td>
+                        <td>Descriptive alt text for hero image</td>
+                        <td>✅ PASS</td>
+                    </tr>
                     <tr>
                         <td>SC 1.4.3 (Contrast)</td>
                         <td>Text-to-Background ratios (Min 4.5:1)</td>
