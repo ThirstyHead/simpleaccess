@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        /* Skip Link */
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        /* Documentation Block */
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* Semantic styling for native button in the demo */
+        .m-btn-native {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .m-btn-native:hover {
+            background-color: #004494;
+        }
+        .m-btn-native:focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Button Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;button&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;button&gt;</code> element represents a button labeled by its contents. It is a fundamental interactive element used to trigger actions or submit forms.
+            </p>
+            
+            <div class="m-demo">
+                <button type="button" class="m-btn-native">Standard Button</button>
+                <button type="submit" class="m-btn-native">Submit Form</button>
+            </div>
+
+            <code class="m-code-block">&lt;button type="button"&gt;Standard Button&lt;/button&gt;
+&lt;button type="submit"&gt;Submit Form&lt;/button&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The button element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Native Accessibility: The Rule of Three</h3>
+            <p>
+                Using the native <code>&lt;button&gt;</code> element provides three critical accessibility features for free:
+            </p>
+            <ul>
+                <li><strong>Keyboard Access:</strong> Native buttons are automatically in the tab order and can be triggered with the <kbd>Enter</kbd> and <kbd>Space</kbd> keys.</li>
+                <li><strong>Roles & States:</strong> Screen readers automatically identify the element as a button and report states like <code>disabled</code> or <code>pressed</code>.</li>
+                <li><strong>Focus Management:</strong> Browsers handle the visual focus state and focus-ring behavior natively.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Keyboard</h4>
+                <p>
+                    <strong>Success Criterion 2.1.1 (Level A):</strong> All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.
+                </p>
+                <p>
+                    A native <code>&lt;button&gt;</code> satisfies this criterion immediately. If you use a <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> as a button, you must manually add <code>tabindex="0"</code> and complex JavaScript keyboard listeners.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.1.1: Keyboard
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Button Types & Use Cases</h3>
+            <p>The <code>type</code> attribute is essential. If omitted, the default is <code>submit</code> when inside a form.</p>
+            <ul>
+                <li><strong><code>type="button"</code>:</strong> Use for general actions that do not submit data (e.g., opening a modal, toggling a menu).</li>
+                <li><strong><code>type="submit"</code>:</strong> Use within a <code>&lt;form&gt;</code> to send data to a server.</li>
+                <li><strong><code>type="reset"</code>:</strong> Clears all fields in a form. Use sparingly, as this can be a disruptive user experience.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Name, Role, Value</h4>
+                <p>
+                    <strong>Success Criterion 4.1.2 (Level A):</strong> For all user interface components, the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically determined.
+                </p>
+                <p>
+                    For icon-only buttons, you <strong>must</strong> provide an accessible name using <code>aria-label</code> or <code>aria-labelledby</code> to satisfy this criterion.
+                </p>
+                <code class="m-code-block">&lt;button type="button" aria-label="Close"&gt;×&lt;/button&gt;</code>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" target="_blank" class="m-ref-link">
+                    Understand SC 4.1.2: Name, Role, Value
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Visual States</h3>
+            <p>
+                Buttons must have distinct visual states for <strong>hover</strong>, <strong>active</strong>, and <strong>focus</strong>. The focus state is especially critical for users who navigate with a keyboard.
+            </p>
+            
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>WCAG Requirement: Contrast</h4>
+                <p>
+                    <strong>Success Criterion 1.4.3 (Level AA):</strong> The visual presentation of text and images of text has a contrast ratio of at least 4.5:1.
+                </p>
+                <p>
+                    Ensure your button's text contrast is high, and that the <strong>focus indicator</strong> (often the focus ring) also meets contrast requirements against the background.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.4.3: Contrast
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
