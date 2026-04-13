@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Head Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Visualization Module: Since <head> is invisible, we visualize it */
+        .m-head-viz {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: #a6e22e;
+            font-family: monospace;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+        .m-head-viz::before {
+            content: "DOCUMENT HEAD";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #444;
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+        .m-head-viz span { color: #66d9ef; }
+        .m-head-viz b { color: #f92672; font-weight: normal; }
+
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Head Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;head&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;head&gt;</code> element represents a collection of metadata for the Document. This includes things like the title of the page, links to scripts and stylesheets, and instructions for search engines.
+            </p>
+            
+            <div class="m-head-viz">
+                &lt;<span>head</span>&gt;<br>
+                &nbsp;&nbsp;&lt;<span>meta</span> <b>charset</b>="UTF-8"&gt;<br>
+                &nbsp;&nbsp;&lt;<span>title</span>&gt;The Page Title&lt;/<span>title</span>&gt;<br>
+                &nbsp;&nbsp;&lt;<span>link</span> <b>rel</b>="stylesheet" <b>href</b>="style.css"&gt;<br>
+                &lt;/<span>head</span>&gt;
+            </div>
+
+            <p>The <code>&lt;head&gt;</code> is the first child of the <code>&lt;html&gt;</code> element and its contents are not rendered directly in the main browser window.</p>
+
+            <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-head-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The head element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Impact: The Page Title</h3>
+            <p>
+                The most important accessibility child of the <code>&lt;head&gt;</code> is the <code>&lt;title&gt;</code> element.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Page Titled</h4>
+                <p>
+                    <strong>Success Criterion 2.4.2 (Level A):</strong> Web pages have titles that describe topic or purpose.
+                </p>
+                <p>
+                    The title is the first thing a screen reader announces when a page loads. It is also displayed in the browser tab and search engine results. A descriptive title allows users to quickly identify the page's purpose without having to navigate its content. 
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.4.2: Page Titled
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Standard Metadata Children</h3>
+            <ul>
+                <li><strong><code>&lt;meta charset="UTF-8"&gt;</code>:</strong> Declares the character encoding. This should be the first element in the head to avoid potential security and rendering issues.</li>
+                <li><strong><code>&lt;meta name="viewport"&gt;</code>:</strong> Essential for responsive design, ensuring the page scales correctly on mobile devices.</li>
+                <li><strong><code>&lt;link&gt;</code>:</strong> Used to connect external resources like CSS files or icons.</li>
+                <li><strong><code>&lt;style&gt;</code> and <code>&lt;script&gt;</code>:</strong> Containers for internal CSS or JavaScript logic.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Language Declaration</h4>
+                <p>
+                    While the <code>lang</code> attribute usually lives on the <code>&lt;html&gt;</code> tag, metadata in the <code>&lt;head&gt;</code> (like the title) relies on this declaration to be announced correctly by screen readers in the appropriate accent and language.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
