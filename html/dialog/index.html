@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        .m-btn {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .m-btn:hover { background-color: #004494; }
+
+        /* Styling for the native dialog */
+        .m-dialog {
+            border: none;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            max-width: 400px;
+        }
+
+        /* Styling the backdrop (standard CSS property) */
+        .m-dialog::backdrop {
+            background-color: rgba(0, 45, 98, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Dialog Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;dialog&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;dialog&gt;</code> element represents a part of an application that a user interacts with to perform a task, such as a dialog box, inspector, or window.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example:</strong><br>
+                <p>Click the button to open a native modal dialog.</p>
+                <button type="button" class="m-btn" id="openDialog">Open Modal Dialog</button>
+
+                <dialog id="exampleDialog" class="m-dialog">
+                    <h3>Modal Dialog</h3>
+                    <p>This is a native HTML dialog. It handles focus trapping and the Escape key automatically when opened with <code>showModal()</code>.</p>
+                    <button type="button" class="m-btn" id="closeDialog">Close Dialog</button>
+                </dialog>
+            </div>
+
+            <code class="m-code-block">&lt;dialog id="myDialog"&gt;
+  &lt;p&gt;Greetings, explorer!&lt;/p&gt;
+  &lt;button id="close"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;
+
+&lt;script&gt;
+  const dialog = document.getElementById('myDialog');
+  dialog.showModal(); // Opens as a modal
+&lt;/script&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The dialog element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Modal vs. Non-Modal</h3>
+            <p>The behavior of the <code>&lt;dialog&gt;</code> depends on how it is opened via JavaScript:</p>
+            <ul>
+                <li><strong><code>.showModal()</code>:</strong> The preferred method for accessibility. It renders the dialog on the top layer, prevents interaction with the rest of the page (inertness), and allows the <code>::backdrop</code> pseudo-element to be styled.</li>
+                <li><strong><code>.show()</code>:</strong> Opens the dialog as a non-modal popup. The rest of the page remains interactive, and no focus trap is created.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Focus Order</h4>
+                <p>
+                    <strong>Success Criterion 2.4.3 (Level A):</strong> If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.
+                </p>
+                <p>
+                    Native <code>&lt;dialog&gt;</code> elements opened with <code>showModal()</code> automatically satisfy this by "trapping" focus within the dialog. When the dialog is closed, focus is automatically returned to the element that opened it. This is a massive win for keyboard and screen reader users.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.4.3: Focus Order
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Escape Key:</strong> Browsers automatically close a modal dialog when the user presses <kbd>Esc</kbd>. Do not prevent this behavior.</li>
+                <li><strong>Initial Focus:</strong> By default, the browser moves focus to the first focusable element inside the dialog. Ensure this is a logical starting point for the user.</li>
+                <li><strong>Labeling:</strong> Always provide an accessible name. If the dialog has a visible heading, use <code>aria-labelledby</code> to link the dialog to that heading.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Inertness</h4>
+                <p>
+                    Using <code>showModal()</code> makes the rest of the document <code>inert</code> to assistive technologies. This prevents screen reader users from accidentally navigating outside the dialog while it is active, satisfying <strong>WCAG SC 4.1.2 (Name, Role, Value)</strong> by clearly defining the current context of interaction.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+    <script>
+        const dialog = document.getElementById('exampleDialog');
+        const openBtn = document.getElementById('openDialog');
+        const closeBtn = document.getElementById('closeDialog');
+
+        openBtn.addEventListener('click', () => {
+            dialog.showModal();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            dialog.close();
+        });
+
+        // Close on backdrop click (optional UX enhancement)
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog) {
+                dialog.close();
+            }
+        });
+    </script>
+</body>
+</html>
