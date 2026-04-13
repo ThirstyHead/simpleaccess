@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        /* Figure styling for the demo */
+        .m-figure {
+            margin: 0;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .m-figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Figure Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;figure&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;figure&gt;</code> element represents a unit of content, optionally with a caption, that is self-contained, that is typically referenced as a single unit from the main flow of the document.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example:</strong><br>
+                <figure class="m-figure">
+                    <img src="https://via.placeholder.com/400x200?text=Accessible+Data+Vis" alt="Bar chart showing rising accessibility compliance">
+                    <figcaption>Figure 1: Global trend of WCAG 2.1 adoption across public sector websites (2020-2026).</figcaption>
+                </figure>
+            </div>
+
+            <code class="m-code-block">&lt;figure&gt;
+  &lt;img src="chart.png" alt="A descriptive alt text"&gt;
+  &lt;figcaption&gt;Figure 1: Descriptive caption here.&lt;/figcaption&gt;
+&lt;/figure&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The figure element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>When to use Figure</h3>
+            <p>
+                The <code>&lt;figure&gt;</code> element is appropriate for any content that is essential to the document but can be moved away from the main text flow without altering the document's meaning. Common examples include:
+            </p>
+            <ul>
+                <li>Illustrations and photos</li>
+                <li>Diagrams and charts</li>
+                <li>Code snippets (using <code>&lt;pre&gt;</code> and <code>&lt;code&gt;</code> inside)</li>
+                <li>Poems or blockquotes that require a specific title or attribution</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    By wrapping content in a <code>&lt;figure&gt;</code>, you create a semantic group. Screen readers identify this as a "figure" landmark. When a <code>&lt;figcaption&gt;</code> is provided inside, it automatically becomes the accessible label for the entire figure, ensuring that users of assistive technology understand exactly what the grouped items represent.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Nesting and Multiple Contents</h3>
+            <p>
+                A <code>&lt;figure&gt;</code> can contain multiple pieces of content (e.g., three images representing a single sequence) as long as they all fall under the single <code>&lt;figcaption&gt;</code>.
+            </p>
+            
+            <code class="m-code-block">&lt;figure&gt;
+  &lt;img src="step1.png" alt="Step 1 description"&gt;
+  &lt;img src="step2.png" alt="Step 2 description"&gt;
+  &lt;figcaption&gt;The two-step process for generating an audit report.&lt;/figcaption&gt;
+&lt;/figure&gt;</code>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Figure vs. Image</h4>
+                <p>
+                    Don't wrap every image in a <code>&lt;figure&gt;</code>. If the image is purely decorative or part of the sentence flow, use a standard <code>&lt;img&gt;</code>. Only use <code>&lt;figure&gt;</code> when you need to provide a caption or when the content is "independently distributable."
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Semantic Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
