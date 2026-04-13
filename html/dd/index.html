@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        /* Description List Module */
+        .m-dl {
+            display: grid;
+            grid-template-columns: max-content auto;
+            gap: 1rem 2rem;
+        }
+
+        .m-dt {
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .m-dd {
+            margin: 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The DD Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;dd&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;dd&gt;</code> (Description Details) element represents the description, definition, or value part of a term-description group in a description list (<code>&lt;dl&gt;</code>).
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example:</strong><br>
+                <dl class="m-dl">
+                    <dt class="m-dt">HTML</dt>
+                    <dd class="m-dd">HyperText Markup Language</dd>
+                    <dt class="m-dt">WCAG</dt>
+                    <dd class="m-dd">Web Content Accessibility Guidelines</dd>
+                </dl>
+            </div>
+
+            <code class="m-code-block">&lt;dl&gt;
+  &lt;dt&gt;A11y&lt;/dt&gt;
+  &lt;dd&gt;A numeronym for accessibility.&lt;/dd&gt;
+&lt;/dl&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The dd element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Structural Role</h3>
+            <p>
+                The <code>&lt;dd&gt;</code> element is part of a structural triplet. It must be a child of a <code>&lt;dl&gt;</code> element and must follow a <code>&lt;dt&gt;</code> (Description Term) or another <code>&lt;dd&gt;</code>.
+            </p>
+            <ul>
+                <li><strong>Multiple Details:</strong> A single term (<code>&lt;dt&gt;</code>) can have multiple details (<code>&lt;dd&gt;</code>). For example, a word in a dictionary with several definitions.</li>
+                <li><strong>Content Model:</strong> Unlike <code>&lt;dt&gt;</code>, which is restricted to phrasing content, the <code>&lt;dd&gt;</code> element can contain flow content, including paragraphs, lists, and even other description lists.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    Using the <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code> structure creates a programmatic link between terms and their definitions. Screen readers allow users to navigate these lists by jumping from term to term, announcing the relationship explicitly (e.g., "Term: WCAG, Definition: Web Content Accessibility Guidelines").
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Styling Best Practices</h3>
+            <p>
+                Browsers typically apply a left margin (<code>margin-start</code>) to <code>&lt;dd&gt;</code> elements to indent them visually.
+            </p>
+            
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Avoid Visual-Only Lists</h4>
+                <p>
+                    Do not use <code>&lt;dd&gt;</code> purely for visual indentation outside of a <code>&lt;dl&gt;</code>. If you just need a margin, use CSS. Using semantic list elements for non-list content confuses assistive technology users who expect a specific structure.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
