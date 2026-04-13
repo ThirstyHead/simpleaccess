@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        /* Skip Link */
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        /* Documentation Block */
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Structure Demo Module */
+        .m-structure-demo {
+            border-left: 6px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+            font-family: monospace;
+            line-height: 1.4;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Body Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;body&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;body&gt;</code> element represents the content of the document. It is the container for all the renderable elements of a web page, such as text, images, links, and tables.
+            </p>
+            
+            <div class="m-structure-demo">
+                &lt;html&gt;<br>
+                &nbsp;&nbsp;&lt;head&gt; (Metadata) &lt;/head&gt;<br>
+                &nbsp;&nbsp;<strong style="color: var(--color-primary)">&lt;body&gt;</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;(Visible Content Goes Here)<br>
+                &nbsp;&nbsp;<strong style="color: var(--color-primary)">&lt;/body&gt;</strong><br>
+                &lt;/html&gt;
+            </div>
+
+            <code class="m-code-block">&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/sections.html#the-body-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The body element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Foundation</h3>
+            <p>
+                The <code>&lt;body&gt;</code> element is the root of the accessibility tree for all perceivable content. Its implementation directly impacts how users interact with the page.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Bypass Blocks</h4>
+                <p>
+                    <strong>Success Criterion 2.4.1 (Level A):</strong> A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.
+                </p>
+                <p>
+                    The "Skip to Main Content" link should be the <strong>first</strong> child of the <code>&lt;body&gt;</code> element. This ensures keyboard and screen reader users can jump straight to the primary content without navigating through repetitive headers or menus.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.4.1: Bypass Blocks
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Technical Notes</h3>
+            <ul>
+                <li><strong>Singleton:</strong> There can only be one <code>&lt;body&gt;</code> element in a document.</li>
+                <li><strong>Event Handlers:</strong> Many global event handlers (like <code>onload</code>, <code>onresize</code>, or <code>onscroll</code>) are traditionally placed on the <code>&lt;body&gt;</code> element, although modern best practices prefer using JavaScript's <code>addEventListener</code> on the <code>window</code> object.</li>
+                <li><strong>Landmark Container:</strong> While the <code>&lt;body&gt;</code> isn't a landmark itself, it is the parent of all structural landmarks (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>).</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>WCAG Requirement: Page Titled</h4>
+                <p>
+                    <strong>Success Criterion 2.4.2 (Level A):</strong> Web pages have titles that describe topic or purpose.
+                </p>
+                <p>
+                    While the <code>&lt;title&gt;</code> lives in the <code>&lt;head&gt;</code>, the <code>&lt;body&gt;</code> content must support that title. Screen readers announce the title as soon as the body begins to load, providing essential orientation for the user.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.4.2: Page Titled
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
