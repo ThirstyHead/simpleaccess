@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datalist Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Form Demo Module */
+        .m-form-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        .m-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .m-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.75rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .m-input:focus {
+            border-color: var(--color-primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.2);
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Datalist Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;datalist&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;datalist&gt;</code> element contains a set of <code>&lt;option&gt;</code> elements that represent the permissible or recommended options available for a particular control.
+            </p>
+            
+            <div class="m-form-demo">
+                <strong>Visual Example:</strong><br>
+                <p>Try typing "A" or "H" in the field below:</p>
+                <label for="browser-choice" class="m-label">Choose a web standard focus:</label>
+                <input list="standard-options" id="browser-choice" name="browser-choice" class="m-input" placeholder="Start typing...">
+                
+                <datalist id="standard-options">
+                    <option value="Accessibility">
+                    <option value="HTML5 Semantics">
+                    <option value="CSS Architecture">
+                    <option value="ARIA Landmarks">
+                    <option value="Web Performance">
+                </datalist>
+            </div>
+
+            <code class="m-code-block">&lt;label for="search"&gt;Topic:&lt;/label&gt;
+&lt;input list="topics" id="search" name="search"&gt;
+
+&lt;datalist id="topics"&gt;
+  &lt;option value="Accessibility"&gt;
+  &lt;option value="HTML5"&gt;
+  &lt;option value="CSS"&gt;
+&lt;/datalist&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The datalist element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Key Differences: Datalist vs. Select</h3>
+            <p>
+                While they look similar, their functional and accessibility impact differs:
+            </p>
+            <ul>
+                <li><strong>Flexibility:</strong> Unlike <code>&lt;select&gt;</code>, which forces a choice from a list, <code>&lt;datalist&gt;</code> allows the user to type a custom value that isn't in the list.</li>
+                <li><strong>Native UI:</strong> Browsers provide a specialized "autocomplete" interface for datalist, often including filtering as the user types.</li>
+                <li><strong>The <code>list</code> Attribute:</strong> To connect an <code>&lt;input&gt;</code> to a <code>&lt;datalist&gt;</code>, the input's <code>list</code> attribute must match the datalist's <code>id</code>.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    The <code>&lt;datalist&gt;</code> provides a clear programmatic link between a field and its suggestions. This is particularly helpful for users with <strong>cognitive disabilities</strong> (as it reduces memory load) and users with <strong>motor impairments</strong> (as it reduces the amount of typing required).
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Technical Constraints</h3>
+            <ul>
+                <li><strong>Hidden by Default:</strong> The <code>&lt;datalist&gt;</code> element is not rendered by itself; it only appears when associated with an input.</li>
+                <li><strong>Option Content:</strong> While <code>&lt;option&gt;</code> elements inside a datalist can have text content (e.g., <code>&lt;option value="1"&gt;One&lt;/option&gt;</code>), most browsers prioritize the <code>value</code> attribute for the autocomplete behavior.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Labeling</h4>
+                <p>
+                    Always ensure the <code>&lt;input&gt;</code> has a clear, visible label. Screen readers will announce that autocomplete is available, but the user still needs to know the purpose of the input itself to satisfy <strong>WCAG SC 3.3.2 (Labels or Instructions)</strong>.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
