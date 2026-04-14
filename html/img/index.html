@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Image Demo Module */
+        .m-img-demo {
+            border: 2px solid #ddd;
+            background: #fff;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .m-img-demo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Image Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;img&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;img&gt;</code> element represents an image. It is a void element used to embed graphical content into a web page.
+            </p>
+            
+            <div class="m-img-demo">
+                <strong>Visual Example:</strong><br><br>
+                <img src="https://via.placeholder.com/600x300?text=Accessible+Web+Design" 
+                     alt="A placeholder image with the text 'Accessible Web Design' in blue over a light gray background.">
+            </div>
+
+            <code class="m-code-block">&lt;img src="path/to/image.jpg" alt="A descriptive summary of the image content"&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The img element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>The Essential <code>alt</code> Attribute</h3>
+            <p>
+                The <code>alt</code> attribute provides a text alternative for the image. It is the single most important accessibility feature for visual content.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Non-text Content</h4>
+                <p>
+                    <strong>Success Criterion 1.1.1 (Level A):</strong> All non-text content that is presented to the user has a text alternative that serves the equivalent purpose.
+                </p>
+                <p>
+                    For images that convey information, the <code>alt</code> text should be a concise description of that information. If an image is <strong>purely decorative</strong> (like a background pattern or a redundant icon), you must still include the attribute but leave it empty: <code>alt=""</code>. This tells screen readers to skip the image entirely.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.1.1: Non-text Content
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Modern Performance Attributes</h3>
+            <ul>
+                <li><strong><code>loading="lazy"</code>:</strong> Instructs the browser to defer loading the image until it is near the viewport. This significantly improves performance and page load speed for users on slow connections.</li>
+                <li><strong><code>decoding="async"</code>:</strong> Allows the browser to decode image data off the main thread, preventing "jank" or freezes during scrolling.</li>
+                <li><strong><code>srcset</code> and <code>sizes</code>:</strong> Used for <strong>Responsive Images</strong>, allowing the browser to choose the most appropriate image resolution based on the user's screen density and viewport width.</li>
+            </ul>
+
+            <code class="m-code-block">&lt;img src="small.jpg" 
+     srcset="large.jpg 1024w, medium.jpg 640w, small.jpg 320w"
+     sizes="(min-width: 1024px) 1024px, 100vw"
+     alt="A scenic view of the ocean"
+     loading="lazy"&gt;</code>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Usage Warnings</h3>
+            <ul>
+                <li><strong>No Text in Images:</strong> Avoid using images that contain text unless it is a logo. Real HTML text is more accessible, can be resized without loss of quality, and is readable by search engines.</li>
+                <li><strong>SVG fallback:</strong> If using SVGs via the <code>&lt;img&gt;</code> tag, ensure you still provide the <code>alt</code> attribute.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Beyond Alt</h4>
+                <p>
+                    If an image requires a very long description (e.g., a complex infographic), use the <code>alt</code> attribute for a brief summary and provide the full details in the surrounding text or via a link to a separate description page. 
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
