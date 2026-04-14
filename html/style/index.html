@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Visualization Module */
+        .m-style-viz {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: #a6e22e;
+            font-family: monospace;
+            margin: 2rem 0;
+            border: 1px solid #444;
+        }
+        .m-style-viz span { color: #66d9ef; }
+        .m-style-viz b { color: #f92672; font-weight: normal; }
+        .m-style-viz i { color: #e6db74; font-style: normal; }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Style Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;style&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;style&gt;</code> element allows authors to embed style information (CSS) in their documents. The <code>&lt;style&gt;</code> element is one of the two primary ways to document CSS rules for a document, the other being the <code>&lt;link&gt;</code> element.
+            </p>
+            
+            <div class="m-style-viz">
+                &lt;<span>style</span>&gt;<br>
+                &nbsp;&nbsp;body {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span>color</span>: <i>var(--color-text)</i>;<br>
+                &nbsp;&nbsp;}<br>
+                &lt;/<span>style</span>&gt;
+            </div>
+
+            <p>The <code>&lt;style&gt;</code> tag is typically placed in the <code>&lt;head&gt;</code> of the document, but it can also be used in the <code>&lt;body&gt;</code> under specific conditions in modern HTML5.</p>
+
+            <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-style-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The style element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Separation of Concerns</h3>
+            <p>
+                The primary role of the <code>&lt;style&gt;</code> element is to separate <strong>Presentation</strong> from <strong>Structure</strong>.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    By moving visual choices (like font-size, color, and positioning) into a <code>&lt;style&gt;</code> block instead of using inline <code>style=""</code> attributes or presentational tags (like <code>&lt;font&gt;</code>), you ensure that the HTML structure remains clean. This allows assistive technology to focus on the semantic meaning of the content without being cluttered by presentational noise.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility via Media Queries</h3>
+            <p>
+                The <code>&lt;style&gt;</code> element is the container for powerful media queries that allow you to adapt your site to specific user needs.
+            </p>
+            <ul>
+                <li><strong><code>prefers-reduced-motion</code>:</strong> Essential for users with vestibular disorders. Use this to turn off animations.</li>
+                <li><strong><code>prefers-color-scheme</code>:</strong> Supports users who require high-contrast or dark modes for visual comfort.</li>
+                <li><strong><code>forced-colors</code>:</strong> Helps you ensure your design remains usable in Windows High Contrast Mode.</li>
+            </ul>
+
+            <code class="m-code-block">@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}</code>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Avoid Inline Styles:</strong> Use <code>&lt;style&gt;</code> or <code>&lt;link&gt;</code> instead of the <code>style</code> attribute. This makes the code more maintainable and easier for users to override with their own custom stylesheets.</li>
+                <li><strong>The <code>media</code> Attribute:</strong> You can use the <code>media</code> attribute on the <code>&lt;style&gt;</code> tag itself (e.g., <code>&lt;style media="print"&gt;</code>) to apply styles only in specific contexts.</li>
+                <li><strong>CSP Compliance:</strong> Note that strict Content Security Policies (CSP) may block internal <code>&lt;style&gt;</code> tags. Use hashes or nonces if required by your security audit.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: User Overrides</h4>
+                <p>
+                    Users with low vision often use "User Stylesheets" to increase font sizes or change background colors. Keeping your styles centralized in a <code>&lt;style&gt;</code> block makes it easier for these specialized browsers to calculate specificity and apply the user's preferred settings.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
