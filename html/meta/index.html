@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Metadata Visualization Module */
+        .m-meta-viz {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            color: #a6e22e;
+            font-family: monospace;
+            margin: 2rem 0;
+            border: 1px solid #444;
+        }
+        .m-meta-viz span { color: #66d9ef; }
+        .m-meta-viz b { color: #f92672; font-weight: normal; }
+        .m-meta-viz i { color: #e6db74; font-style: normal; }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Meta Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;meta&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;meta&gt;</code> element represents various kinds of metadata that cannot be expressed using the <code>&lt;title&gt;</code>, <code>&lt;base&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;style&gt;</code>, or <code>&lt;script&gt;</code> elements.
+            </p>
+            
+            <div class="m-meta-viz">
+                &lt;<span>meta</span> <b>charset</b>=<i>"UTF-8"</i>&gt;<br>
+                &lt;<span>meta</span> <b>name</b>=<i>"viewport"</i> <b>content</b>=<i>"width=device-width, initial-scale=1.0"</i>&gt;<br>
+                &lt;<span>meta</span> <b>name</b>=<i>"description"</i> <b>content</b>=<i>"Web standards reference..."</i>&gt;
+            </div>
+
+            <p>The <code>&lt;meta&gt;</code> tag is a <strong>void element</strong> and must be placed inside the <code>&lt;head&gt;</code> of your document.</p>
+
+            <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The meta element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Impact: The Viewport</h3>
+            <p>
+                The <code>viewport</code> metadata is essential for modern web accessibility. It tells the browser how to scale the page on different screen sizes.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Reflow</h4>
+                <p>
+                    <strong>Success Criterion 1.4.10 (Level AA):</strong> Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions.
+                </p>
+                <p>
+                    A standard meta viewport tag (<code>width=device-width, initial-scale=1.0</code>) ensures that the layout adapts correctly to small screens. 
+                    <strong>Warning:</strong> Never use <code>user-scalable=no</code> or <code>maximum-scale</code> in your meta tag. This prevents users with low vision from zooming into content, which is a significant accessibility failure.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.4.10: Reflow
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>The Danger of Meta Refresh</h3>
+            <p>
+                The <code>http-equiv="refresh"</code> attribute can be used to automatically reload the page or redirect the user.
+            </p>
+
+            <div class="m-a11y-callout" style="border-color: #d11141;">
+                <h4>WCAG Requirement: Timing Adjustable</h4>
+                <p>
+                    <strong>Success Criterion 2.2.1 (Level A):</strong> For each time limit that is set by the content, at least one of the following is true: [The user can turn off the limit, adjust it, or extend it].
+                </p>
+                <p>
+                    Automated page refreshes or redirects via <code>&lt;meta&gt;</code> are disorienting for all users, particularly those using screen readers or those who need more time to read content. Avoid this pattern entirely; use server-side redirects or clear, user-triggered navigation instead.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.2.1: Timing Adjustable
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Standard Categories</h3>
+            <ul>
+                <li><strong>Character Encoding:</strong> <code>&lt;meta charset="UTF-8"&gt;</code> should always be the first element in the head to ensure characters are interpreted correctly.</li>
+                <li><strong>Search Engines:</strong> <code>name="description"</code> provides the summary shown in search results, helping users identify the content before clicking.</li>
+                <li><strong>Social Metadata:</strong> Non-standard but widely used properties (like Open Graph <code>og:title</code>) help assistive tools parse site previews correctly when shared on social platforms.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
