@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meter Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        .m-meter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .m-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        /* Meter Styling: We use native meter but provide some consistent sizing */
+        meter {
+            width: 100%;
+            height: 1.5rem;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Meter Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;meter&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;meter&gt;</code> element represents a scalar measurement within a known range, or a fractional value. Examples include disk usage, the relevance of a query result, or the fraction of a voting population that has voted.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Examples:</strong><br><br>
+                <div class="m-meter-group">
+                    <label for="disk-usage" class="m-label">Disk Usage (80% full):</label>
+                    <meter id="disk-usage" value="80" min="0" max="100" low="30" high="75" optimum="10">80%</meter>
+                </div>
+                <div class="m-meter-group">
+                    <label for="pass-strength" class="m-label">Password Strength (Weak):</label>
+                    <meter id="pass-strength" value="2" min="0" max="10" low="4" high="7" optimum="10">Weak</meter>
+                </div>
+            </div>
+
+            <code class="m-code-block">&lt;label for="fuel"&gt;Fuel Level:&lt;/label&gt;
+&lt;meter id="fuel" min="0" max="100" low="30" high="80" optimum="100" value="90"&gt;
+  at 90%
+&lt;/meter&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-meter-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The meter element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Technical Attributes</h3>
+            <ul>
+                <li><strong><code>value</code>:</strong> The current numeric value. Required.</li>
+                <li><strong><code>min</code> & <code>max</code>:</strong> The lower and upper bounds of the range. Default to 0 and 1 respectively.</li>
+                <li><strong><code>low</code> & <code>high</code>:</strong> Define what is considered a "low" or "high" value. Browsers often change the meter's color when the value crosses these thresholds.</li>
+                <li><strong><code>optimum</code>:</strong> Indicates the "best" value in the range.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    A visual bar representing a value is useless to a screen reader user if it's just a styled <code>&lt;div&gt;</code>. Using <code>&lt;meter&gt;</code> ensures the browser communicates the current value and the total range to assistive technology. 
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Meter vs. Progress</h3>
+            <p>
+                It is a common mistake to use these two elements interchangeably. 
+            </p>
+            <ul>
+                <li><strong><code>&lt;meter&gt;</code>:</strong> Used for <strong>static</strong> measurements of a known quantity (e.g., storage space, temperature, scores).</li>
+                <li><strong><code>&lt;progress&gt;</code>:</strong> Used for <strong>active</strong> tasks that are currently completing (e.g., file downloads, form submission processing).</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Visible Text Fallback</h4>
+                <p>
+                    While screen reader support for <code>&lt;meter&gt;</code> has improved, it is still best practice to include the text representation of the value inside the element tags (e.g., <code>&lt;meter&gt;80%&lt;/meter&gt;</code>). Browsers will hide this text visually but it provides a fallback for older assistive technologies.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
