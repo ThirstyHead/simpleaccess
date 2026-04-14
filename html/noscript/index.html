@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noscript Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        .m-noscript-box {
+            background: #fff5f5;
+            border: 2px solid #c53030;
+            color: #c53030;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Noscript Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;noscript&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;noscript&gt;</code> element represents nothing if scripting is enabled, and represents its children if scripting is disabled. It is used to provide alternative content for users who do not have JavaScript active.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Conceptual Example:</strong><br>
+                <p>(Since JavaScript is likely enabled in your browser, the following box would normally be invisible to you.)</p>
+                <div class="m-noscript-box">
+                    JavaScript is required for certain interactive features. Please enable it for the full experience or <a href="contact.html">contact us</a> for alternative access.
+                </div>
+            </div>
+
+            <code class="m-code-block">&lt;noscript&gt;
+  &lt;p&gt;This site works best with JavaScript enabled.&lt;/p&gt;
+  &lt;a href="static-version.html"&gt;View the static version of this page.&lt;/a&gt;
+&lt;/noscript&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The noscript element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Usage and Placement</h3>
+            <ul>
+                <li><strong>In the <code>&lt;head&gt;</code>:</strong> When used in the head, it can only contain <code>&lt;link&gt;</code>, <code>&lt;style&gt;</code>, and <code>&lt;meta&gt;</code> elements. This is often used to load a fallback CSS file.</li>
+                <li><strong>In the <code>&lt;body&gt;</code>:</strong> It can contain any flow content (paragraphs, links, images, etc.).</li>
+                <li><strong>Restrictions:</strong> The <code>&lt;noscript&gt;</code> element must not be used in XML documents.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Principle: Robustness</h4>
+                <p>
+                    <strong>Success Criterion 1.1.1 (Non-text Content):</strong> While this criterion usually applies to images, the spirit of providing "text alternatives" applies to interactive functionality as well.
+                </p>
+                <p>
+                    If your website relies on JavaScript to show critical information (like a dynamic chart or a search interface), you should use <code>&lt;noscript&gt;</code> to provide a static equivalent or instructions on how to access the information without scripts. This ensures that the content remains <strong>perceivable</strong> and <strong>robust</strong> across different technical configurations.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.1.1: Non-text Content
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Noscript vs. Progressive Enhancement</h3>
+            <p>
+                Modern web design emphasizes **Progressive Enhancement** over the "Noscript as a Warning" approach. 
+            </p>
+            <ul>
+                <li><strong>The Warning Approach:</strong> Using <code>&lt;noscript&gt;</code> to tell users "This site won't work without JS." This is often a poor user experience.</li>
+                <li><strong>The Enhancement Approach:</strong> Building the page so that basic functionality works with pure HTML/CSS, then using JavaScript to add "layers" of interactivity. In this model, <code>&lt;noscript&gt;</code> is used to provide the specific pieces that cannot be built statically.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: SEO and Privacy</h4>
+                <p>
+                    Users disable JavaScript for many reasons: security, privacy (blocking trackers), bandwidth saving, or because they are using specialized browser environments. Providing a meaningful <code>&lt;noscript&gt;</code> experience ensures you don't exclude these user segments and helps search engine crawlers index your content more effectively.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
