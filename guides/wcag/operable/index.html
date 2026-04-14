@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operable Guidelines | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #eef7ff;
+            color: var(--color-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-primary);
+        }
+
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-primary); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 { color: var(--color-primary); margin-top: 0; }
+
+        /* Code/Short Tag for Guideline IDs */
+        .m-guideline-id {
+            font-family: monospace;
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 4rem;
+        }
+
+        .m-btn-link {
+            color: var(--color-primary);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">Principle 2: Operable</h1>
+            <p>Ensuring interface components and navigation are functional.</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/wcag/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to POUR Overview</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-intro">
+            <div class="m-status-tag" role="status">🖐️ Sight, Sound, and Touch</div>
+            <h2>Accessibility is Sight, Sound, and Touch.</h2>
+            <p>
+                The <strong>Operable</strong> principle focuses on the "Touch" of digital accessibility. It dictates that users must be able to use the interface across all input methods—keyboard, mouse, touch-screen, or voice. If a user can perceive your content but cannot interact with it, the web remains a closed door.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- KEYBOARD ACCESSIBLE -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 2.1</span>
+                <h3>Keyboard Accessible</h3>
+                <p>Make all functionality available from a keyboard. Many users with motor disabilities and all screen reader users rely on keyboard navigation to "touch" and interact with your site.</p>
+                <p><strong>Primary Implementation:</strong> Ensuring all interactive elements (links, buttons, forms) can be reached and activated using the Tab and Enter keys.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html" class="m-btn-link" target="_blank">Understand Keyboard Access Standards</a>
+            </article>
+
+            <!-- ENOUGH TIME -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 2.2</span>
+                <h3>Enough Time</h3>
+                <p>Provide users enough time to read and use content. Automatic timeouts or moving content can prevent users from completing actions.</p>
+                <p><strong>Primary Implementation:</strong> Providing ways to pause, stop, or hide moving content (like carousels) and allowing users to extend session timeouts.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html" class="m-btn-link" target="_blank">Review Timing & Interaction Guidelines</a>
+            </article>
+
+            <!-- SEIZURES AND PHYSICAL REACTIONS -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 2.3</span>
+                <h3>Seizures & Physical Reactions</h3>
+                <p>Do not design content in a way that is known to cause seizures or physical reactions. High-frequency flashing is a primary barrier to safety.</p>
+                <p><strong>Primary Implementation:</strong> Eliminating content that flashes more than three times in any one second period.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html" class="m-btn-link" target="_blank">Examine Flashing & Safety Standards</a>
+            </article>
+
+            <!-- NAVIGABLE -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 2.4</span>
+                <h3>Navigable</h3>
+                <p>Provide ways to help users navigate, find content, and determine where they are. This guideline covers the "road signs" of your digital product.</p>
+                <p><strong>Primary Implementation:</strong> Using descriptive page titles, visible focus indicators, and "skip to content" links.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html" class="m-btn-link" target="_blank">Master Navigable Wayfinding Techniques</a>
+            </article>
+
+            <!-- INPUT MODALITIES -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 2.5</span>
+                <h3>Input Modalities</h3>
+                <p>Make it easier for users to operate functionality through various inputs beyond keyboard, including touch gestures and pointer interactions.</p>
+                <p><strong>Primary Implementation:</strong> Ensuring target sizes are large enough to be easily tapped (at least 24x24 or 44x44 pixels) and avoiding reliance on complex gestures.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation.html" class="m-btn-link" target="_blank">Review Input & Touch Standards</a>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: The Keyboard Test</h3>
+            <p>
+                The simplest way to test for Operability is to put your mouse aside and try to use your website with only your keyboard. Can you see where you are? Can you open every menu? Can you submit every form? If you get "trapped" anywhere, your site isn't yet Operable.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="wcag_index.html" style="color: var(--color-accent); font-weight: bold;">WCAG Hub</a>
+        </div>
+    </footer>
+
+</body>
+</html>
