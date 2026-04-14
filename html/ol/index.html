@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OL Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        /* List styling within demo */
+        .m-demo ol {
+            padding-left: 1.5rem;
+        }
+
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The OL Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;ol&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the document.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Standard Ordered List (Recipes/Instructions):</strong><br>
+                <ol>
+                    <li>Review the WCAG guidelines.</li>
+                    <li>Audit the current codebase.</li>
+                    <li>Implement semantic fixes.</li>
+                </ol>
+            </div>
+
+            <code class="m-code-block">&lt;ol&gt;
+  &lt;li&gt;First step&lt;/li&gt;
+  &lt;li&gt;Second step&lt;/li&gt;
+&lt;/ol&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The ol element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Specialized Attributes</h3>
+            <p>The ordered list element provides unique attributes to control the sequence and numbering:</p>
+            <ul>
+                <li><strong><code>reversed</code>:</strong> A boolean attribute that indicates the list is in descending order (e.g., a "Top 10" countdown).</li>
+                <li><strong><code>start</code>:</strong> An integer that specifies the beginning value for the list items. Useful when a list is broken up across multiple sections.</li>
+                <li><strong><code>type</code>:</strong> Sets the kind of marker to use (e.g., <code>1</code> for numbers, <code>a</code> for lowercase letters, <code>I</code> for uppercase Roman numerals).</li>
+            </ul>
+
+            <div class="m-demo">
+                <strong>Countdown List (reversed):</strong>
+                <ol reversed>
+                    <li>Release product</li>
+                    <li>Final testing</li>
+                    <li>Code freeze</li>
+                </ol>
+            </div>
+
+            <code class="m-code-block">&lt;ol reversed start="10" type="1"&gt;
+  &lt;li&gt;Value is 10&lt;/li&gt;
+  &lt;li&gt;Value is 9&lt;/li&gt;
+&lt;/ol&gt;</code>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Impact</h3>
+            <p>
+                Correct use of <code>&lt;ol&gt;</code> provides vital structural information that cannot be conveyed through visual formatting alone.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    When a list is marked up as <code>&lt;ol&gt;</code>, screen readers announce both the existence of the list and the total number of items. Crucially, they also announce the number or letter of each item as the user navigates. This allows blind users to understand their "position" within a sequence of steps, which is impossible if the list is just a series of paragraphs starting with manually typed numbers.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Styling with CSS</h3>
+            <p>
+                While the <code>type</code> attribute handles the marker style semantically, you should use the CSS <code>list-style-type</code> property for design-heavy customizations. Following <strong>SMACSS Module Rules</strong>, ensure that your custom markers remain legible and high-contrast.
+            </p>
+            
+            <code class="m-code-block">ol.m-custom-list {
+  list-style-type: decimal-leading-zero;
+  color: var(--color-primary);
+  padding-left: 2rem;
+}</code>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Logical Fragments</h4>
+                <p>
+                    If a single list must be visually separated by other content (like an image or a callout), use the <code>start</code> attribute on the second part of the list to maintain the correct programmatic sequence.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
