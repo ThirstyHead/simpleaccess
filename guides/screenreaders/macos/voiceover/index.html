@@ -52,7 +52,7 @@
         }
 
         /* ==========================================================================
-           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           2. LAYOUT RULES (Baseline 0.3 Consistent)
            ========================================================================== */
         .l-header {
             background-color: var(--color-primary);
@@ -109,12 +109,12 @@
         }
         .m-skip-link:focus { top: 10px; }
 
-        /* Status Badge */
+        /* Assistant Notification Bubble */
         .m-status-tag {
             display: inline-flex;
             align-items: center;
-            background: #f0f0f0;
-            color: #333;
+            background: #f5f5f5;
+            color: var(--color-mac);
             padding: 6px 14px;
             border-radius: 20px;
             font-weight: bold;
@@ -132,9 +132,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .m-card h3 { color: #333; margin-top: 0; }
+        .m-card h3 { color: #4a4a4a; margin-top: 0; }
 
-        /* Shortcut Legend List */
+        /* Shortcut Legend Table */
         .m-shortcut-list {
             list-style: none;
             padding: 0;
@@ -216,39 +216,48 @@
     <main id="main-content" class="l-main">
         
         <section class="m-doc-section">
-            <div class="m-status-tag" role="status">🍎 Built-in Apple Tool</div>
-            <h2>Professional screen reading on the Mac.</h2>
+            <div class="m-status-tag" role="status">🍎 Built-in macOS Tool</div>
+            <h2>Standardized screen reading for Mac.</h2>
             <p>
-                VoiceOver is a gesture-based and keyboard-driven screen reader built directly into macOS. Unlike third-party software, it is deeply integrated into the operating system and the Safari browser. Mastering the "VO" modifier keys is your first step to hearing the web on a Mac.
+                VoiceOver is the powerful, built-in screen reader for macOS. Unlike third-party tools, it is deeply integrated into the operating system and uses a unique "Interaction" model. Mastering these six essential commands will allow you to navigate any website or application effectively.
             </p>
         </section>
 
         <div class="l-grid">
             
-            <!-- LAUNCH AND CLOSE -->
+            <!-- 1. LAUNCH AND CLOSE -->
             <article class="m-card">
                 <h3>1. Launch and Close</h3>
-                <p>VoiceOver is baked into every Mac. You can toggle it on or off instantly without searching through menus.</p>
+                <p>VoiceOver is built into every Mac. You can toggle it at any moment with a single shortcut.</p>
                 <ul class="m-steps">
-                    <li><strong>Standard Keyboard:</strong> Press <kbd>Command</kbd> + <kbd>F5</kbd>.</li>
-                    <li><strong>Mac with Touch ID:</strong> Triple-click the <kbd>Touch ID</kbd> button (Power button).</li>
-                    <li><strong>Siri:</strong> You can also say, "Hey Siri, turn on VoiceOver."</li>
+                    <li><strong>To Launch or Exit:</strong> Press <kbd>Command</kbd> + <kbd>F5</kbd>.</li>
+                    <li><strong>On Laptops:</strong> You may need to hold the <kbd>Fn</kbd> key as well: <kbd>Fn</kbd> + <kbd>Command</kbd> + <kbd>F5</kbd>.</li>
                 </ul>
             </article>
 
-            <!-- SILENCE AND MUTE -->
+            <!-- 2. MUTE -->
             <article class="m-card">
                 <h3>2. Mute (Silence)</h3>
-                <p>If VoiceOver begins reading a long block of text and you need it to pause immediately, use the standard silence key.</p>
+                <p>If VoiceOver is reading a long passage and you want to silence the speech instantly without turning off the tool:</p>
                 <ul class="m-steps">
-                    <li><strong>To Silence:</strong> Tap the <kbd>Control</kbd> key. This stops speech for the current item but leaves VoiceOver active.</li>
+                    <li><strong>To Silence:</strong> Tap the <kbd>Control</kbd> key once. This stops the current speech buffer immediately.</li>
                 </ul>
             </article>
 
-            <!-- NAVIGATION BY HEADERS -->
+            <!-- 3. SCREEN CURTAIN -->
             <article class="m-card">
-                <h3>3. Navigate by Headers</h3>
-                <p>Navigating by headers allows you to skip past the "noise" and find the specific topic you're looking for.</p>
+                <h3>3. Screen Curtain</h3>
+                <p>Screen Curtain turns off your display for privacy while keeping VoiceOver fully functional. This is ideal for working in public spaces.</p>
+                <ul class="m-steps">
+                    <li><strong>To Toggle:</strong> Press <kbd>VO</kbd> + <kbd>Shift</kbd> + <kbd>F11</kbd>.</li>
+                    <li><em>(Note: If using a laptop, you may need to add the <kbd>Fn</kbd> key).</em></li>
+                </ul>
+            </article>
+
+            <!-- 4. NAVIGATE BY HEADERS -->
+            <article class="m-card">
+                <h3>4. Navigate by Headers</h3>
+                <p>VoiceOver uses "Quick Nav" or specific VO commands to jump between headings, which represent the outline of the page.</p>
                 <ul class="m-shortcut-list">
                     <li class="m-shortcut-item">
                         <span class="m-shortcut-label">Next Header</span>
@@ -258,17 +267,13 @@
                         <span class="m-shortcut-label">Previous Header</span>
                         <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
                     </li>
-                    <li class="m-shortcut-item">
-                        <span class="m-shortcut-label">Browse all Headers (Rotor)</span>
-                        <kbd>VO</kbd> + <kbd>U</kbd>, then use arrow keys
-                    </li>
                 </ul>
             </article>
 
-            <!-- NAVIGATION BY LINKS -->
+            <!-- 5. NAVIGATE BY LINKS -->
             <article class="m-card">
-                <h3>4. Navigate by Links</h3>
-                <p>VoiceOver provides specialized shortcuts to jump between the interactive actions on a page.</p>
+                <h3>5. Navigate by Links</h3>
+                <p>Jump directly to interactive links to find your destination faster.</p>
                 <ul class="m-shortcut-list">
                     <li class="m-shortcut-item">
                         <span class="m-shortcut-label">Next Link</span>
@@ -281,10 +286,10 @@
                 </ul>
             </article>
 
-            <!-- FORM NAVIGATION -->
+            <!-- 6. FORM NAVIGATION -->
             <article class="m-card">
-                <h3>5. Navigate Form Fields</h3>
-                <p>When you encounter a form, you can jump directly to the inputs, checkboxes, and buttons using the "Jump" command.</p>
+                <h3>6. Navigate Form Fields</h3>
+                <p>Move between text fields, buttons, and other form controls.</p>
                 <ul class="m-shortcut-list">
                     <li class="m-shortcut-item">
                         <span class="m-shortcut-label">Next Form Control</span>
