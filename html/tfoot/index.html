@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFOOT Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+
+        /* Table Styling specifically for the footer demo */
+        .m-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        .m-table thead th {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .m-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Highlight the TFOOT specifically */
+        .m-table tfoot {
+            background-color: #f1f5f9;
+            font-weight: bold;
+            border-top: 3px double var(--color-primary);
+        }
+
+        .m-table tfoot td {
+            color: var(--color-primary);
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The TFOOT Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;tfoot&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;tfoot&gt;</code> element represents the block of rows that consist of the column summaries (footers) for the parent <code>&lt;table&gt;</code> element.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example (Financial Summary):</strong><br><br>
+                <table class="m-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Month</th>
+                            <th scope="col">Savings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>January</td>
+                            <td>$100</td>
+                        </tr>
+                        <tr>
+                            <td>February</td>
+                            <td>$80</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Sum</td>
+                            <td>$180</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <code class="m-code-block">&lt;table&gt;
+  &lt;thead&gt;...&lt;/thead&gt;
+  &lt;tbody&gt;...&lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Total&lt;/td&gt;
+      &lt;td&gt;$1,000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The tfoot element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Placement and Structure</h3>
+            <p>
+                The <code>&lt;tfoot&gt;</code> element has specific rules regarding its position within a <code>&lt;table&gt;</code>:
+            </p>
+            <ul>
+                <li><strong>Current Standard:</strong> In modern HTML5, <code>&lt;tfoot&gt;</code> must appear <strong>after</strong> <code>&lt;thead&gt;</code> and <code>&lt;tbody&gt;</code>.</li>
+                <li><strong>Legacy Behavior:</strong> Older HTML specifications required <code>&lt;tfoot&gt;</code> to appear <em>before</em> the <code>&lt;tbody&gt;</code> (so browsers could render the footer before fetching large datasets). Modern browsers support both placements, but the "after" position is the current recommendation.</li>
+                <li><strong>One per Table:</strong> A table must not contain more than one <code>&lt;tfoot&gt;</code> element.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    By using <code>&lt;tfoot&gt;</code>, you explicitly identify the "totals" or "summaries" of your data. For a screen reader user, this programmatic grouping is essential for distinguishing the final results from individual data rows. Some browsers and printers use this tag to ensure the table footer repeats at the bottom of every printed page if a table spans multiple sheets, ensuring the <strong>relationship</strong> remains perceivable in all media.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Avoid for General Content:</strong> Do not use <code>&lt;tfoot&gt;</code> for general notes or citations; use <code>&lt;caption&gt;</code> or a <code>&lt;figcaption&gt;</code> instead. The footer is specifically for column/row summaries.</li>
+                <li><strong>Consistent Styling:</strong> Following <strong>SMACSS Module Rules</strong>, apply distinct visual weight to the <code>&lt;tfoot&gt;</code> (like a thicker top border or a subtle background change) to help all users quickly identify the summary line.</li>
+                <li><strong>TH vs TD in Footers:</strong> While usually containing <code>&lt;td&gt;</code> elements, if a cell in the footer labels the totals (e.g., the word "Total"), you can use <code>&lt;th scope="row"&gt;</code> within the footer to maintain proper semantics.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Large Tables</h4>
+                <p>
+                    In extremely long tables, a footer helps anchor the user. Ensure that your <code>&lt;tfoot&gt;</code> cells align perfectly with the <code>&lt;thead&gt;</code> columns so that the programmatic and visual summaries are in sync.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
