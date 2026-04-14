@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Narrator Tutorial | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-windows: #0078d4; /* Windows Thematic Blue */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* Keyboard Cap Style */
+        kbd {
+            background-color: #eee;
+            border-radius: 3px;
+            border: 1px solid #b4b4b4;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+            color: #333;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 700;
+            line-height: 1;
+            padding: 4px 6px;
+            white-space: nowrap;
+            font-family: monospace;
+            margin: 0 2px;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES (Baseline 0.3 Consistent)
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Assistant Notification Bubble */
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #eef7ff;
+            color: var(--color-windows);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-windows);
+        }
+
+        /* Feature Card */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-windows); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 { color: var(--color-windows); margin-top: 0; }
+
+        /* Shortcut Legend Table */
+        .m-shortcut-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .m-shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .m-shortcut-label { font-weight: bold; }
+
+        /* Action Steps */
+        .m-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: narrator-step;
+        }
+        .m-steps li {
+            padding: 1rem 0 1rem 3.5rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .m-steps li::before {
+            content: counter(narrator-step);
+            counter-increment: narrator-step;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            background: var(--color-windows);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Callout Box */
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">Windows Narrator Essentials</h1>
+            <p>SimpleAccess.io Hear the Web Series</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/screenreaders/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Screen Reader Hub</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <div class="m-status-tag" role="status">🖥️ Built-in Windows Tool</div>
+            <h2>Standardized screen reading for Windows.</h2>
+            <p>
+                Windows Narrator is a deep-reaching accessibility tool built directly into Windows 10 and 11. Whether you are a developer testing a new component or a user navigating the web, mastering these six essential commands is the foundation of a successful non-visual experience.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- LAUNCH AND CLOSE -->
+            <article class="m-card">
+                <h3>1. Launch and Close</h3>
+                <p>Narrator is always ready. You don't need to install anything; you just need to wake it up.</p>
+                <ul class="m-steps">
+                    <li><strong>To Launch:</strong> Press <kbd>Win</kbd> + <kbd>Ctrl</kbd> + <kbd>Enter</kbd> at any time.</li>
+                    <li><strong>To Close:</strong> Press the same combination (<kbd>Win</kbd> + <kbd>Ctrl</kbd> + <kbd>Enter</kbd>) to toggle it off.</li>
+                    <li><strong>Pro Tip:</strong> You can also find Narrator in the Windows <strong>Settings > Accessibility</strong> menu if you prefer a visual toggle.</li>
+                </ul>
+            </article>
+
+            <!-- SILENCE AND MUTE -->
+            <article class="m-card">
+                <h3>2. Mute (Silence)</h3>
+                <p>When Narrator is reading a long passage and you've found what you need, you don't have to wait for it to finish.</p>
+                <ul class="m-steps">
+                    <li><strong>To Silence:</strong> Tap the <kbd>Ctrl</kbd> key once. This instantly stops speech for the current item without disabling the screen reader.</li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY HEADERS -->
+            <article class="m-card">
+                <h3>3. Navigate by Headers</h3>
+                <p>Headers are the "landmarks" of a page. Navigating by header allows you to scan a website as quickly as a sighted user scans titles.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Header</span>
+                        <kbd>H</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Header</span>
+                        <kbd>Shift</kbd> + <kbd>H</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Header Level (1-6)</span>
+                        <kbd>1</kbd> through <kbd>6</kbd>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY LINKS -->
+            <article class="m-card">
+                <h3>4. Navigate by Links</h3>
+                <p>When you're looking for an action or a destination, skipping directly to the links is the most efficient path.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Link</span>
+                        <kbd>K</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Link</span>
+                        <kbd>Shift</kbd> + <kbd>K</kbd>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FORM NAVIGATION -->
+            <article class="m-card">
+                <h3>5. Navigate Form Fields</h3>
+                <p>Filling out data requires precision. Narrator provides specific shortcuts to jump between interactive inputs like text fields, checkboxes, and buttons.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Form Field</span>
+                        <kbd>F</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Form Field</span>
+                        <kbd>Shift</kbd> + <kbd>F</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">List all Form Elements</span>
+                        <kbd>Caps Lock</kbd> + <kbd>F5</kbd>
+                    </li>
+                </ul>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: The "Narrator" Key</h3>
+            <p>
+                Most advanced Narrator commands use a "Modifier Key." By default, this is both the <kbd>Caps Lock</kbd> and the <kbd>Insert</kbd> keys. If a shortcut doesn't work, ensure you are holding down your assigned Narrator key.
+            </p>
+            <p><strong>Testing Tip:</strong> Use <kbd>H</kbd> to jump between the headers on this very page to practice your scanning skills!</p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="../index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>

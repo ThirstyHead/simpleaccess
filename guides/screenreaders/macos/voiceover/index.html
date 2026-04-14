@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>macOS VoiceOver Tutorial | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-mac: #7d7d7d;     /* macOS Thematic Gray */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* Keyboard Cap Style */
+        kbd {
+            background-color: #eee;
+            border-radius: 3px;
+            border: 1px solid #b4b4b4;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+            color: #333;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 700;
+            line-height: 1;
+            padding: 4px 6px;
+            white-space: nowrap;
+            font-family: monospace;
+            margin: 0 2px;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Status Badge */
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #f0f0f0;
+            color: #333;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-mac);
+        }
+
+        /* Feature Card */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-mac); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 { color: #333; margin-top: 0; }
+
+        /* Shortcut Legend List */
+        .m-shortcut-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .m-shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .m-shortcut-label { font-weight: bold; }
+
+        /* Action Steps */
+        .m-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: vo-step;
+        }
+        .m-steps li {
+            padding: 1rem 0 1rem 3.5rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .m-steps li::before {
+            content: counter(vo-step);
+            counter-increment: vo-step;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            background: var(--color-mac);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Callout Box */
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">macOS VoiceOver Essentials</h1>
+            <p>SimpleAccess.io Hear the Web Series</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/screenreaders/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Screen Reader Hub</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <div class="m-status-tag" role="status">🍎 Built-in Apple Tool</div>
+            <h2>Professional screen reading on the Mac.</h2>
+            <p>
+                VoiceOver is a gesture-based and keyboard-driven screen reader built directly into macOS. Unlike third-party software, it is deeply integrated into the operating system and the Safari browser. Mastering the "VO" modifier keys is your first step to hearing the web on a Mac.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- LAUNCH AND CLOSE -->
+            <article class="m-card">
+                <h3>1. Launch and Close</h3>
+                <p>VoiceOver is baked into every Mac. You can toggle it on or off instantly without searching through menus.</p>
+                <ul class="m-steps">
+                    <li><strong>Standard Keyboard:</strong> Press <kbd>Command</kbd> + <kbd>F5</kbd>.</li>
+                    <li><strong>Mac with Touch ID:</strong> Triple-click the <kbd>Touch ID</kbd> button (Power button).</li>
+                    <li><strong>Siri:</strong> You can also say, "Hey Siri, turn on VoiceOver."</li>
+                </ul>
+            </article>
+
+            <!-- SILENCE AND MUTE -->
+            <article class="m-card">
+                <h3>2. Mute (Silence)</h3>
+                <p>If VoiceOver begins reading a long block of text and you need it to pause immediately, use the standard silence key.</p>
+                <ul class="m-steps">
+                    <li><strong>To Silence:</strong> Tap the <kbd>Control</kbd> key. This stops speech for the current item but leaves VoiceOver active.</li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY HEADERS -->
+            <article class="m-card">
+                <h3>3. Navigate by Headers</h3>
+                <p>Navigating by headers allows you to skip past the "noise" and find the specific topic you're looking for.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Header</span>
+                        <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>H</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Header</span>
+                        <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Browse all Headers (Rotor)</span>
+                        <kbd>VO</kbd> + <kbd>U</kbd>, then use arrow keys
+                    </li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY LINKS -->
+            <article class="m-card">
+                <h3>4. Navigate by Links</h3>
+                <p>VoiceOver provides specialized shortcuts to jump between the interactive actions on a page.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Link</span>
+                        <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>L</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Link</span>
+                        <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FORM NAVIGATION -->
+            <article class="m-card">
+                <h3>5. Navigate Form Fields</h3>
+                <p>When you encounter a form, you can jump directly to the inputs, checkboxes, and buttons using the "Jump" command.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Form Control</span>
+                        <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>J</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Form Control</span>
+                        <kbd>VO</kbd> + <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Interact with Control</span>
+                        <kbd>VO</kbd> + <kbd>Shift</kbd> + <kbd>Down Arrow</kbd>
+                    </li>
+                </ul>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: The "VO" Keys</h3>
+            <p>
+                Almost all VoiceOver shortcuts require the <strong>VO Modifier</strong>. By default, this is the combination of <kbd>Control</kbd> + <kbd>Option</kbd> pressed together. 
+            </p>
+            <p><strong>Testing Tip:</strong> Use the <strong>Web Rotor</strong> (<kbd>VO</kbd> + <kbd>U</kbd>) to see a list of all headers, links, and form fields on this page. It's the fastest way to get a bird's-eye view of a website's structure!</p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="../index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>

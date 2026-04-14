@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAWS Screen Reader Tutorial | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-jaws: #f58220;    /* JAWS Thematic Orange */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* Keyboard Cap Style */
+        kbd {
+            background-color: #eee;
+            border-radius: 3px;
+            border: 1px solid #b4b4b4;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+            color: #333;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 700;
+            line-height: 1;
+            padding: 4px 6px;
+            white-space: nowrap;
+            font-family: monospace;
+            margin: 0 2px;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2.5rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Status Badge */
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #fff8f2;
+            color: var(--color-jaws);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-jaws);
+        }
+
+        /* Feature Card */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-jaws); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 { color: var(--color-jaws); margin-top: 0; }
+
+        /* Shortcut Legend List */
+        .m-shortcut-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        .m-shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .m-shortcut-label { font-weight: bold; }
+
+        /* Action Steps */
+        .m-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: jaws-step;
+        }
+        .m-steps li {
+            padding: 1rem 0 1rem 3.5rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .m-steps li::before {
+            content: counter(jaws-step);
+            counter-increment: jaws-step;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            background: var(--color-jaws);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Callout Box */
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        /* Standardized WCAG links */
+        .m-wcag-link {
+            color: var(--color-jaws);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">JAWS Essentials</h1>
+            <p>SimpleAccess.io Hear the Web Series</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/screenreaders/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Screen Reader Hub</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <div class="m-status-tag" role="status">🦈 Professional Windows Standard</div>
+            <h2>Dominating the Windows Desktop.</h2>
+            <p>
+                JAWS (Job Access With Speech) is widely considered the most powerful screen reader for the Windows operating system. Developed by Freedom Scientific, it is the standard choice for professional environments. Mastering JAWS means understanding its robust "Virtual Cursor" and specialized HTML navigation commands. Start with these "Big Six" skills.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- LAUNCH AND CLOSE -->
+            <article class="m-card">
+                <h3>1. Launch and Close</h3>
+                <p>JAWS is a dedicated application that runs alongside your Windows software. Use these standard shortcuts to control its lifecycle:</p>
+                <ul class="m-steps">
+                    <li><strong>To Launch:</strong> Press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>J</kbd>. You can also find it in the Start menu.</li>
+                    <li><strong>To Close:</strong> Press <kbd>Insert</kbd> + <kbd>F4</kbd>. A confirmation dialog will appear; press <kbd>Enter</kbd> to quit.</li>
+                </ul>
+            </article>
+
+            <!-- SILENCE AND MUTE -->
+            <article class="m-card">
+                <h3>2. Mute (Silence)</h3>
+                <p>If JAWS begins reading a long block of text (like a licensing agreement) and you've found what you need, use the standard silence command:</p>
+                <ul class="m-steps">
+                    <li><strong>To Silence:</strong> Tap the <kbd>Ctrl</kbd> key. This stops speech immediately for the current element while keeping JAWS active for your next move.</li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY HEADERS -->
+            <article class="m-card">
+                <h3>3. Navigate by Headers</h3>
+                <p>JAWS uses "Navigation Quick Keys" to skip between landmarks. This is the fastest way to satisfy 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" class="m-wcag-link" target="_blank">WCAG SC 1.3.1</a>.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Header</span>
+                        <kbd>H</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Header</span>
+                        <kbd>Shift</kbd> + <kbd>H</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Header Level</span>
+                        <kbd>1</kbd> through <kbd>6</kbd>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY LINKS -->
+            <article class="m-card">
+                <h3>4. Navigate by Links</h3>
+                <p>Effective link navigation is key to meeting 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" class="m-wcag-link" target="_blank">WCAG SC 2.4.4</a>.</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Link</span>
+                        <kbd>Tab</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Link</span>
+                        <kbd>Shift</kbd> + <kbd>Tab</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">List all Links</span>
+                        <kbd>Insert</kbd> + <kbd>F7</kbd>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- FORM NAVIGATION -->
+            <article class="m-card">
+                <h3>5. Navigate Form Fields</h3>
+                <p>When you encounter a form, JAWS transitions from "Virtual Cursor" (reading) to "Forms Mode" (interaction).</p>
+                <ul class="m-shortcut-list">
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Next Form Field</span>
+                        <kbd>F</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">Previous Form Field</span>
+                        <kbd>Shift</kbd> + <kbd>F</kbd>
+                    </li>
+                    <li class="m-shortcut-item">
+                        <span class="m-shortcut-label">List all Form Fields</span>
+                        <kbd>Insert</kbd> + <kbd>F5</kbd>
+                    </li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Note:</strong> JAWS will often play a "pop" sound when entering Forms Mode automatically.</p>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: The JAWS Key</h3>
+            <p>
+                The <strong>JAWS Modifier Key</strong> is used for almost all advanced operations. Depending on your keyboard layout (Desktop vs Laptop), this is usually the <kbd>Insert</kbd> key or the <kbd>Caps Lock</kbd> key. 
+            </p>
+            <p><strong>Testing Tip:</strong> Use <kbd>Insert</kbd> + <kbd>Z</kbd> to toggle the Virtual Cursor on or off. This allows you to see how your site behaves when the screen reader attempts to interact with it like an application rather than a document.</p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="../index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>

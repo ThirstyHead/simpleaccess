@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android TalkBack Tutorial | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-android: #3ddc84; /* Android Thematic Green */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* Gesture Highlight Style */
+        .m-gesture {
+            background: #e8f5e9;
+            border: 1px solid var(--color-android);
+            color: #1b5e20;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Status Badge */
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #e8faf0;
+            color: #1b5e20;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-android);
+        }
+
+        /* Feature Card */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-android); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 { color: #1b5e20; margin-top: 0; }
+
+        /* Action Steps */
+        .m-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: android-step;
+        }
+        .m-steps li {
+            padding: 1rem 0 1rem 3.5rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .m-steps li::before {
+            content: counter(android-step);
+            counter-increment: android-step;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            background: var(--color-android);
+            color: #002d62; /* High contrast dark blue on green */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Callout Box */
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        /* Standardized WCAG links */
+        .m-wcag-link {
+            color: #1b5e20;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">Android TalkBack Essentials</h1>
+            <p>SimpleAccess.io Hear the Web Series</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/screenreaders/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Screen Reader Hub</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <div class="m-status-tag" role="status">🤖 Native Android Access</div>
+            <h2>The voice of the Android ecosystem.</h2>
+            <p>
+                TalkBack is the screen reader included on Android devices. It gives you eyes-free control of your phone or tablet, allowing you to interact with apps and the web using spoken feedback. Like other mobile tools, TalkBack uses specialized gestures—taps, swipes, and multi-finger movements—to help you "feel" the digital interface. Let's master the "Big Six" TalkBack skills.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- LAUNCH AND CLOSE -->
+            <article class="m-card">
+                <h3>1. Launch and Close</h3>
+                <p>TalkBack is built into your system's accessibility suite. You can toggle it quickly using hardware shortcuts or voice commands:</p>
+                <ul class="m-steps">
+                    <li><strong>Volume Key Shortcut:</strong> Press and hold <span class="m-gesture">both volume keys</span> for 3 seconds. (Note: You may need to enable this shortcut in Settings first.)</li>
+                    <li><strong>Google Assistant:</strong> Say "OK Google, turn on TalkBack" or "Turn off TalkBack."</li>
+                    <li><strong>Manual Method:</strong> Open <strong>Settings > Accessibility > TalkBack</strong> and toggle the switch.</li>
+                </ul>
+            </article>
+
+            <!-- SILENCE AND MUTE -->
+            <article class="m-card">
+                <h3>2. Mute (Silence)</h3>
+                <p>If TalkBack is reading a long block of text and you need it to pause immediately without deactivating the screen reader:</p>
+                <ul class="m-steps">
+                    <li><strong>To Silence:</strong> Tap the screen once with <span class="m-gesture">one finger</span> or press any <span class="m-gesture">volume key</span>. This stops the current speech buffer instantly.</li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY HEADERS -->
+            <article class="m-card">
+                <h3>3. Navigate by Headers</h3>
+                <p>TalkBack uses "Reading Controls" to change how swipes behave. This allows you to meet 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" class="m-wcag-link" target="_blank">WCAG SC 1.3.1</a> by jumping between landmarks.</p>
+                <ul class="m-steps">
+                    <li><strong>Change navigation type:</strong> Swipe <span class="m-gesture">up or down with three fingers</span> until you hear "Headings." (Alternatively, swipe up then down with one finger).</li>
+                    <li><strong>Jump:</strong> Once "Headings" is selected, swipe <span class="m-gesture">down</span> with one finger to move to the next heading, or <span class="m-gesture">up</span> to go back.</li>
+                </ul>
+            </article>
+
+            <!-- NAVIGATION BY LINKS -->
+            <article class="m-card">
+                <h3>4. Navigate by Links</h3>
+                <p>Quickly find actionable items to satisfy 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" class="m-wcag-link" target="_blank">WCAG SC 2.4.4</a>.</p>
+                <ul class="m-steps">
+                    <li><strong>Set to Links:</strong> Swipe <span class="m-gesture">up or down with three fingers</span> until you hear "Links."</li>
+                    <li><strong>Jump:</strong> Swipe <span class="m-gesture">down</span> with one finger to move through every hyperlink on the current screen.</li>
+                </ul>
+            </article>
+
+            <!-- FORM NAVIGATION -->
+            <article class="m-card">
+                <h3>5. Navigate Form Fields</h3>
+                <p>Entering data on mobile requires navigating directly to inputs, checkboxes, and buttons.</p>
+                <ul class="m-steps">
+                    <li><strong>Set to Controls:</strong> Swipe <span class="m-gesture">up or down with three fingers</span> until you hear "Controls."</li>
+                    <li><strong>Jump:</strong> Swipe <span class="m-gesture">down</span> with one finger to focus on the next form element.</li>
+                    <li><strong>Interact:</strong> Double-tap anywhere on the screen to activate the focused field and bring up the keyboard.</li>
+                </ul>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: Reading Controls</h3>
+            <p>
+                The <strong>Reading Controls</strong> menu is the Android equivalent of the iOS Rotor. It is a dynamic "dial" that lets you choose if your finger swipes move you character-by-character, word-by-word, or between major landmarks like headers and links. If a navigation type is missing, you can customize the list in <strong>TalkBack Settings > Customize menus > Reading controls</strong>.
+            </p>
+            <p><strong>Testing Tip:</strong> Set your reading control to "Links" and swipe down to find the Elements Index link at the bottom of this page!</p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="../index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>
