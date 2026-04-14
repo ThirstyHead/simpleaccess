@@ -36,19 +36,17 @@
 
         /* Gesture Highlight Style */
         .m-gesture {
-            background: #e8f5e9;
-            border: 1px solid var(--color-android);
-            color: #1b5e20;
-            padding: 2px 8px;
+            background-color: #e9fbf1;
             border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
+            color: #2da964;
             display: inline-block;
-            margin: 0 2px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border: 1px solid var(--color-android);
         }
 
         /* ==========================================================================
-           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           2. LAYOUT RULES (Baseline 0.3 Consistent)
            ========================================================================== */
         .l-header {
             background-color: var(--color-primary);
@@ -105,12 +103,12 @@
         }
         .m-skip-link:focus { top: 10px; }
 
-        /* Status Badge */
+        /* Assistant Notification Bubble */
         .m-status-tag {
             display: inline-flex;
             align-items: center;
-            background: #e8faf0;
-            color: #1b5e20;
+            background: #e9fbf1;
+            color: #2da964;
             padding: 6px 14px;
             border-radius: 20px;
             font-weight: bold;
@@ -128,14 +126,14 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .m-card h3 { color: #1b5e20; margin-top: 0; }
+        .m-card h3 { color: #2da964; margin-top: 0; }
 
         /* Action Steps */
         .m-steps {
             list-style: none;
             padding: 0;
             margin: 1.5rem 0;
-            counter-reset: android-step;
+            counter-reset: tb-step;
         }
         .m-steps li {
             padding: 1rem 0 1rem 3.5rem;
@@ -143,15 +141,15 @@
             border-bottom: 1px solid #eee;
         }
         .m-steps li::before {
-            content: counter(android-step);
-            counter-increment: android-step;
+            content: counter(tb-step);
+            counter-increment: tb-step;
             position: absolute;
             left: 0;
             top: 0.8rem;
             width: 2.2rem;
             height: 2.2rem;
             background: var(--color-android);
-            color: #002d62; /* High contrast dark blue on green */
+            color: var(--color-primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -166,13 +164,6 @@
             padding: 2rem;
             border-radius: 8px;
             margin-top: 3rem;
-        }
-
-        /* Standardized WCAG links */
-        .m-wcag-link {
-            color: #1b5e20;
-            font-weight: 600;
-            text-decoration: underline;
         }
 
         /* ==========================================================================
@@ -204,63 +195,70 @@
     <main id="main-content" class="l-main">
         
         <section class="m-doc-section">
-            <div class="m-status-tag" role="status">🤖 Native Android Access</div>
-            <h2>The voice of the Android ecosystem.</h2>
+            <div class="m-status-tag" role="status">🤖 Native Android Tool</div>
+            <h2>Standardized screen reading for Android.</h2>
             <p>
-                TalkBack is the screen reader included on Android devices. It gives you eyes-free control of your phone or tablet, allowing you to interact with apps and the web using spoken feedback. Like other mobile tools, TalkBack uses specialized gestures—taps, swipes, and multi-finger movements—to help you "feel" the digital interface. Let's master the "Big Six" TalkBack skills.
+                TalkBack is the Google screen reader included on Android devices. It allows you to control your device without looking at the screen. Mastering these six essential skills is the first step toward verifying and navigating mobile web content effectively.
             </p>
         </section>
 
         <div class="l-grid">
             
-            <!-- LAUNCH AND CLOSE -->
+            <!-- 1. LAUNCH AND CLOSE -->
             <article class="m-card">
                 <h3>1. Launch and Close</h3>
-                <p>TalkBack is built into your system's accessibility suite. You can toggle it quickly using hardware shortcuts or voice commands:</p>
+                <p>Most Android devices have a hardware shortcut enabled by default to quickly toggle the screen reader.</p>
                 <ul class="m-steps">
-                    <li><strong>Volume Key Shortcut:</strong> Press and hold <span class="m-gesture">both volume keys</span> for 3 seconds. (Note: You may need to enable this shortcut in Settings first.)</li>
-                    <li><strong>Google Assistant:</strong> Say "OK Google, turn on TalkBack" or "Turn off TalkBack."</li>
-                    <li><strong>Manual Method:</strong> Open <strong>Settings > Accessibility > TalkBack</strong> and toggle the switch.</li>
+                    <li><strong>To Toggle:</strong> Press and hold both <span class="m-gesture">Volume Up</span> and <kbd>Volume Down</kbd> keys for three seconds.</li>
+                    <li><strong>Confirmation:</strong> The device will vibrate and announce "TalkBack on" or "TalkBack off."</li>
                 </ul>
             </article>
 
-            <!-- SILENCE AND MUTE -->
+            <!-- 2. MUTE -->
             <article class="m-card">
-                <h3>2. Mute (Silence)</h3>
-                <p>If TalkBack is reading a long block of text and you need it to pause immediately without deactivating the screen reader:</p>
+                <h3>2. Muting (Stop Speech)</h3>
+                <p>When TalkBack is reading a large amount of text, you can silence it instantly without disabling the tool.</p>
                 <ul class="m-steps">
-                    <li><strong>To Silence:</strong> Tap the screen once with <span class="m-gesture">one finger</span> or press any <span class="m-gesture">volume key</span>. This stops the current speech buffer instantly.</li>
+                    <li><strong>To Silence:</strong> Perform a <span class="m-gesture">two-finger single tap</span> anywhere on the screen.</li>
                 </ul>
             </article>
 
-            <!-- NAVIGATION BY HEADERS -->
+            <!-- 3. SCREEN CURTAIN -->
             <article class="m-card">
-                <h3>3. Navigate by Headers</h3>
-                <p>TalkBack uses "Reading Controls" to change how swipes behave. This allows you to meet 
-                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" class="m-wcag-link" target="_blank">WCAG SC 1.3.1</a> by jumping between landmarks.</p>
+                <h3>3. Screen Curtain</h3>
+                <p>For privacy in public or to ensure you are testing purely by sound, TalkBack can hide the screen content while remaining active.</p>
                 <ul class="m-steps">
-                    <li><strong>Change navigation type:</strong> Swipe <span class="m-gesture">up or down with three fingers</span> until you hear "Headings." (Alternatively, swipe up then down with one finger).</li>
-                    <li><strong>Jump:</strong> Once "Headings" is selected, swipe <span class="m-gesture">down</span> with one finger to move to the next heading, or <span class="m-gesture">up</span> to go back.</li>
+                    <li><strong>To Toggle:</strong> Open the TalkBack menu (swipe up then right, or down then right) and select <span class="m-gesture">Hide screen</span>.</li>
+                    <li><em>Repeat the steps and select "Show screen" to restore the visual display.</em></li>
                 </ul>
             </article>
 
-            <!-- NAVIGATION BY LINKS -->
+            <!-- 4. NAVIGATION BY HEADERS -->
             <article class="m-card">
-                <h3>4. Navigate by Links</h3>
-                <p>Quickly find actionable items to satisfy 
-                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" class="m-wcag-link" target="_blank">WCAG SC 2.4.4</a>.</p>
+                <h3>4. Heading Navigation</h3>
+                <p>Use reading controls to jump between headers and understand the structure of a page.</p>
                 <ul class="m-steps">
-                    <li><strong>Set to Links:</strong> Swipe <span class="m-gesture">up or down with three fingers</span> until you hear "Links."</li>
-                    <li><strong>Jump:</strong> Swipe <span class="m-gesture">down</span> with one finger to move through every hyperlink on the current screen.</li>
+                    <li><strong>Reading Controls:</strong> Swipe up or down with <span class="m-gesture">three fingers</span> until you hear "Headings."</li>
+                    <li><strong>Jump:</strong> Swipe <span class="m-gesture">down</span> with one finger to move to the next header.</li>
                 </ul>
             </article>
 
-            <!-- FORM NAVIGATION -->
+            <!-- 5. NAVIGATION BY LINKS -->
             <article class="m-card">
-                <h3>5. Navigate Form Fields</h3>
-                <p>Entering data on mobile requires navigating directly to inputs, checkboxes, and buttons.</p>
+                <h3>5. Link Navigation</h3>
+                <p>Skip the body text and move directly to interactive destinations.</p>
                 <ul class="m-steps">
-                    <li><strong>Set to Controls:</strong> Swipe <span class="m-gesture">up or down with three fingers</span> until you hear "Controls."</li>
+                    <li><strong>Reading Controls:</strong> Swipe up or down with <span class="m-gesture">three fingers</span> until you hear "Links."</li>
+                    <li><strong>Jump:</strong> Swipe <span class="m-gesture">down</span> with one finger to focus on the next link.</li>
+                </ul>
+            </article>
+
+            <!-- 6. FORM NAVIGATION -->
+            <article class="m-card">
+                <h3>6. Navigate Form Fields</h3>
+                <p>Quickly move between inputs to fill out data or submit forms.</p>
+                <ul class="m-steps">
+                    <li><strong>Reading Controls:</strong> Swipe up or down with <span class="m-gesture">three fingers</span> until you hear "Form controls."</li>
                     <li><strong>Jump:</strong> Swipe <span class="m-gesture">down</span> with one finger to focus on the next form element.</li>
                     <li><strong>Interact:</strong> Double-tap anywhere on the screen to activate the focused field and bring up the keyboard.</li>
                 </ul>

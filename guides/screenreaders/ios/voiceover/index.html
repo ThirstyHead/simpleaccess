@@ -36,19 +36,17 @@
 
         /* Gesture Highlight Style */
         .m-gesture {
-            background: #f0f0f7;
-            border: 1px solid var(--color-ios);
-            color: var(--color-ios);
-            padding: 2px 8px;
+            background-color: #f0efff;
             border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
+            color: var(--color-ios);
             display: inline-block;
-            margin: 0 2px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border: 1px solid var(--color-ios);
         }
 
         /* ==========================================================================
-           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           2. LAYOUT RULES (Baseline 0.3 Consistent)
            ========================================================================== */
         .l-header {
             background-color: var(--color-primary);
@@ -105,11 +103,11 @@
         }
         .m-skip-link:focus { top: 10px; }
 
-        /* Status Badge */
+        /* Assistant Notification Bubble */
         .m-status-tag {
             display: inline-flex;
             align-items: center;
-            background: #f1f0ff;
+            background: #f0efff;
             color: var(--color-ios);
             padding: 6px 14px;
             border-radius: 20px;
@@ -168,13 +166,6 @@
             margin-top: 3rem;
         }
 
-        /* Standardized WCAG links */
-        .m-wcag-link {
-            color: var(--color-ios);
-            font-weight: 600;
-            text-decoration: underline;
-        }
-
         /* ==========================================================================
            4. STATE
            ========================================================================== */
@@ -204,63 +195,70 @@
     <main id="main-content" class="l-main">
         
         <section class="m-doc-section">
-            <div class="m-status-tag" role="status">📱 Native Mobile Access</div>
-            <h2>Navigating the mobile web with touch.</h2>
+            <div class="m-status-tag" role="status">📱 Mobile Accessibility Standard</div>
+            <h2>Standardized screen reading for iPhone & iPad.</h2>
             <p>
-                VoiceOver on iPhone and iPad transforms the visual interface into an audible and tactile experience. Unlike desktop screen readers, VoiceOver relies on a specialized language of gestures. Mastering the mobile experience means understanding how to use your fingers to "scan" the screen just as your eyes would. Let's explore the "Big Six" mobile skills.
+                VoiceOver for iOS is a gesture-based screen reader that changes how you interact with your touch screen. Instead of direct interaction, you use specific swipes and taps to navigate. Master these six essential skills to unlock mobile accessibility.
             </p>
         </section>
 
         <div class="l-grid">
             
-            <!-- LAUNCH AND CLOSE -->
+            <!-- 1. LAUNCH AND CLOSE -->
             <article class="m-card">
                 <h3>1. Launch and Close</h3>
-                <p>VoiceOver is built into every iOS device. You can activate it instantly using the Accessibility Shortcut:</p>
+                <p>iOS allows you to set an Accessibility Shortcut for quick access without diving into menus.</p>
                 <ul class="m-steps">
-                    <li><strong>The Shortcut:</strong> Triple-click the <span class="m-gesture">Side Button</span> (or Home button on older models).</li>
-                    <li><strong>The Siri Method:</strong> Say, "Hey Siri, turn on VoiceOver" or "Turn off VoiceOver."</li>
-                    <li><strong>The Manual Method:</strong> Go to <strong>Settings > Accessibility > VoiceOver</strong> and toggle the switch.</li>
+                    <li><strong>To Toggle:</strong> Triple-click the <span class="m-gesture">Side Button</span> (or Home Button on older devices).</li>
+                    <li><strong>Setup:</strong> If this doesn't work, enable it in <strong>Settings > Accessibility > Accessibility Shortcut</strong> and select VoiceOver.</li>
                 </ul>
             </article>
 
-            <!-- SILENCE AND MUTE -->
+            <!-- 2. MUTE -->
             <article class="m-card">
-                <h3>2. Mute (Silence)</h3>
-                <p>If VoiceOver is reading a long paragraph and you want it to pause immediately, use a simple tap:</p>
+                <h3>2. Muting (Stop Speech)</h3>
+                <p>Instantly stop VoiceOver from speaking while keeping the reader active.</p>
                 <ul class="m-steps">
-                    <li><strong>To Silence:</strong> Tap the screen once with <span class="m-gesture">two fingers</span>. Tapping again with two fingers will resume the speech.</li>
+                    <li><strong>To Silence:</strong> Perform a <span class="m-gesture">two-finger single tap</span> anywhere on the screen.</li>
                 </ul>
             </article>
 
-            <!-- NAVIGATION BY HEADERS -->
+            <!-- 3. SCREEN CURTAIN -->
             <article class="m-card">
-                <h3>3. Navigate by Headers</h3>
-                <p>Mobile navigation is powered by the <strong>Rotor</strong>. This allows you to meet 
-                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" class="m-wcag-link" target="_blank">WCAG SC 1.3.1</a> by jumping between landmarks.</p>
+                <h3>3. Screen Curtain</h3>
+                <p>Screen Curtain turns off the display for complete privacy. The device remains fully functional, but the screen is black.</p>
                 <ul class="m-steps">
-                    <li><strong>Rotate the dial:</strong> Twist two fingers on the screen as if turning a physical dial until you hear "Headings."</li>
-                    <li><strong>Jump:</strong> Flick <span class="m-gesture">one finger up</span> or <span class="m-gesture">down</span> to move to the previous or next heading on the page.</li>
+                    <li><strong>To Toggle:</strong> Perform a <span class="m-gesture">three-finger triple tap</span>.</li>
+                    <li><em>Note: If Zoom is also enabled, use a four-finger triple tap instead.</em></li>
                 </ul>
             </article>
 
-            <!-- NAVIGATION BY LINKS -->
+            <!-- 4. NAVIGATION BY HEADERS -->
             <article class="m-card">
-                <h3>4. Navigate by Links</h3>
-                <p>Quickly find actions and destinations to satisfy 
-                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" class="m-wcag-link" target="_blank">WCAG SC 2.4.4</a>.</p>
+                <h3>4. Heading Navigation</h3>
+                <p>Headings allow you to scan a mobile page as quickly as a desktop site.</p>
                 <ul class="m-steps">
-                    <li><strong>Set the Rotor:</strong> Twist two fingers until you hear "Links."</li>
-                    <li><strong>Jump:</strong> Flick <span class="m-gesture">one finger up</span> or <span class="m-gesture">down</span> to navigate through all the links in the current view.</li>
+                    <li><strong>The Rotor:</strong> Rotate <span class="m-gesture">two fingers</span> on the screen like a dial until you hear \"Headings.\"</li>
+                    <li><strong>Jump:</strong> Flick <span class="m-gesture">one finger up</span> or <span class="m-gesture">down</span> to move through the page hierarchy.</li>
                 </ul>
             </article>
 
-            <!-- FORM NAVIGATION -->
+            <!-- 5. NAVIGATION BY LINKS -->
             <article class="m-card">
-                <h3>5. Navigate Form Fields</h3>
-                <p>Filling out forms on mobile requires jumping directly to interactive controls.</p>
+                <h3>5. Link Navigation</h3>
+                <p>Skip the text and jump directly to your destination.</p>
                 <ul class="m-steps">
-                    <li><strong>Set the Rotor:</strong> Twist two fingers until you hear "Form Controls."</li>
+                    <li><strong>The Rotor:</strong> Rotate <span class="m-gesture">two fingers</span> until you hear \"Links.\"</li>
+                    <li><strong>Jump:</strong> Flick <span class="m-gesture">one finger up</span> or <span class="m-gesture">down</span> to skip between interactive links.</li>
+                </ul>
+            </article>
+
+            <!-- 6. FORM NAVIGATION -->
+            <article class="m-card">
+                <h3>6. Navigate Form Fields</h3>
+                <p>Quickly move between inputs to fill out data or submit buttons.</p>
+                <ul class="m-steps">
+                    <li><strong>The Rotor:</strong> Rotate <span class="m-gesture">two fingers</span> until you hear "Form Controls."</li>
                     <li><strong>Jump:</strong> Flick <span class="m-gesture">one finger up</span> or <span class="m-gesture">down</span> to move between text fields, checkboxes, and buttons.</li>
                     <li><strong>Enter Data:</strong> Double-tap to activate a field and bring up the keyboard.</li>
                 </ul>
