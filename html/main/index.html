@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Structure Visualization Module */
+        .m-structure-viz {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-family: monospace;
+        }
+        .m-structure-viz .box {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .m-structure-viz .banner { background: #dbeafe; color: #1e40af; }
+        .m-structure-viz .nav { background: #dcfce7; color: #166534; }
+        .m-structure-viz .main { background: #fef9c3; color: #854d0e; border: 2px solid #ca8a04; }
+        .m-structure-viz .footer { background: #f3f4f6; color: #374151; }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Main Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;main&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;main&gt;</code> element represents the dominant content of the body of a document. This content is directly related to or expands upon the central topic of a document or central functionality of an application.
+            </p>
+            
+            <div class="m-structure-viz">
+                <div class="box banner">&lt;header&gt; (Logo, Global Nav)</div>
+                <div class="box nav">&lt;nav&gt; (Breadcrumbs)</div>
+                <div class="box main">&lt;main id="main-content"&gt; (The Primary Content)</div>
+                <div class="box footer">&lt;footer&gt; (Legal, Contact)</div>
+            </div>
+
+            <code class="m-code-block">&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;main id="main-content"&gt;
+    &lt;h1&gt;Welcome to SimpleAccess&lt;/h1&gt;
+    &lt;p&gt;This is the unique content of this page.&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/body&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/sections.html#the-main-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The main element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Landmark: main</h3>
+            <p>
+                The <code>&lt;main&gt;</code> element is programmatically mapped to the ARIA <code>main</code> landmark.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    Using the <code>&lt;main&gt;</code> element allows screen reader users to skip directly to the primary content of the page using landmark navigation (often the 'M' key). This provides a significant efficiency boost over pages built entirely with generic <code>&lt;div&gt;</code> tags.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>The Skip Link Destination</h3>
+            <p>
+                A standard accessibility best practice is to provide a "Skip to Main Content" link at the very top of the page.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Bypass Blocks</h4>
+                <p>
+                    <strong>Success Criterion 2.4.1 (Level A):</strong> A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.
+                </p>
+                <p>
+                    The <code>&lt;main&gt;</code> element is the ideal target for this skip link. By assigning an <code>id="main-content"</code> to the <code>&lt;main&gt;</code> tag, you provide a clear, reliable anchor for keyboard users to jump past headers and navigation menus.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.4.1: Bypass Blocks
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Usage Rules</h3>
+            <ul>
+                <li><strong>One per Page:</strong> A document must not have more than one <code>&lt;main&gt;</code> element that is not hidden (e.g., using the <code>hidden</code> attribute).</li>
+                <li><strong>Placement:</strong> It should not be a descendant of an <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;nav&gt;</code> element.</li>
+                <li><strong>Content:</strong> It should only contain content that is unique to the page, excluding recurring items like logos, search bars, or site-wide navigation.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Naming Landmarks</h4>
+                <p>
+                    If for some reason you must use multiple <code>&lt;main&gt;</code> elements (e.g., in a single-page application where only one is visible at a time), ensure the <code>hidden</code> attribute is used correctly so that assistive technology only perceives one active main area.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
