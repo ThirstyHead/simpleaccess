@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Office Accessibility | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .l-main {
+            max-width: 1100px;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        /* Skip Link */
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Hero Module */
+        .m-hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: var(--color-white);
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3rem;
+        }
+        .m-hero__tagline {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Content Card (Reused from Baseline 0.3) */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+        .m-card:hover { transform: translateY(-4px); }
+        .m-card__title { margin-top: 0; font-size: 1.75rem; }
+        .m-card__text { flex-grow: 1; }
+
+        /* Icon Wrapper for Cards */
+        .m-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* App-specific accents */
+        .m-card--word { border-left-color: #2b579a; }
+        .m-card--excel { border-left-color: #217346; }
+        .m-card--ppt { border-left-color: #b7472a; }
+
+        /* Buttons */
+        .m-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .m-btn:hover, .m-btn:focus {
+            background: #004494;
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">Microsoft Office Accessibility</h1>
+            <p>Mastering inclusive document design.</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div class="l-container">
+            <a href="/" style="color: var(--color-primary); font-weight: bold;">← Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="m-hero">
+        <div class="l-container">
+            <span class="m-hero__tagline">The Accessibility Assistant</span>
+            <h2>Your real-time inclusion partner.</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 1rem auto; color: #555;">
+                Microsoft 365 has evolved beyond the simple "Check Accessibility" button. The new <strong>Accessibility Assistant</strong> works while you create, helping you catch issues before they reach your audience.
+            </p>
+        </div>
+    </section>
+
+    <main id="main-content" class="l-main">
+        <div class="l-grid">
+            
+            <!-- WORD CARD -->
+            <section class="m-card m-card--word">
+                <span class="m-card__icon" aria-hidden="true">📄</span>
+                <h3 class="m-card__title">Microsoft Word</h3>
+                <p class="m-card__text">
+                    Transform your documents from simple text into accessible resources. Learn how the Assistant manages heading hierarchies, alt-text for images, and table header rows.
+                </p>
+                <a href="/guides/office/word/" class="m-btn">Word Assistant Guide</a>
+            </section>
+
+            <!-- EXCEL CARD -->
+            <section class="m-card m-card--excel">
+                <span class="m-card__icon" aria-hidden="true">📊</span>
+                <h3 class="m-card__title">Microsoft Excel</h3>
+                <p class="m-card__text">
+                    Data is only useful if it's readable. Master the Assistant's ability to verify sheet names, define table ranges, and ensure your charts have proper descriptions.
+                </p>
+                <a href="/guides/office/excel/" class="m-btn">Excel Assistant Guide</a>
+            </section>
+
+            <!-- POWERPOINT CARD -->
+            <section class="m-card m-card--ppt">
+                <span class="m-card__icon" aria-hidden="true">📽️</span>
+                <h3 class="m-card__title">Microsoft PowerPoint</h3>
+                <p class="m-card__text">
+                    Present with confidence. The PowerPoint Assistant ensures your slide reading order is logical and your color contrast is high enough for every viewer in the room.
+                </p>
+                <a href="/guides/office/powerpoint/" class="m-btn">PowerPoint Assistant Guide</a>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">HTML Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>

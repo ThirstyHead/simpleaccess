@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Accessibility Assistant Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* Primary Site Navy */
+            --color-accent: #ffd700;  /* Site Gold */
+            --color-excel: #217346;   /* Microsoft Excel Branding (Thematic Accent) */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* ==========================================================================
+           2. LAYOUT RULES (Strictly following Homepage 0.3 Baseline)
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Assistant Notification Bubble */
+        .m-assistant-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #e9f5ee;
+            color: var(--color-excel);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-excel);
+        }
+
+        /* Feature Card */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-excel); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 {
+            color: var(--color-excel);
+        }
+
+        /* Sub-headings within content modules */
+        .m-feature-label {
+            color: var(--color-excel);
+            font-weight: bold;
+            display: block;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Action Steps using Excel Green */
+        .m-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            counter-reset: step-counter;
+        }
+        .m-steps li {
+            padding: 1rem 0 1rem 3.5rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+        .m-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            background: var(--color-excel);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Callout Box */
+        .m-a11y-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Standardized WCAG links */
+        .m-wcag-link {
+            color: var(--color-excel);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        .m-wcag-link:hover {
+            color: var(--color-primary);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">Mastering the Excel Assistant</h1>
+            <p>SimpleAccess.io Office Series</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/office/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Office Hub</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <div class="m-assistant-tag" role="status">✨ Native Feature</div>
+            <h2>Data is only powerful if everyone can read it.</h2>
+            <p>
+                Spreadsheets are often the most complex documents we share. The <strong>Excel Accessibility Assistant</strong> (the modern evolution of the Accessibility Checker) works in real-time to ensure your data isn't just accurate, but accessible. From structural clarity to sensory characteristics, the Assistant guides you toward a more inclusive workbook.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- ENGAGING THE ASSISTANT -->
+            <article class="m-card">
+                <h3>Engaging the Assistant</h3>
+                <p>Microsoft 365 makes accessibility proactive. You don't have to wait until you're finished to check your work:</p>
+                <ul class="m-steps">
+                    <li>Click the <strong>Accessibility: Good to go</strong> button in the status bar at the bottom left of your Excel window.</li>
+                    <li>Navigate to the <strong>Review</strong> tab on the Ribbon and select <strong>Check Accessibility</strong>.</li>
+                    <li>Keep the <strong>Accessibility Assistant</strong> pane open on the right to see live suggestions as you build your sheets.</li>
+                </ul>
+            </article>
+
+            <!-- THE BIG FIVE CHECKS -->
+            <article class="m-card">
+                <h3>The "Big Five" for Data Integrity</h3>
+                <p>Excel workbooks present unique challenges for screen readers. The Assistant prioritizes these critical structural fixes:</p>
+                
+                <span class="m-feature-label">1. Table Headers</span>
+                <p>A data range is just a grid of text until you define it as a <strong>Table</strong> with a <strong>Header Row</strong>. The Assistant ensures headers are identified so screen readers can associate data cells with their categories, satisfying 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" class="m-wcag-link" target="_blank">WCAG SC 1.3.1 (Info and Relationships)</a>.
+                </p>
+                
+                <span class="m-feature-label">2. Descriptive Sheet Names</span>
+                <p>Default names like "Sheet1" provide zero context. The Assistant prompts you to rename tabs descriptively and remove blank sheets, allowing users to navigate the workbook efficiently, supporting 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" class="m-wcag-link" target="_blank">WCAG SC 3.3.2</a>.
+                </p>
+                
+                <span class="m-feature-label">3. Alternative Text for Visuals</span>
+                <p>Charts, PivotCharts, and images need text alternatives. The Assistant helps you add meaningful descriptions or mark purely decorative elements as such, fulfilling 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" class="m-wcag-link" target="_blank">WCAG SC 1.1.1 (Non-text Content)</a>.
+                </p>
+                
+                <span class="m-feature-label">4. Avoiding Blank Rows & Columns</span>
+                <p>Using empty rows or columns for visual spacing can "break" the reading flow for assistive technology, making it seem like the data has ended. The Assistant flags these "formatting hacks" to preserve a 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html" class="m-wcag-link" target="_blank">Meaningful Sequence (WCAG SC 1.3.2)</a>.
+                </p>
+
+                <span class="m-feature-label">5. Color & Contrast</span>
+                <p>The Assistant identifies low-contrast text and warns you when color is used as the <em>only</em> way to convey meaning (e.g., "red means overdue"), ensuring compliance with 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html" class="m-wcag-link" target="_blank">WCAG SC 1.4.1</a> and 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" class="m-wcag-link" target="_blank">SC 1.4.3</a>.
+                </p>
+            </article>
+
+            <!-- ACTIONABLE HYPERLINKS -->
+            <article class="m-card">
+                <h3>Descriptive Hyperlinks</h3>
+                <p>Long URL strings are difficult for screen readers to announce and for users to understand. The Assistant encourages you to use display text that describes the link's destination:</p>
+                <ul>
+                    <li><strong>Bad:</strong> https://simpleaccess.io/html/a</li>
+                    <li><strong>Good:</strong> SimpleAccess Anchor Tag Guide</li>
+                </ul>
+                <p>This satisfies 
+                    <a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html" class="m-wcag-link" target="_blank">WCAG SC 2.4.4 (Link Purpose)</a>.
+                </p>
+            </article>
+
+        </div>
+
+        <section class="m-a11y-box">
+            <h3>SimpleAccess Insight: The Export Advantage</h3>
+            <p>
+                Excel's Accessibility Assistant isn't just for spreadsheets. When you take the time to define <strong>Table Headers</strong> and <strong>Descriptive Sheet Tabs</strong>, that structural metadata is preserved if you export your data to <strong>HTML</strong> or <strong>Tagged PDF</strong>. By fixing it at the source, you ensure your data remains accessible across all platforms.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="../index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>
