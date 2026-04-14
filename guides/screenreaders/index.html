@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Reader Tutorials | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 1100px;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        .m-hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: var(--color-white);
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 3rem;
+        }
+
+        /* Feature Card (Consistent with Homepage 0.3) */
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+        .m-card:hover { transform: translateY(-4px); }
+        .m-card__title { margin-top: 0; font-size: 1.5rem; }
+        .m-card__text { flex-grow: 1; }
+
+        .m-card__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .m-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .m-btn:hover { background: #004494; text-decoration: underline; }
+
+        /* Thematic accents for platform types */
+        .m-card--desktop { border-left-color: #002d62; }
+        .m-card--mobile { border-left-color: #d4af37; }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">Hear the Web: Screen Reader Guide</h1>
+            <p>SimpleAccess.io Interactive Series</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div class="l-container">
+            <a href="/" style="color: var(--color-primary); font-weight: bold;">← Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="m-hero">
+        <div class="l-container">
+            <h2>Your device already speaks.</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 1rem auto; color: #555;">
+                To truly understand accessibility, you have to listen. Our standardized tutorials teach you the essential skills for every major screen reader on the market.
+            </p>
+        </div>
+    </section>
+
+    <main id="main-content" class="l-main">
+        
+        <div class="l-grid">
+            
+            <!-- WINDOWS NARRATOR -->
+            <section class="m-card m-card--desktop">
+                <span class="m-card__icon" aria-hidden="true">🪟</span>
+                <h3 class="m-card__title">Windows Narrator</h3>
+                <p class="m-card__text">
+                    Master the native Windows screen reader. Learn the standard "Caps Lock" modifier and how to navigate edge browsers and system settings.
+                </p>
+                <a href="screen-readers/narrator.html" class="m-btn">Narrator Tutorial</a>
+            </section>
+
+            <!-- MACOS VOICEOVER -->
+            <section class="m-card m-card--desktop">
+                <span class="m-card__icon" aria-hidden="true">🍎</span>
+                <h3 class="m-card__title">macOS VoiceOver</h3>
+                <p class="m-card__text">
+                    Unlock the power of the "VO" keys. We'll show you how to use the Utility and the Rotor to traverse complex web layouts.
+                </p>
+                <a href="screen-readers/voiceover-mac.html" class="m-btn">VoiceOver Mac Tutorial</a>
+            </section>
+
+            <!-- NVDA -->
+            <section class="m-card m-card--desktop">
+                <span class="m-card__icon" aria-hidden="true">⌨️</span>
+                <h3 class="m-card__title">NVDA</h3>
+                <p class="m-card__text">
+                    The open-source community favorite. Master the essential "Elements List" and learn why this is the go-to for web accessibility testing.
+                </p>
+                <a href="screen-readers/nvda.html" class="m-btn">NVDA Tutorial</a>
+            </section>
+
+            <!-- JAWS -->
+            <section class="m-card m-card--desktop">
+                <span class="m-card__icon" aria-hidden="true">🦈</span>
+                <h3 class="m-card__title">JAWS</h3>
+                <p class="m-card__text">
+                    The professional industry standard. Learn the specific shortcut keys for tables and forms that make JAWS a productivity powerhouse.
+                </p>
+                <a href="screen-readers/jaws.html" class="m-btn">JAWS Tutorial</a>
+            </section>
+
+            <!-- IOS VOICEOVER -->
+            <section class="m-card m-card--mobile">
+                <span class="m-card__icon" aria-hidden="true">📱</span>
+                <h3 class="m-card__title">iOS VoiceOver</h3>
+                <p class="m-card__text">
+                    Navigate via touch. Learn the essential swipes, double-taps, and the "two-finger twist" for the mobile web.
+                </p>
+                <a href="screen-readers/voiceover-ios.html" class="m-btn">VoiceOver iOS Tutorial</a>
+            </section>
+
+            <!-- ANDROID TALKBACK -->
+            <section class="m-card m-card--mobile">
+                <span class="m-card__icon" aria-hidden="true">🤖</span>
+                <h3 class="m-card__title">Android TalkBack</h3>
+                <p class="m-card__text">
+                    Master accessibility on Android. We cover the specific swipe gestures and the local context menu for efficient mobile browsing.
+                </p>
+                <a href="screen-readers/talkback.html" class="m-btn">TalkBack Tutorial</a>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold;">HTML Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>
