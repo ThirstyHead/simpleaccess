@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        object {
+            max-width: 100%;
+            border: 1px solid #ccc;
+        }
+
+        /* Fallback content styling */
+        .m-fallback {
+            padding: 1rem;
+            background: #ffebee;
+            border: 2px dashed #c62828;
+            border-radius: 4px;
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Object Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;object&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;object&gt;</code> element can represent an external resource, which, depending on the type of the resource, will either be treated as an image, as a nested browsing context, or as an external resource to be processed by a plugin.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example (with Fallback):</strong><br><br>
+                <object data="non-existent-file.pdf" type="application/pdf" width="300" height="150">
+                    <div class="m-fallback">
+                        Unable to load PDF. <a href="#">Download the accessible document version (Word)</a>.
+                    </div>
+                </object>
+            </div>
+
+            <code class="m-code-block">&lt;object data="infographic.svg" type="image/svg+xml"&gt;
+  &lt;img src="infographic.png" alt="Static version of the data chart"&gt;
+&lt;/object&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-object-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The object element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Technical Requirements</h3>
+            <ul>
+                <li><strong>The <code>data</code> Attribute:</strong> Specifies the URL of the resource.</li>
+                <li><strong>The <code>type</code> Attribute:</strong> Specifies the MIME type of the resource. If present, it must be a valid MIME type string.</li>
+                <li><strong>The <code>name</code> Attribute:</strong> Allows the object to be targeted by links or used in form submission if associated with a form.</li>
+                <li><strong>The <code>usemap</code> Attribute:</strong> Allows the object to be used as an image map.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Non-text Content</h4>
+                <p>
+                    <strong>Success Criterion 1.1.1 (Level A):</strong> All non-text content that is presented to the user has a text alternative that serves the equivalent purpose.
+                </p>
+                <p>
+                    The <code>&lt;object&gt;</code> element is superior to <code>&lt;embed&gt;</code> because it allows for <strong>nested fallback content</strong>. If the resource cannot be loaded (due to lack of plugin, network error, or browser capability), the content between the opening and closing tags is rendered. This is the perfect place to provide accessible alternatives like descriptive text, data tables, or links to accessible document formats.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.1.1: Non-text Content
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Modern Best Practices</h3>
+            <ul>
+                <li><strong>Use Specific Elements First:</strong> While <code>&lt;object&gt;</code> is versatile, use more specific elements when possible. For images, use <code>&lt;img&gt;</code>. For videos, use <code>&lt;video&gt;</code>. For other HTML documents, use <code>&lt;iframe&gt;</code>.</li>
+                <li><strong>SVG Integration:</strong> <code>&lt;object&gt;</code> is a popular choice for embedding SVGs when you want to maintain access to the SVG's internal DOM for scripting, while still providing a fallback <code>&lt;img&gt;</code> for very old browsers.</li>
+                <li><strong>Keyboard Accessibility:</strong> Ensure that any interactive content within the object (like an embedded app) does not trap the keyboard focus.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Naming the Object</h4>
+                <p>
+                    For objects that represent meaningful content, always provide an accessible name. While fallback text handles errors, you should also use <code>aria-label</code> or <code>title</code> to identify the resource for screen reader users when it <em>is</em> working correctly.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
