@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+            overflow-x: auto; /* Handle narrow screens */
+        }
+
+        /* Responsive Table Module */
+        .m-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .m-table caption {
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 1rem;
+            text-align: left;
+            background: #f1f5f9;
+            color: var(--color-primary);
+            border-bottom: 1px solid #ddd;
+        }
+
+        .m-table th, .m-table td {
+            padding: 0.75rem 1rem;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+
+        .m-table thead th {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .m-table tbody tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Table Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;table&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;table&gt;</code> element represents data with more than one dimension, in the form of a table. It is a container for rows and cells that organize information into a grid.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Accessible Data Table:</strong><br><br>
+                <table class="m-table">
+                    <caption>Browser Support for Native Elements (2026)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Element</th>
+                            <th scope="col">Chrome</th>
+                            <th scope="col">Safari</th>
+                            <th scope="col">Firefox</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><code>&lt;dialog&gt;</code></th>
+                            <td>Full</td>
+                            <td>Full</td>
+                            <td>Full</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code>&lt;search&gt;</code></th>
+                            <td>Full</td>
+                            <td>Full</td>
+                            <td>Full</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code>&lt;ruby&gt;</code></th>
+                            <td>Full</td>
+                            <td>Partial</td>
+                            <td>Full</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <code class="m-code-block">&lt;table&gt;
+  &lt;caption&gt;Employee List&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Name&lt;/th&gt;
+      &lt;th scope="col"&gt;ID&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jane Doe&lt;/td&gt;
+      &lt;td&gt;001&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The table element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Structural Components</h3>
+            <p>A standard-compliant table utilizes several sub-elements to define its hierarchy:</p>
+            <ul>
+                <li><strong><code>&lt;caption&gt;</code>:</strong> Provides the title for the table. Essential for orientation.</li>
+                <li><strong><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>:</strong> Group rows into logical blocks (header, body, footer).</li>
+                <li><strong><code>&lt;th&gt;</code> vs <code>&lt;td&gt;</code>:</strong> Use <code>&lt;th&gt;</code> for header cells and <code>&lt;td&gt;</code> for data cells.</li>
+                <li><strong>The <code>scope</code> Attribute:</strong> Tells assistive technology if a header cell applies to a <code>row</code> or a <code>col</code> (column).</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    Tables are purely visual grids unless correctly marked up. By using <code>&lt;th&gt;</code> with the <code>scope</code> attribute, you create a programmatic link between the header and the data. Screen readers will announce the associated header as the user moves between cells (e.g., "Chrome: Full"). Without this, users navigating large tables lose all context.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Layout Warning</h3>
+            <div class="m-a11y-callout" style="border-color: #d11141;">
+                <h4>A11y Tip: Tables for Data, Not Layout</h4>
+                <p>
+                    <strong>Success Criterion 1.3.2 (Meaningful Sequence):</strong> When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.
+                </p>
+                <p>
+                    Using tables to create page layouts (e.g., sidebars or multi-column text) is a violation of semantic standards. It creates a confusing reading order for assistive technologies and makes the site difficult to scale responsively. Use CSS Grid or Flexbox for layouts; use <code>&lt;table&gt;</code> only for 2D data sets.
+                </p>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Responsive Tables</h3>
+            <p>
+                Tables are notoriously difficult to display on mobile devices. Following <strong>SMACSS Module Rules</strong>, you should provide a container with <code>overflow-x: auto</code> to allow horizontal scrolling, or use "stacking" techniques where rows become cards on small screens.
+            </p>
+            
+            <code class="m-code-block">.m-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}</code>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
