@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        .m-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .m-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        /* Native Select styling reset for project theme */
+        .m-select {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .m-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.1);
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Select Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;select&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;select&gt;</code> element represents a control for selecting amongst a set of options.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example:</strong><br><br>
+                <div class="m-form-group">
+                    <label for="accessibility-rating" class="m-label">Current project accessibility status:</label>
+                    <select id="accessibility-rating" name="rating" class="m-select">
+                        <option value="">-- Please choose an option --</option>
+                        <option value="none">Not yet audited</option>
+                        <option value="a">WCAG 2.1 Level A</option>
+                        <option value="aa" selected>WCAG 2.1 Level AA (Industry Standard)</option>
+                        <option value="aaa">WCAG 2.1 Level AAA</option>
+                    </select>
+                </div>
+            </div>
+
+            <code class="m-code-block">&lt;label for="choice"&gt;Favorite Tag:&lt;/label&gt;
+&lt;select id="choice" name="choice"&gt;
+  &lt;option value="main"&gt;main&lt;/option&gt;
+  &lt;option value="article"&gt;article&lt;/option&gt;
+&lt;/select&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-select-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The select element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Accessibility Core: Name, Role, Value</h3>
+            <p>
+                The <code>&lt;select&gt;</code> element is a high-level interactive control. To be usable, it relies on being part of a semantic trio:
+            </p>
+            <ul>
+                <li><strong>Role:</strong> Browsers identify the element as a "listbox" or "combobox" automatically.</li>
+                <li><strong>Name:</strong> You <strong>must</strong> provide a label (using <code>&lt;label for="..."&gt;</code>) to provide the accessible name.</li>
+                <li><strong>Value:</strong> The currently selected <code>&lt;option&gt;</code> provides the value.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Name, Role, Value</h4>
+                <p>
+                    <strong>Success Criterion 4.1.2 (Level A):</strong> For all user interface components, the name and role can be programmatically determined...
+                </p>
+                <p>
+                    A native <code>&lt;select&gt;</code> element handles the vast majority of this work for you. Screen readers announce the label, the element type, and the current selection as the user navigates. Custom "dropdown" widgets built with divs and spans often fail this criterion because they lack the built-in keyboard behavior and state reporting of the native select tag.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html" target="_blank" class="m-ref-link">
+                    Understand SC 4.1.2: Name, Role, Value
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Standard Attributes</h3>
+            <ul>
+                <li><strong><code>multiple</code>:</strong> A boolean attribute that allows the user to select more than one option. Note: This changes the browser UI to a fixed-size listbox rather than a disclosure dropdown.</li>
+                <li><strong><code>size</code>:</strong> Specifies the number of visible rows in the list.</li>
+                <li><strong><code>required</code>:</strong> Ensures the user must select a non-placeholder option before submitting a form.</li>
+                <li><strong><code>disabled</code>:</strong> Makes the entire control unselectable and grayed out.</li>
+            </ul>
+
+            <code class="m-code-block">&lt;!-- Example of a multi-select listbox --&gt;
+&lt;select name="tags" id="tags" multiple size="4"&gt;
+  &lt;option value="html"&gt;HTML&lt;/option&gt;
+  &lt;option value="css"&gt;CSS&lt;/option&gt;
+  &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+  &lt;option value="a11y"&gt;Accessibility&lt;/option&gt;
+&lt;/select&gt;</code>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Grouping:</strong> Use the <code>&lt;optgroup&gt;</code> element to group related choices in long lists. This aids cognitive processing and screen reader navigation.</li>
+                <li><strong>Placeholders:</strong> The first option should often be a "Please select" prompt with an empty value string. This makes the <code>required</code> attribute function correctly.</li>
+                <li><strong>Avoid Auto-Submit:</strong> Do not use JavaScript to submit the form immediately when the select value changes (<code>onchange="form.submit()"</code>). This is disorienting for keyboard and screen reader users, violating <strong>WCAG SC 3.2.2 (On Input)</strong>.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Responsive States</h4>
+                <p>
+                    On mobile devices, browsers often replace the desktop dropdown UI with a native modal picker. By using the standard <code>&lt;select&gt;</code> element, you automatically gain these OS-level optimizations, ensuring that touch targets are large and accessible for all users.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
