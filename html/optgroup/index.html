@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optgroup Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        .m-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+
+        .m-select {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .m-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.1);
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Optgroup Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;optgroup&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;optgroup&gt;</code> element represents a group of <code>&lt;option&gt;</code> elements with a common label.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example:</strong><br><br>
+                <label for="city-select" class="m-label">Choose a major city:</label>
+                <select id="city-select" class="m-select">
+                    <optgroup label="Europe">
+                        <option>London</option>
+                        <option>Paris</option>
+                        <option>Madrid</option>
+                    </optgroup>
+                    <optgroup label="North America">
+                        <option>New York</option>
+                        <option>Toronto</option>
+                        <option>Mexico City</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <code class="m-code-block">&lt;select&gt;
+  &lt;optgroup label="Category Name"&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    &lt;option&gt;Option 2&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-optgroup-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The optgroup element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Technical Requirements</h3>
+            <ul>
+                <li><strong>The <code>label</code> Attribute:</strong> This attribute is <strong>mandatory</strong>. It provides the name of the group, which is displayed in the menu but cannot be selected by the user.</li>
+                <li><strong>Children:</strong> It must only contain <code>&lt;option&gt;</code> elements or script-supporting elements (like <code>&lt;template&gt;</code>).</li>
+                <li><strong>The <code>disabled</code> Attribute:</strong> Adding this to the <code>&lt;optgroup&gt;</code> will natively disable all options within that group.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Info and Relationships</h4>
+                <p>
+                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                </p>
+                <p>
+                    For long select lists, grouping related options is an essential usability and accessibility practice. Screen readers announce the group label when a user navigates into it, providing the necessary context to distinguish between identical or similar options (e.g., distinguishing "Springfield" in Illinois vs. "Springfield" in Massachusetts).
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.1: Info and Relationships
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Cognitive Benefits</h3>
+            <p>
+                Long, unstructured lists are difficult for all users to process, but they are a major barrier for users with **cognitive or memory impairments**.
+            </p>
+            <ul>
+                <li><strong>Chunking:</strong> By breaking a list into logical chunks using <code>&lt;optgroup&gt;</code>, you reduce the mental effort required to find the correct item.</li>
+                <li><strong>Visual Hierarchy:</strong> Browsers automatically indent options within a group, providing a clear visual structure that mirrors the programmatic one.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Beyond the Group</h4>
+                <p>
+                    If a select list becomes too large (e.g., hundreds of items), consider if a searchable autocomplete field (using <code>&lt;datalist&gt;</code>) or a multi-step selection process might be more accessible than a single massive dropdown.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
