@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Visualization Module: Since <title> is in the head, we visualize it */
+        .m-browser-frame {
+            border: 1px solid #ccc;
+            border-radius: 8px 8px 0 0;
+            background: #fff;
+            margin: 2rem 0;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .m-browser-bar {
+            background: #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .m-tab {
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px 6px 0 0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            border: 1px solid #cbd5e1;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .m-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Title Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;title&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;title&gt;</code> element represents the document's name or title. Although it does not appear in the body of the web page, it is the most critical metadata element for user orientation.
+            </p>
+            
+            <div class="m-browser-frame">
+                <div class="m-browser-bar">
+                    <div class="m-dot" style="background: #ff5f56;"></div>
+                    <div class="m-dot" style="background: #ffbd2e;"></div>
+                    <div class="m-dot" style="background: #27c93f;"></div>
+                    <div class="m-tab">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDAyZDYyIiAvPjwvc3ZnPg==" alt="">
+                        Title Tag Guide | SimpleAccess.io
+                    </div>
+                </div>
+                <div style="height: 40px; background: #f8fafc; border-bottom: 1px solid #ddd;"></div>
+            </div>
+
+            <code class="m-code-block">&lt;head&gt;
+  &lt;title&gt;Page Title - Site Name&lt;/title&gt;
+&lt;/head&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The title element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>The Gateway to Accessibility</h3>
+            <p>
+                The <code>&lt;title&gt;</code> element is the very first piece of information provided to a screen reader user.
+            </p>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Page Titled</h4>
+                <p>
+                    <strong>Success Criterion 2.4.2 (Level A):</strong> Web pages have titles that describe topic or purpose.
+                </p>
+                <p>
+                    A descriptive title allows users to quickly identify if the page is the one they intended to visit without having to navigate into the content. For users who have multiple tabs open, the title is the only way to distinguish between different sections of the same website. 
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html" target="_blank" class="m-ref-link">
+                    Understand SC 2.4.2: Page Titled
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Technical Requirements & Patterns</h3>
+            <ul>
+                <li><strong>Mandatory:</strong> Every HTML document <strong>must</strong> have a <code>&lt;title&gt;</code> element in the <code>&lt;head&gt;</code> (unless the document is an iframe or another specific exception).</li>
+                <li><strong>Text-Only:</strong> The title element can only contain plain text. Any HTML tags placed inside will be treated as literal text.</li>
+                <li><strong>Uniqueness:</strong> Each page on a site should have a unique title that reflects its specific content.</li>
+            </ul>
+
+            <code class="m-code-block">&lt;!-- Recommended Pattern --&gt;
+&lt;title&gt;Specific Topic | Category | Site Name&lt;/title&gt;</code>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Best Practices</h3>
+            <ul>
+                <li><strong>Front-Load Important Keywords:</strong> Put the most unique information (the page name) first, and the site name last. This is especially helpful for users with screen magnifiers or those scanning many browser tabs.</li>
+                <li><strong>Conciseness:</strong> Aim for titles that are descriptive but short enough to be visible in typical browser tabs (usually around 50–60 characters).</li>
+                <li><strong>SEO Benefit:</strong> Search engines use the <code>&lt;title&gt;</code> as the primary headline in search results. A well-crafted title improves discoverability for everyone.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Dynamic Titles</h4>
+                <p>
+                    In single-page applications (SPAs), ensure the <code>&lt;title&gt;</code> updates dynamically as the user navigates. This alerts screen reader users that a "new page" has loaded even if the browser doesn't perform a full refresh.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
