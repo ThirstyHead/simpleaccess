@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Tag Guide | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with SMACSS Baseline)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62;
+            --color-accent: #ffd700;
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid var(--color-accent);
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
+
+        .m-doc-section {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        /* Demo Module */
+        .m-demo {
+            border-left: 4px solid var(--color-accent);
+            padding: 1.5rem 2rem;
+            background: #fffdf0;
+            margin: 2rem 0;
+        }
+
+        /* Small print styling reset for a1y compliance */
+        small {
+            font-size: 0.85em; /* Don't go too small! */
+            color: #555;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        /* Code Sample Module */
+        .m-code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 1rem 0;
+            display: block;
+            white-space: pre;
+        }
+
+        /* Accessibility Sidebar Module */
+        .m-a11y-callout {
+            background: #e8f0fe;
+            border: 2px solid var(--color-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Reference Link Module */
+        .m-ref-link {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #cbd5e1;
+        }
+        .m-ref-link:hover, .m-ref-link:focus {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div class="l-container">
+            <h1 style="color: white; margin: 0;">HTML Standards: The Small Tag</h1>
+            <p>SimpleAccess.io Elements Series</p>
+        </div>
+    </header>
+
+    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
+        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-doc-section">
+            <h2>The <code>&lt;small&gt;</code> Element</h2>
+            <p>
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;small&gt;</code> element represents side comments and small print, like copyright and legal text, independent of its visual presentation.
+            </p>
+            
+            <div class="m-demo">
+                <strong>Visual Example:</strong><br>
+                <p>SimpleAccess Standard License</p>
+                <small>&copy; 2026 SimpleAccess.io. All rights reserved. Terms and conditions apply.</small>
+            </div>
+
+            <code class="m-code-block">&lt;footer&gt;
+  &lt;small&gt;&amp;copy; 2026 My Company&lt;/small&gt;
+&lt;/footer&gt;</code>
+
+            <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-small-element" target="_blank" class="m-ref-link">
+                View HTML Living Standard: The small element
+            </a>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Meaning, Not Size</h3>
+            <p>
+                While browsers render the <code>&lt;small&gt;</code> tag at a smaller font size by default, its primary purpose is <strong>semantic</strong>. It indicates that the text is auxiliary "fine print."
+            </p>
+            <ul>
+                <li><strong>Correct usage:</strong> Copyright notices, legal disclaimers, license requirements, or brief side-comments.</li>
+                <li><strong>Incorrect usage:</strong> Shrinking text purely for visual design. If you want text to be smaller for purely aesthetic reasons (like a label under an icon), use the CSS <code>font-size</code> property on a <code>&lt;span&gt;</code> or <code>&lt;p&gt;</code>.</li>
+            </ul>
+
+            <div class="m-a11y-callout">
+                <h4>WCAG Requirement: Contrast (Minimum)</h4>
+                <p>
+                    <strong>Success Criterion 1.4.3 (Level AA):</strong> The visual presentation of text... has a contrast ratio of at least 4.5:1.
+                </p>
+                <p>
+                    A common accessibility failure occurs when developers use <code>&lt;small&gt;</code> print and simultaneously lighten the text color (e.g., using light gray). Because the font size is already reduced, high contrast is <strong>even more critical</strong> for legibility. Always ensure your "fine print" remains readable for users with low vision.
+                </p>
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.4.3: Contrast
+                </a>
+            </div>
+        </section>
+
+        <section class="m-doc-section">
+            <h3>Styling Best Practices</h3>
+            <p>
+                Following <strong>SMACSS Module Rules</strong>, you should control the scaling of small text through relative units (like <code>em</code> or <code>%</code>).
+            </p>
+            <ul>
+                <li><strong>Base Size:</strong> Avoid setting the font size of <code>&lt;small&gt;</code> below <code>0.8em</code>. Anything smaller often becomes unreadable even for users without significant visual impairments.</li>
+                <li><strong>Line Height:</strong> Ensure the <code>line-height</code> remains sufficient (at least 1.5) so that the lines of small text do not overlap or become too dense.</li>
+            </ul>
+
+            <div class="m-a11y-callout" style="border-color: #d4af37;">
+                <h4>A11y Tip: Info and Relationships</h4>
+                <p>
+                    While <code>&lt;small&gt;</code> does not have a specific ARIA role, its presence in the DOM signals to search engines and some specialized assistive tools that the content is supplementary. This helps satisfy <strong>WCAG SC 1.3.1</strong> by programmatically identifying the nature of the relationship between the main prose and the legal/side notes.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+        </div>
+    </footer>
+
+</body>
+</html>
