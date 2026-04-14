@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceivable Guidelines | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* ==========================================================================
+           2. LAYOUT RULES
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #eef7ff;
+            color: var(--color-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-primary);
+        }
+
+        .m-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-primary); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .m-card h3 { color: var(--color-primary); margin-top: 0; }
+
+        /* Code/Short Tag for Guideline IDs */
+        .m-guideline-id {
+            font-family: monospace;
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 4rem;
+        }
+
+        .m-btn-link {
+            color: var(--color-primary);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">Principle 1: Perceivable</h1>
+            <p>Ensuring information is presentable to all senses.</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/guides/wcag/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to POUR Overview</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-intro">
+            <div class="m-status-tag" role="status">🖐️ Sight, Sound, and Touch</div>
+            <h2>Accessibility is Sight, Sound, and Touch.</h2>
+            <p>
+                The <strong>Perceivable</strong> principle is the sensory foundation of the web. It ensures that information isn't "invisible" to any user, regardless of how they interact with their device. By providing content through sight, sound, and touch, we ensure that every visitor can ingest information in the way that works best for them.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- TEXT ALTERNATIVES -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 1.1</span>
+                <h3>Text Alternatives</h3>
+                <p>Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.</p>
+                <p><strong>Primary Implementation:</strong> Using <code>alt</code> attributes for images and providing text-based labels for icons and buttons.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html" class="m-btn-link" target="_blank">Understand Non-Text Content Requirements</a>
+            </article>
+
+            <!-- TIME-BASED MEDIA -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 1.2</span>
+                <h3>Time-based Media</h3>
+                <p>Provide alternatives for time-based media, including synchronized captions for video, audio descriptions for visual information, and full-text transcripts for podcasts.</p>
+                <p><strong>Primary Implementation:</strong> Ensuring all video content has captions that are accurate and synchronized with the audio track.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-live.html" class="m-btn-link" target="_blank">Review Media Alternative Standards</a>
+            </article>
+
+            <!-- ADAPTABLE -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 1.3</span>
+                <h3>Adaptable</h3>
+                <p>Create content that can be presented in different ways (for example simpler layout) without losing information or structure.</p>
+                <p><strong>Primary Implementation:</strong> Using semantic HTML (headings, lists, landmarks) so that the structure is programmatically determinable by assistive technology.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html" class="m-btn-link" target="_blank">Master Semantic Info & Relationships</a>
+            </article>
+
+            <!-- DISTINGUISHABLE -->
+            <article class="m-card">
+                <span class="m-guideline-id">Guideline 1.4</span>
+                <h3>Distinguishable</h3>
+                <p>Make it easier for users to see and hear content including separating foreground from background.</p>
+                <p><strong>Primary Implementation:</strong> Ensuring high color contrast ratios (at least 4.5:1 for standard text) and allowing users to resize text without breaking functionality.</p>
+                <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" class="m-btn-link" target="_blank">Examine Contrast & Distinguishable Standards</a>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: Beyond Alt Text</h3>
+            <p>
+                Perceivability isn't just about screen readers. It's about the user with low vision who needs high contrast, the user in a loud environment who needs captions, and the user with situational disabilities. If your content relies on a single sense to be understood, it is not yet Perceivable.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="wcag_index.html" style="color: var(--color-accent); font-weight: bold;">WCAG Hub</a>
+        </div>
+    </footer>
+
+</body>
+</html>

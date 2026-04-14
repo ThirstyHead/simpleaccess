@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCAG Principles (POUR) | SimpleAccess.io</title>
+    
+    <style>
+        /* ==========================================================================
+           1. BASE RULES (Synced with Baseline 0.3)
+           ========================================================================== */
+        :root {
+            --color-primary: #002d62; /* SimpleAccess Navy */
+            --color-accent: #ffd700;  /* SimpleAccess Gold */
+            --color-pour: #004d40;    /* Thematic Teal for WCAG status */
+            --color-text: #1a1a1a;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --color-focus: #d4af37;
+            --font-main: system-ui, -apple-system, sans-serif;
+            --line-height: 1.7;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            line-height: var(--line-height);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
+
+        /* ==========================================================================
+           2. LAYOUT RULES (Baseline 0.3 Consistent)
+           ========================================================================== */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 6px solid var(--color-accent);
+        }
+
+        .l-nav {
+            background: var(--color-white);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .l-main {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .l-footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 4rem 1rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. MODULE RULES
+           ========================================================================== */
+        
+        .m-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 10px 20px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 2px solid var(--color-accent);
+        }
+        .m-skip-link:focus { top: 10px; }
+
+        /* Principle Notification Bubble */
+        .m-status-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #e0f2f1;
+            color: var(--color-pour);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            border: 1.5px solid var(--color-pour);
+        }
+
+        /* POUR Card - Unified with brand navy */
+        .m-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 8px solid var(--color-primary); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .m-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .m-card__letter {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .m-card h3 { color: var(--color-primary); margin-top: 0; }
+
+        /* Call to Action Button */
+        .m-btn {
+            margin-top: auto;
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .m-btn:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        /* Intro Section */
+        .m-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            text-align: center;
+        }
+
+        .m-intro a {
+            color: var(--color-primary);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        /* Info Box */
+        .m-info-box {
+            background: #fffdf0;
+            border: 2px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 4rem;
+        }
+
+        /* ==========================================================================
+           4. STATE
+           ========================================================================== */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1 style="color: white; margin: 0;">The POUR Principles</h1>
+            <p>Mastering the WCAG Foundation</p>
+        </div>
+    </header>
+
+    <nav class="l-nav" aria-label="Breadcrumb">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <a href="/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="l-main">
+        
+        <section class="m-intro">
+            <div class="m-status-tag" role="status">📖 W3C Core Standard</div>
+            <h2>Accessibility starts with four simple words.</h2>
+            <p>
+                The <a href="https://www.w3.org/WAI/fundamentals/accessibility-principles/" target="_blank">Web Content Accessibility Guidelines (WCAG)</a> are organized under four high-level principles that provide the foundation for Web accessibility: <strong>Perceivable, Operable, Understandable, and Robust.</strong> Whether you are a developer, designer, or content creator, these are the standards you build toward.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            
+            <!-- PERCEIVABLE -->
+            <article class="m-card">
+                <div class="m-card__letter">P</div>
+                <h3>Perceivable</h3>
+                <p>Information and user interface components must be presentable to users in ways they can perceive.</p>
+                <p><em>Can they see or hear the content?</em></p>
+                <a href="/guides/wcag/perceivable/" class="m-btn">Explore Perceivable Guidelines</a>
+            </article>
+
+            <!-- OPERABLE -->
+            <article class="m-card">
+                <div class="m-card__letter">O</div>
+                <h3>Operable</h3>
+                <p>User interface components and navigation must be operable across all input methods.</p>
+                <p><em>Can they use the interface?</em></p>
+                <a href="wcag_operable.html" class="m-btn">Master Operable Controls</a>
+            </article>
+
+            <!-- UNDERSTANDABLE -->
+            <article class="m-card">
+                <div class="m-card__letter">U</div>
+                <h3>Understandable</h3>
+                <p>Information and the operation of the user interface must be understandable to everyone.</p>
+                <p><em>Can they make sense of it?</em></p>
+                <a href="wcag_understandable.html" class="m-btn">Apply Understandable Standards</a>
+            </article>
+
+            <!-- ROBUST -->
+            <article class="m-card">
+                <div class="m-card__letter">R</div>
+                <h3>Robust</h3>
+                <p>Content must be robust enough to be interpreted reliably by a wide variety of user agents.</p>
+                <p><em>Will it work with their assistive tech?</em></p>
+                <a href="wcag_robust.html" class="m-btn">Build Robust Implementations</a>
+            </article>
+
+        </div>
+
+        <section class="m-info-box">
+            <h3>SimpleAccess Insight: The POUR Filter</h3>
+            <p>
+                When you're building a new feature, run it through the POUR filter. If it fails even one of these principles, it is fundamentally inaccessible. Think of WCAG not as a checklist, but as a way to ensure your digital product is truly functional for every human being.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+        <div style="margin-top: 1rem;">
+            <a href="index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
+            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
+        </div>
+    </footer>
+
+</body>
+</html>
