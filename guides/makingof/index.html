@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Creation | SimpleAccess.io</title>
+    <style>
+        /* BASE RULES */
+        :root {
+            --color-primary: #002D62; /* SimpleAccess Navy */
+            --color-accent: #FFD700;  /* SimpleAccess Gold */
+            --color-text: #333;
+            --color-bg: #f4f4f4;
+            --color-white: #ffffff;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover, a:focus {
+            text-decoration: underline;
+            outline: 2px solid var(--color-accent);
+        }
+
+        /* LAYOUT RULES */
+        .l-header {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: 2rem 1rem;
+            border-bottom: 5px solid var(--color-accent);
+            text-align: center;
+        }
+
+        .l-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .l-footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* MODULE RULES */
+        .m-hero {
+            background: var(--color-white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-top: 5px solid var(--color-primary);
+        }
+
+        .m-hero__title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .m-hero__lede {
+            font-size: 1.25rem;
+            color: #555;
+            max-width: 800px;
+        }
+
+        .m-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 8px solid var(--color-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .m-card__title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .m-card__icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .m-status-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .u-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .m-skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            padding: 8px;
+            z-index: 100;
+        }
+
+        .m-skip-link:focus {
+            top: 0;
+        }
+
+        /* STATE RULES */
+        .is-active {
+            border-color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main" class="m-skip-link">Skip to main content</a>
+
+    <header class="l-header">
+        <h1>SimpleAccess.io</h1>
+        <p>Digital Accessibility is Sight, Sound, and Touch.</p>
+    </header>
+
+    <main id="main" class="l-container">
+        
+        <section class="m-hero">
+            <span class="m-status-badge">The Making Of</span>
+            <h2 class="m-hero__title">Collaborative Creation</h2>
+            <p class="m-hero__lede">
+                SimpleAccess.io isn't just a site about accessibility—it is a living experiment in <strong>Human-AI Collaboration</strong>. 
+                Explore how we combined human intent, standards-based requirements, and AI execution to build a web that delights all of the senses.
+            </p>
+        </section>
+
+        <div class="l-grid">
+            <!-- Concept 1: SMACSS -->
+            <article class="m-card">
+                <div class="m-card__icon" aria-hidden="true">🏗️</div>
+                <h3 class="m-card__title">The SMACSS Foundation</h3>
+                <p>
+                    From the very first line of code, we chose a <strong>Scalable and Modular Architecture for CSS</strong>. By categorizing our rules into Base, Layout, and Modules, we ensured that the AI could understand the "DNA" of the site, allowing for consistent updates without breaking the global design.
+                </p>
+            </article>
+
+            <!-- Concept 2: Baselines -->
+            <article class="m-card">
+                <div class="m-card__icon" aria-hidden="true">📌</div>
+                <h3 class="m-card__title">The Baseline Methodology</h3>
+                <p>
+                    To experiment safely, we established <strong>"Known Good" Baselines</strong>. Each major version (from 0.1 to 0.5) acted as a checkpoint. This allowed the human partner to guide the evolution of the site, reverting to stable states whenever the AI's suggestions strayed from the vision.
+                </p>
+            </article>
+
+            <!-- Concept 3: Standards First -->
+            <article class="m-card">
+                <div class="m-card__icon" aria-hidden="true">📜</div>
+                <h3 class="m-card__title">Standards as the Source of Truth</h3>
+                <p>
+                    We didn't just guess at "best practices." We integrated the <strong>WHATWG HTML Living Standard</strong> and <strong>WCAG 2.1</strong> directly into our prompts. The AI acted as a librarian of standards, ensuring every element—from the Anchor tag to the complex Canvas—was semantically correct.
+                </p>
+            </article>
+
+            <!-- Concept 4: Iterative Refinement -->
+            <article class="m-card">
+                <div class="m-card__icon" aria-hidden="true">🔄</div>
+                <h3 class="m-card__title">Conversational Refinement</h3>
+                <p>
+                    Accessibility isn't extra work; it's a conversation. We refined every lede, adjusted every header color (like matching the MS Word Blue to our Navy), and verified every ARIA landmark through constant feedback loops. 
+                </p>
+            </article>
+        </div>
+
+        <section class="m-hero" style="margin-top: 3rem; border-top: 5px solid var(--color-accent);">
+            <h3 class="m-card__title">"Accessibility is already here..."</h3>
+            <p>
+                Our collaborative process proves that AI is a powerful tool for inclusivity when guided by <strong>Human Values</strong>. By focusing on the user's experience of sight, sound, and touch, we've created a documentation series that is as accessible as the standards it describes.
+            </p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html">Return to the Homepage</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="l-footer">
+        <p>&copy; 2026 SimpleAccess.io | Built cooperatively by Human & AI.</p>
+    </footer>
+
+</body>
+</html>
