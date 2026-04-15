@@ -152,6 +152,25 @@
         .is-active {
             border-color: var(--color-accent);
         }
+
+        .m-history-list {
+            margin-top: 1rem;
+            list-style: none;
+        }
+
+        .m-history-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .m-history-list li::before {
+            content: "•";
+            color: var(--color-accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
     </style>
 </head>
 <body>
@@ -209,6 +228,22 @@
                 <p>
                     Accessibility isn't extra work; it's a conversation. We refined every lede, adjusted every header color (like matching the MS Word Blue to our Navy), and verified every ARIA landmark through constant feedback loops. 
                 </p>
+            </article>
+
+            <!-- Concept 5: Project History -->
+            <article class="m-card">
+                <div class="m-card__icon" aria-hidden="true">⏳</div>
+                <h3 class="m-card__title">The Timeline of Progress</h3>
+                <p>
+                    Building this site was a journey of five distinct chapters. Each phase represented a deepening of our partnership and the site's complexity:
+                </p>
+                <ul class="m-history-list">
+                    <li><strong>The Genesis:</strong> Establishing the mission and the Homepage.</li>
+                    <li><strong>Atomic Semantics:</strong> Crafting the HTML element guides.</li>
+                    <li><strong>Productivity for All:</strong> Engineering the MS Office section.</li>
+                    <li><strong>Fixed Layout Focus:</strong> Mastering the PDF section.</li>
+                    <li><strong>The Four Pillars:</strong> Synthesizing the WCAG section.</li>
+                </ul>
             </article>
         </div>
 
