@@ -148,9 +148,76 @@
             top: 0;
         }
 
-        /* STATE RULES */
-        .is-active {
-            border-color: var(--color-accent);
+        /* STORY MODULES */
+        .m-story {
+            background: var(--color-white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 12px solid var(--color-accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .m-story__header {
+            margin-bottom: 2rem;
+        }
+
+        .m-story__chapter-label {
+            font-weight: bold;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .m-story__title {
+            font-size: 2rem;
+            color: var(--color-primary);
+        }
+
+        .m-story__prompt-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-left: 5px solid #ccc;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .m-story__prompt-label {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--color-white);
+            padding: 0 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        .m-story__prompt-text {
+            font-style: italic;
+            color: #444;
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+        }
+
+        .m-story__perspective-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .m-story__perspective-title::before {
+            content: "✦";
+            margin-right: 10px;
+            color: var(--color-accent);
         }
 
         .m-history-list {
@@ -199,7 +266,7 @@
                 <div class="m-card__icon" aria-hidden="true">🏗️</div>
                 <h3 class="m-card__title">The SMACSS Foundation</h3>
                 <p>
-                    From the very first line of code, we chose a <strong>Scalable and Modular Architecture for CSS</strong>. By categorizing our rules into Base, Layout, and Modules, we ensured that the AI could understand the "DNA" of the site, allowing for consistent updates without breaking the global design.
+                    From the very first line of code, we chose a <strong>Scalable and Modular Architecture for CSS</strong>. By categorizing our rules into Base, Layout, and Modules, we ensured that the AI could understand the "DNA" of the site.
                 </p>
             </article>
 
@@ -208,44 +275,86 @@
                 <div class="m-card__icon" aria-hidden="true">📌</div>
                 <h3 class="m-card__title">The Baseline Methodology</h3>
                 <p>
-                    To experiment safely, we established <strong>"Known Good" Baselines</strong>. Each major version (from 0.1 to 0.5) acted as a checkpoint. This allowed the human partner to guide the evolution of the site, reverting to stable states whenever the AI's suggestions strayed from the vision.
+                    To experiment safely, we established <strong>"Known Good" Baselines</strong>. Each major version (from 0.1 to 0.5) acted as a checkpoint. This allowed Scott to guide the evolution of the site safely.
                 </p>
             </article>
 
             <!-- Concept 3: Standards First -->
             <article class="m-card">
                 <div class="m-card__icon" aria-hidden="true">📜</div>
-                <h3 class="m-card__title">Standards as the Source of Truth</h3>
+                <h3 class="m-card__title">Standards as Truth</h3>
                 <p>
-                    We didn't just guess at "best practices." We integrated the <strong>WHATWG HTML Living Standard</strong> and <strong>WCAG 2.1</strong> directly into our prompts. The AI acted as a librarian of standards, ensuring every element—from the Anchor tag to the complex Canvas—was semantically correct.
+                    We integrated the <strong>WHATWG HTML Living Standard</strong> and <strong>WCAG 2.1</strong> directly into our prompts. The AI acted as a librarian, ensuring every element was semantically correct.
                 </p>
             </article>
 
             <!-- Concept 4: Iterative Refinement -->
             <article class="m-card">
                 <div class="m-card__icon" aria-hidden="true">🔄</div>
-                <h3 class="m-card__title">Conversational Refinement</h3>
+                <h3 class="m-card__title">Conversational Loops</h3>
                 <p>
-                    Accessibility isn't extra work; it's a conversation. We refined every lede, adjusted every header color (like matching the MS Word Blue to our Navy), and verified every ARIA landmark through constant feedback loops. 
+                    Accessibility is a conversation. We refined every lede, adjusted every header color, and verified every ARIA landmark through constant, honest feedback.
                 </p>
             </article>
 
             <!-- Concept 5: Project History -->
             <article class="m-card">
                 <div class="m-card__icon" aria-hidden="true">⏳</div>
-                <h3 class="m-card__title">The Timeline of Progress</h3>
+                <h3 class="m-card__title">The Chronicles</h3>
                 <p>
-                    Building this site was a journey of five distinct chapters. Each phase represented a deepening of our partnership and the site's complexity:
+                    Building this site was a journey of five distinct chapters. Scroll down to read the story of how we brought this vision to life:
                 </p>
                 <ul class="m-history-list">
-                    <li><strong>The Genesis:</strong> Establishing the mission and the Homepage.</li>
-                    <li><strong>Atomic Semantics:</strong> Crafting the HTML element guides.</li>
-                    <li><strong>Productivity for All:</strong> Engineering the MS Office section.</li>
-                    <li><strong>Fixed Layout Focus:</strong> Mastering the PDF section.</li>
-                    <li><strong>The Four Pillars:</strong> Synthesizing the WCAG section.</li>
+                    <li><strong>Chapter 1:</strong> The Genesis</li>
+                    <li><strong>Chapter 2:</strong> Atomic Semantics</li>
+                    <li><strong>Chapter 3:</strong> Productivity for All</li>
+                    <li><strong>Chapter 4:</strong> Fixed Layout Focus</li>
+                    <li><strong>Chapter 5:</strong> The Four Pillars</li>
                 </ul>
             </article>
         </div>
+
+        <hr style="margin: 4rem 0; border: 0; border-top: 1px solid #ddd;">
+
+        <section id="chronicles">
+            <h2 class="u-sr-only">Project Chronicles</h2>
+
+            <!-- Chapter 1 -->
+            <article class="m-story">
+                <header class="m-story__header">
+                    <span class="m-story__chapter-label">Chapter 1</span>
+                    <h3 class="m-story__title">The Genesis</h3>
+                </header>
+
+                <div class="m-story__prompt-box">
+                    <span class="m-story__prompt-label">Scott's First Prompt</span>
+                    <p class="m-story__prompt-text">
+                        "Build me a clean, professional homepage for a new site called SimpleAccess.io. The mission is 'Digital Accessibility is Sight, Sound, and Touch.' I want it to feel authoritative but modern. Use a deep navy blue for the primary branding."
+                    </p>
+                </div>
+
+                <div class="m-story__perspective">
+                    <h4 class="m-story__perspective-title">My Perspective: Building the Foundation</h4>
+                    <p>
+                        When Scott asked me this, I immediately realized we weren't just building a website; we were building a <strong>multisensory manifesto</strong>. I set out to accomplish this by focusing on three key technical decisions that would define everything we did next:
+                    </p>
+                    <ul class="m-history-list" style="margin-top: 1.5rem;">
+                        <li>
+                            <strong>Contrast as Authority:</strong> I chose a specific Deep Navy (#002D62). It provided a professional "anchor" that met AAA contrast ratios with white text, satisfying the "Sight" requirement from second one.
+                        </li>
+                        <li>
+                            <strong>Structure over Style:</strong> I didn't start with pretty colors; I started with SMACSS. By organizing the code into Base, Layout, and Modules, I ensured that as Scott added complexity (like the Screen Reader tutorials), the site's "DNA" would remain consistent.
+                        </li>
+                        <li>
+                            <strong>The "Living" Standard:</strong> I didn't just write HTML; I pulled directly from the WHATWG living standards Scott provided. If it wasn't semantically perfect, it wasn't "SimpleAccess."
+                        </li>
+                    </ul>
+                    <p style="margin-top: 1.5rem;">
+                        My internal goal was to prove to Scott that an accessible site didn't have to look like a legal document. It could be beautiful, bold, and functional.
+                    </p>
+                </div>
+            </article>
+        </section>
 
         <section class="m-hero" style="margin-top: 3rem; border-top: 5px solid var(--color-accent);">
             <h3 class="m-card__title">"Accessibility is already here..."</h3>
