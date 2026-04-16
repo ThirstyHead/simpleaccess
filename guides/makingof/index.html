@@ -327,7 +327,7 @@
                 </header>
 
                 <div class="m-story__prompt-box">
-                    <span class="m-story__prompt-label">Scott's First Prompt</span>
+                    <span class="m-story__prompt-label">Scott's Prompt</span>
                     <p class="m-story__prompt-text">
                         "Build me a clean, professional homepage for a new site called SimpleAccess.io. The mission is 'Digital Accessibility is Sight, Sound, and Touch.' I want it to feel authoritative but modern. Use a deep navy blue for the primary branding."
                     </p>
@@ -343,14 +343,146 @@
                             <strong>Contrast as Authority:</strong> I chose a specific Deep Navy (#002D62). It provided a professional "anchor" that met AAA contrast ratios with white text, satisfying the "Sight" requirement from second one.
                         </li>
                         <li>
-                            <strong>Structure over Style:</strong> I didn't start with pretty colors; I started with SMACSS. By organizing the code into Base, Layout, and Modules, I ensured that as Scott added complexity (like the Screen Reader tutorials), the site's "DNA" would remain consistent.
+                            <strong>Structure over Style:</strong> I started with SMACSS. By organizing the code into Base, Layout, and Modules, I ensured that as Scott added complexity, the site's "DNA" would remain consistent.
                         </li>
                         <li>
-                            <strong>The "Living" Standard:</strong> I didn't just write HTML; I pulled directly from the WHATWG living standards Scott provided. If it wasn't semantically perfect, it wasn't "SimpleAccess."
+                            <strong>The "Living" Standard:</strong> I pulled directly from the WHATWG living standards Scott provided. If it wasn't semantically perfect, it wasn't "SimpleAccess."
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Chapter 2 -->
+            <article class="m-story">
+                <header class="m-story__header">
+                    <span class="m-story__chapter-label">Chapter 2</span>
+                    <h3 class="m-story__title">Atomic Semantics</h3>
+                </header>
+
+                <div class="m-story__prompt-box">
+                    <span class="m-story__prompt-label">Scott's Prompt</span>
+                    <p class="m-story__prompt-text">
+                        "Let's build a crisp, clean code example for every element that includes both source code and the visual output. Let's start with the '&lt;a&gt;' Anchor element. Link it back to the HTML Living Spec for brevity and include the appropriate WCAG Success Criteria with links to the documentation. This will be our template for everything else."
+                    </p>
+                </div>
+
+                <div class="m-story__perspective">
+                    <h4 class="m-story__perspective-title">My Perspective: Building the "North Star" Template</h4>
+                    <p>
+                        When Scott asked me this, I realized we weren't just making a list—we were designing a <strong>repeatable engineering process</strong>. The Anchor element became our laboratory for three critical features:
+                    </p>
+                    <ul class="m-history-list" style="margin-top: 1.5rem;">
+                        <li>
+                            <strong>The "Live" Code Split:</strong> I developed a UI pattern that showed the raw code on the left and the rendered, interactive element on the right. This proved that accessible code is just... good code.
+                        </li>
+                        <li>
+                            <strong>Brevity through Linking:</strong> Scott's request to link back to the HTML Living Spec was key. It allowed us to keep our guides focused on "What You Need to Know for Access" while deferring the exhaustive technical definitions to the WHATWG experts.
+                        </li>
+                        <li>
+                            <strong>Connecting Code to Criteria:</strong> By integrating WCAG Success Criteria links directly into the element pages, I set out to bridge the gap between "How do I write this tag?" and "Why does the law/standard require it?"
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Chapter 3 -->
+            <article class="m-story">
+                <header class="m-story__header">
+                    <span class="m-story__chapter-label">Chapter 3</span>
+                    <h3 class="m-story__title">Productivity for All</h3>
+                </header>
+
+                <div class="m-story__prompt-box">
+                    <span class="m-story__prompt-label">Scott's Prompt</span>
+                    <p class="m-story__prompt-text">
+                        "Let's move into productivity tools. I want a dedicated section for Microsoft Office—specifically Word and Excel. Most people don't realize that documents need the same semantic structure as web pages. Let's create guides that show users how to use the built-in accessibility checkers and how to map our 'Sight, Sound, and Touch' principles to the Ribbon interface."
+                    </p>
+                </div>
+
+                <div class="m-story__perspective">
+                    <h4 class="m-story__perspective-title">My Perspective: Translating the Ribbon</h4>
+                    <p>
+                        When Scott asked me this, I faced a new challenge: how do we teach accessibility in a proprietary GUI instead of an open code editor? I set out to accomplish this by focusing on the <strong>user's hands</strong>—the "Touch" part of our mission.
+                    </p>
+                    <ul class="m-history-list" style="margin-top: 1.5rem;">
+                        <li>
+                            <strong>Color Consistency:</strong> I remember Scott’s specific request to match our branding. I carefully aligned our "SimpleAccess Navy" with the iconic "Microsoft Word Blue." This visual parity ensured that users felt they were in a professional environment.
+                        </li>
+                        <li>
+                            <strong>Structure over Software:</strong> Just like we did with HTML landmarks, I helped Scott emphasize that a Word document is just another form of structured data. We focused on "Styles" as the equivalent of "Tags."
+                        </li>
+                        <li>
+                            <strong>The "Touch" of Shortcuts:</strong> Since we couldn't show source code for Word, I shifted the focus to keyboard shortcuts. I set out to map every Ribbon command to a "Tactile Path."
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Chapter 4 -->
+            <article class="m-story">
+                <header class="m-story__header">
+                    <span class="m-story__chapter-label">Chapter 4</span>
+                    <h3 class="m-story__title">Fixed Layout Focus</h3>
+                </header>
+
+                <div class="m-story__prompt-box">
+                    <span class="m-story__prompt-label">Scott's Prompt</span>
+                    <p class="m-story__prompt-text">
+                        "PDFs are often seen as the 'final hurdle.' Let's build a section that demystifies PDF tags, reading order, and the PDF/UA standard. We need to explain the concept of 'Artifacts'—knowing what the screen reader should ignore. Let's make this feel like an advanced masterclass, using the Adobe Red as a subtle accent to our brand Navy."
+                    </p>
+                </div>
+
+                <div class="m-story__perspective">
+                    <h4 class="m-story__perspective-title">My Perspective: Navigating the Boss Battle</h4>
+                    <p>
+                        When Scott asked me this, I knew we were entering the most complex territory yet. Unlike HTML, which 'wants' to be accessible, a PDF is a 'fixed' format that requires manual tag surgery to be inclusive. I set out to tackle this "boss battle" with a focus on <strong>Logical Sound</strong>.
+                    </p>
+                    <ul class="m-history-list" style="margin-top: 1.5rem;">
+                        <li>
+                            <strong>The Sound of Order:</strong> I remember we debated how to best explain "Reading Order." In HTML, the order is the code; in PDF, the visual order and the tag order can be completely different. I set out to create guides that visualized this "hidden layer."
+                        </li>
+                        <li>
+                            <strong>The Art of the Artifact:</strong> Scott’s focus on Artifacts was a breakthrough. It’s the "Touch" principle in reverse—knowing what a user *shouldn't* have to touch or hear. We framed this not as "deleting data," but as "curating the experience."
+                        </li>
+                        <li>
+                            <strong>Masterclass Branding:</strong> I integrated the "Adobe Red" into our existing SMACSS modules. This subtle shift signalled to the user that they were moving into a specialized area of accessibility.
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Chapter 5 -->
+            <article class="m-story">
+                <header class="m-story__header">
+                    <span class="m-story__chapter-label">Chapter 5</span>
+                    <h3 class="m-story__title">The Four Pillars</h3>
+                </header>
+
+                <div class="m-story__prompt-box">
+                    <span class="m-story__prompt-label">Scott's Prompt</span>
+                    <p class="m-story__prompt-text">
+                        "Let's bring it all together with a comprehensive WCAG section. I want to explain POUR—Perceivable, Operable, Understandable, and Robust. This isn't just a legal requirement; it's the foundation of everything we've built. Let's create a final synthesis that links every HTML tag and every Office shortcut back to these four pillars."
+                    </p>
+                </div>
+
+                <div class="m-story__perspective">
+                    <h4 class="m-story__perspective-title">My Perspective: The Grand Synthesis</h4>
+                    <p>
+                        When Scott asked me this, I felt the project come full circle. We were no longer talking about tags or ribbons; we were talking about <strong>Human Rights</strong>. I set out to accomplish this final synthesis by centering the "Sound" of the web within a legal and ethical framework.
+                    </p>
+                    <ul class="m-history-list" style="margin-top: 1.5rem;">
+                        <li>
+                            <strong>The POUR Methodology:</strong> I remember us working to make these abstract concepts tangible. We defined 'Perceivable' as Sight/Sound, 'Operable' as Touch, 'Understandable' as clarity, and 'Robust' as the promise that our code will work on any device, now and in the future.
+                        </li>
+                        <li>
+                            <strong>Linking the Micro to the Macro:</strong> This was the most data-intensive part of my job. I had to ensure that every single HTML element page we built in Chapter 2 had a clear, direct path back to a WCAG Success Criterion. This wasn't just 'linking'—it was proving compliance through code.
+                        </li>
+                        <li>
+                            <strong>A Living Foundation:</strong> By making WCAG the final section, Scott and I established that accessibility isn't a "feature" you finish; it's a foundation you maintain. I set out to build this section as a "Home Base" where users can always return to find the *Why* behind the *How*.
                         </li>
                     </ul>
                     <p style="margin-top: 1.5rem;">
-                        My internal goal was to prove to Scott that an accessible site didn't have to look like a legal document. It could be beautiful, bold, and functional.
+                        This final chapter represents the maturity of our partnership. We've moved beyond being a builder and an architect—we are now the stewards of a digital world where everyone, regardless of ability, can thrive.
                     </p>
                 </div>
             </article>
@@ -362,7 +494,7 @@
                 Our collaborative process proves that AI is a powerful tool for inclusivity when guided by <strong>Human Values</strong>. By focusing on the user's experience of sight, sound, and touch, we've created a documentation series that is as accessible as the standards it describes.
             </p>
             <p style="margin-top: 1rem;">
-                <a href="index.html">Return to the Homepage</a>
+                <a href="/">Return to the Homepage</a>
             </p>
         </section>
 
