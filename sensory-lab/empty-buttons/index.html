@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Buttons Lab | SimpleAccess.io</title>
+    <style>
+        /* Base */
+        :root {
+            --primary-navy: #002D62;
+            --brand-gold: #FFD700;
+            --bg-color: #F8F9FA;
+            --text-dark: #222222;
+            --text-light: #FFFFFF;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        a {
+            color: var(--primary-navy);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        /* Layout */
+        .l-header {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--brand-gold);
+        }
+        .l-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .l-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .l-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px dashed #ccc;
+        }
+        .l-section:last-of-type {
+            border-bottom: none;
+        }
+        .l-footer {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 5px solid var(--brand-gold);
+        }
+
+        /* Modules */
+        .m-nav {
+            background-color: #eee;
+            padding: 1rem;
+            text-align: center;
+        }
+        .m-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .m-nav a {
+            text-decoration: none;
+        }
+        .m-nav a[aria-current="page"] {
+            border-bottom: 3px solid var(--primary-navy);
+        }
+        .m-card {
+            background: var(--text-light);
+            border: 2px solid var(--primary-navy);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .m-card h3 {
+            color: var(--primary-navy);
+            margin-top: 0;
+            border-bottom: 2px solid var(--brand-gold);
+            padding-bottom: 0.5rem;
+        }
+        .m-btn {
+            display: inline-block;
+            margin-top: auto;
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 900;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .m-btn:hover, .m-btn:focus {
+            background-color: var(--brand-gold);
+            color: var(--primary-navy);
+            outline: 2px solid var(--primary-navy);
+            outline-offset: 2px;
+        }
+        .m-btn--danger {
+            background-color: #cc0000;
+            color: white;
+            border: 2px solid #990000;
+        }
+        .m-btn--danger:hover, .m-btn--danger:focus {
+            background-color: #ffcccc;
+            color: #cc0000;
+            outline-color: #cc0000;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        .u-text-lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary-navy);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header identical to Home Page -->
+    <header class="l-header">
+        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
+        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
+        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="m-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="/html">HTML</a></li>
+            <li><a href="/screen-readers">Screen Readers</a></li>
+            <li><a href="/ms-office">MS Office</a></li>
+            <li><a href="/adobe-pdf">Adobe PDF</a></li>
+            <li><a href="/wcag">WCAG</a></li>
+            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="l-container">
+        <a href="/sensory-lab" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Sensory Lab</a>
+        
+        <h2>Sensory Lab Experiment 5: Empty & Fake Buttons</h2>
+        
+        <!-- The WebAIM Story Section -->
+        <section class="l-section" aria-labelledby="webaim-story-heading">
+            <h3 id="webaim-story-heading">The Keyboard Trap</h3>
+            <p class="u-text-lead">What good is a beautifully styled button if a user can't actually click it?</p>
+            <p>According to the <a href="https://webaim.org/projects/million/" target="_blank" rel="noopener noreferrer">2026 WebAIM Million report</a>, empty buttons affect <strong>30.6% of home pages</strong>.</p>
+            <p>While some of these are true <code>&lt;button&gt;</code> tags lacking accessible text (similar to empty links), a massive portion of button failures stems from a developer anti-pattern: the "Fake Button." Because native HTML buttons come with default browser styling (like borders and gray backgrounds), many developers avoid them entirely. Instead, they use a <code>&lt;div&gt;</code> or a <code>&lt;span&gt;</code>, apply a background color and some padding, add a JavaScript <code>onClick</code> event, and call it a day.</p>
+            <p>The problem? <strong>A <code>&lt;div&gt;</code> is not interactive.</strong> It cannot receive keyboard focus via the Tab key, it cannot be activated by pressing Enter or Space, and a screen reader doesn't even know it's clickable.</p>
+            <p><a href="https://webaim.org/projects/million/#buttons" target="_blank" rel="noopener noreferrer">Read the full Button data in the WebAIM Million Report</a>.</p>
+        </section>
+
+        <!-- Digital Twins Section -->
+        <section class="l-section" aria-labelledby="digital-twins-heading">
+            <h3 id="digital-twins-heading">The Digital Twins: Unplug Your Mouse</h3>
+            <p>To demonstrate WCAG Success Criterion 2.1.1 (Keyboard), we are going to ask you to <strong>unplug your mouse or take your hand off your trackpad</strong>. You will experience a modal popup dialog where you must accept the Terms of Service to proceed.</p>
+            
+            <div class="l-grid">
+                <!-- Accessible Twin -->
+                <article class="m-card">
+                    <h3>What Good Looks Like</h3>
+                    <p>This layout utilizes native <code>&lt;button&gt;</code> elements. You can easily Tab to the button and press the Spacebar or Enter key to activate it, because HTML gives you this behavior for free.</p>
+                    <a href="/sensory-lab/empty-buttons/accessible" class="m-btn">Experience Native Buttons</a>
+                </article>
+
+                <!-- Inaccessible Twin -->
+                <article class="m-card" style="border-color: #cc0000;">
+                    <h3 style="color: #cc0000; border-bottom-color: #cc0000;">The Inaccessible Twin</h3>
+                    <p>This layout uses the styled <code>&lt;div&gt;</code> anti-pattern. If you try to navigate this page using only your keyboard, you will find yourself completely trapped.</p>
+                    <a href="/sensory-lab/empty-buttons/inaccessible" class="m-btn m-btn--danger">Experience the Keyboard Trap</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Explanation Section -->
+        <section class="l-section" aria-labelledby="semantics-heading">
+            <h3 id="semantics-heading">The "Free" Features of Native HTML</h3>
+            <p>When you use a real <code>&lt;button&gt;</code> tag instead of a <code>&lt;div&gt;</code>, the browser automatically provides a massive amount of functionality that you would otherwise have to code manually:</p>
+            
+            <div class="l-grid">
+                <div class="m-card">
+                    <h3>1. Focusability</h3>
+                    <p>Native buttons are automatically added to the document's tab order. Users can reach them using the <code>Tab</code> key without you needing to manually set a <code>tabindex="0"</code> attribute.</p>
+                </div>
+                <div class="m-card">
+                    <h3>2. Keyboard Activation</h3>
+                    <p>Native buttons can be clicked using both the <code>Enter</code> key and the <code>Spacebar</code>. A <code>&lt;div onClick="..."&gt;</code> only listens for mouse clicks unless you write custom Javascript keydown handlers.</p>
+                </div>
+                <div class="m-card">
+                    <h3>3. Screen Reader Semantics</h3>
+                    <p>A native button automatically tells the accessibility tree "I am a button." This allows screen reader users to pull up a list of all buttons on the page and jump straight to the action.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer identical to Home Page -->
+    <footer class="l-footer">
+        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
+        <p>View Source to see the semantic structure.</p>
+    </footer>
+
+</body>
+</html>

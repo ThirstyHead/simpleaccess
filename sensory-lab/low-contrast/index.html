@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Contrast Lab | SimpleAccess.io</title>
+    <style>
+        /* Base */
+        :root {
+            --primary-navy: #002D62;
+            --brand-gold: #FFD700;
+            --bg-color: #F8F9FA;
+            --text-dark: #222222;
+            --text-light: #FFFFFF;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        a {
+            color: var(--primary-navy);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        /* Layout */
+        .l-header {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--brand-gold);
+        }
+        .l-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .l-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .l-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px dashed #ccc;
+        }
+        .l-section:last-of-type {
+            border-bottom: none;
+        }
+        .l-footer {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 5px solid var(--brand-gold);
+        }
+
+        /* Modules */
+        .m-nav {
+            background-color: #eee;
+            padding: 1rem;
+            text-align: center;
+        }
+        .m-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .m-nav a {
+            text-decoration: none;
+        }
+        .m-nav a[aria-current="page"] {
+            border-bottom: 3px solid var(--primary-navy);
+        }
+        .m-card {
+            background: var(--text-light);
+            border: 2px solid var(--primary-navy);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .m-card h3 {
+            color: var(--primary-navy);
+            margin-top: 0;
+            border-bottom: 2px solid var(--brand-gold);
+            padding-bottom: 0.5rem;
+        }
+        .m-btn {
+            display: inline-block;
+            margin-top: auto;
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 900;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .m-btn:hover, .m-btn:focus {
+            background-color: var(--brand-gold);
+            color: var(--primary-navy);
+            outline: 2px solid var(--primary-navy);
+            outline-offset: 2px;
+        }
+        .m-btn--danger {
+            background-color: #cc0000;
+            color: white;
+            border: 2px solid #990000;
+        }
+        .m-btn--danger:hover, .m-btn--danger:focus {
+            background-color: #ffcccc;
+            color: #cc0000;
+            outline-color: #cc0000;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        .u-text-lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary-navy);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header identical to Home Page -->
+    <header class="l-header">
+        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
+        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
+        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="m-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="/html">HTML</a></li>
+            <li><a href="/screen-readers">Screen Readers</a></li>
+            <li><a href="/ms-office">MS Office</a></li>
+            <li><a href="/adobe-pdf">Adobe PDF</a></li>
+            <li><a href="/wcag">WCAG</a></li>
+            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="l-container">
+        <a href="/sensory-lab" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Sensory Lab</a>
+        
+        <h2>Sensory Lab Experiment 1: Low Contrast Text</h2>
+        
+        <!-- The WebAIM Story Section -->
+        <section class="l-section" aria-labelledby="webaim-story-heading">
+            <h3 id="webaim-story-heading">The #1 Issue on the Web</h3>
+            <p class="u-text-lead">Why are we starting with contrast? Because it is the most ubiquitous accessibility failure on the internet.</p>
+            <p>According to the <a href="https://webaim.org/projects/million/" target="_blank" rel="noopener noreferrer">2026 WebAIM Million report</a>, an evaluation of the top 1,000,000 home pages, <strong>low contrast text is found on a staggering 83.9% of home pages</strong>. It is the most commonly-detected accessibility issue, and its prevalence is actually increasing over time.</p>
+            <p>The report notes: <q><em>On average, each home page had 34 distinct instances of low-contrast text, up 15% from 2025.</em></q> This happens when designers prioritize subtle, "clean" aesthetics—like light gray text on a white background—over readability. For millions of users with low vision, color blindness, or simply users reading a screen in bright sunlight, these design choices create a completely invisible web.</p>
+            <p><a href="https://webaim.org/projects/million/#contrast" target="_blank" rel="noopener noreferrer">Read the full Low Contrast data in the WebAIM Million Report</a>.</p>
+        </section>
+
+        <!-- Digital Twins Section -->
+        <section class="l-section" aria-labelledby="digital-twins-heading">
+            <h3 id="digital-twins-heading">The Digital Twins: Feel the Difference</h3>
+            <p>To truly understand the impact of WCAG Success Criterion 1.4.3 (Contrast Minimum), we've built two identical layouts. One follows the standard 4.5:1 ratio, and the other falls into the subtle-gray trap that plagues 84% of the web.</p>
+            
+            <div class="l-grid">
+                <!-- Accessible Twin -->
+                <article class="m-card">
+                    <h3>What Good Looks Like</h3>
+                    <p>This layout adheres to WCAG AA standards. Text color, button backgrounds, and form borders maintain a strong mathematical contrast against their backgrounds.</p>
+                    <a href="/sensory-lab/low-contrast/accessible" class="m-btn">Experience Accessible Design</a>
+                </article>
+
+                <!-- Inaccessible Twin -->
+                <article class="m-card" style="border-color: #cc0000;">
+                    <h3 style="color: #cc0000; border-bottom-color: #cc0000;">The Inaccessible Twin</h3>
+                    <p>This layout mirrors modern design trends that fail the WCAG threshold. Prepare to strain your eyes to find the content and interactive elements.</p>
+                    <a href="/sensory-lab/low-contrast/inaccessible" class="m-btn m-btn--danger">Experience Inaccessible Design</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Color Blindness Resource Section -->
+        <section class="l-section" aria-labelledby="color-blindness-heading">
+            <h3 id="color-blindness-heading">Beyond Grayscale: The Impact of Color Vision Deficiency</h3>
+            <p>Low contrast doesn't just mean "too light." It also applies to colors that blend together for individuals with Color Vision Deficiency (CVD). To see a profound visual example of how the same objects appear radically different depending on visual ability, we highly recommend looking at the famous "colored pencils" comparison.</p>
+            
+            <div class="m-card" style="margin-top: 1.5rem;">
+                <h3>Colour Blind Awareness</h3>
+                <p>Colour Blind Awareness is a fantastic organization dedicated to educating the public about CVD. Their visuals—particularly the image of a box of colored pencils viewed through normal vision versus Deuteranopia (red/green color blindness)—perfectly illustrate why relying solely on color or low-contrast hues is exclusionary.</p>
+                <a href="https://www.colourblindawareness.org/" target="_blank" rel="noopener noreferrer" class="m-btn">Visit Colour Blind Awareness</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer identical to Home Page -->
+    <footer class="l-footer">
+        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
+        <p>View Source to see the semantic structure.</p>
+    </footer>
+
+</body>
+</html>

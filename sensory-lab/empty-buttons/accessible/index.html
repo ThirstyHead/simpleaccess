@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Design - Empty Buttons Lab | SimpleAccess.io</title>
+    <style>
+        /* Base */
+        :root {
+            --primary-navy: #002D62;
+            --brand-gold: #FFD700;
+            --bg-color: #F8F9FA;
+            --text-dark: #222222;
+            --text-light: #FFFFFF;
+            --sr-bg: #1E1E1E;
+            --sr-text: #4AF626; /* Terminal green */
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        a {
+            color: var(--primary-navy);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        /* Layout */
+        .l-header {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--brand-gold);
+        }
+        .l-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .l-footer {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 5px solid var(--brand-gold);
+        }
+
+        /* Modules */
+        .m-nav {
+            background-color: #eee;
+            padding: 1rem;
+            text-align: center;
+        }
+        .m-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .m-nav a {
+            text-decoration: none;
+        }
+        .m-nav a[aria-current="page"] {
+            border-bottom: 3px solid var(--primary-navy);
+        }
+        
+        /* The Native Button Module */
+        .m-btn {
+            display: inline-block;
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 900;
+            transition: background-color 0.2s, color 0.2s, outline 0.2s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: inherit; /* Buttons don't inherit font automatically */
+        }
+        
+        /* NATIVE FEATURE: High-contrast focus states */
+        .m-btn:hover, .m-btn:focus {
+            background-color: var(--brand-gold);
+            color: var(--primary-navy);
+            outline: 3px solid var(--primary-navy);
+            outline-offset: 2px;
+        }
+        
+        .m-btn--secondary {
+            background-color: transparent;
+            color: var(--primary-navy);
+            border-color: var(--primary-navy);
+        }
+        .m-btn--secondary:hover, .m-btn--secondary:focus {
+            background-color: #e6f0fa;
+        }
+
+        /* Lab Specific Modules: Modal Card */
+        .m-modal {
+            background: var(--text-light);
+            border: 2px solid var(--primary-navy);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .m-modal h3 {
+            margin-top: 0;
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+        .m-modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #eee;
+        }
+        .m-terms-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            height: 150px;
+            overflow-y: scroll;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .m-sr-simulator {
+            background-color: var(--sr-bg);
+            color: var(--sr-text);
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 2rem;
+            border-left: 4px solid var(--brand-gold);
+        }
+        .m-sr-simulator strong {
+            color: white;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header identical to Home Page -->
+    <header class="l-header">
+        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
+        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
+        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="m-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="/html">HTML</a></li>
+            <li><a href="/screen-readers">Screen Readers</a></li>
+            <li><a href="/ms-office">MS Office</a></li>
+            <li><a href="/adobe-pdf">Adobe PDF</a></li>
+            <li><a href="/wcag">WCAG</a></li>
+            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="l-container">
+        <a href="/sensory-lab/empty-buttons" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
+        
+        <h2>What Good Looks Like: Native Interactivity</h2>
+        
+        <div style="background-color: #e6f7ff; padding: 1rem; border-left: 4px solid #0056b3; margin-bottom: 2rem; border-radius: 4px;">
+            <strong>🧪 Lab Experiment:</strong> Do not use your mouse for this section. Click once anywhere on this page to ensure it has focus. Then, hit the <strong>Tab</strong> key until the focus outline lands on "Accept Terms". Press the <strong>Enter</strong> or <strong>Spacebar</strong> key. It works flawlessly because we used a real HTML <code>&lt;button&gt;</code> element!
+        </div>
+
+        <!-- Accessible Modal -->
+        <div class="m-modal">
+            <h3>Terms of Service Update</h3>
+            <p>Please review our updated privacy policies and terms of service before continuing to use your account.</p>
+            
+            <div class="m-terms-box" tabindex="0">
+                <p><strong>1. Data Collection:</strong> We only collect data necessary to provide you with the best possible service. We do not sell your personal data to third parties.</p>
+                <p><strong>2. Accessibility Commitment:</strong> By accepting these terms, you agree to build digital products that comply with WCAG 2.1 AA standards, ensuring equal access for all users.</p>
+                <p><strong>3. Liability:</strong> SimpleAccess.io is an educational platform. We provide guidance, but the ultimate responsibility for an accessible web rests with the developers building it.</p>
+            </div>
+
+            <div class="m-modal-actions">
+                <!-- NATIVE BUTTON 1 -->
+                <button type="button" class="m-btn m-btn--secondary" onclick="alert('You declined the terms.');">Decline</button>
+                
+                <!-- NATIVE BUTTON 2 -->
+                <button type="button" class="m-btn" onclick="alert('Thank you for accepting! Notice how the Spacebar and Enter key both triggered this action automatically?');">Accept Terms</button>
+            </div>
+        </div>
+
+        <!-- Simulator Output -->
+        <div class="m-sr-simulator" aria-hidden="true">
+            <strong>🔊 Screen Reader Output when Tabbing:</strong><br><br>
+            "Decline, button."<br>
+            <em style="color: #ccc; font-size: 0.9rem;">[The user immediately knows this is a clickable, interactive element.]</em><br><br>
+            "Accept Terms, button."<br>
+            <em style="color: #ccc; font-size: 0.9rem;">[The screen reader recognizes the native &lt;button&gt; tag and announces its role to the user, explicitly inviting them to press Space or Enter.]</em>
+        </div>
+
+    </main>
+
+    <!-- Footer identical to Home Page -->
+    <footer class="l-footer">
+        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
+        <p>View Source to see the semantic structure.</p>
+    </footer>
+
+</body>
+</html>

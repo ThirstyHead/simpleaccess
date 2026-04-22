@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Design - Form Labels Lab | SimpleAccess.io</title>
+    <style>
+        /* Base */
+        :root {
+            --primary-navy: #002D62;
+            --brand-gold: #FFD700;
+            --bg-color: #F8F9FA;
+            --text-dark: #222222;
+            --text-light: #FFFFFF;
+            --sr-bg: #1E1E1E;
+            --sr-text: #4AF626; /* Terminal green */
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        a {
+            color: var(--primary-navy);
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        /* Layout */
+        .l-header {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--brand-gold);
+        }
+        .l-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .l-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px dashed #ccc;
+        }
+        .l-footer {
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 5px solid var(--brand-gold);
+        }
+
+        /* Modules */
+        .m-nav {
+            background-color: #eee;
+            padding: 1rem;
+            text-align: center;
+        }
+        .m-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .m-nav a {
+            text-decoration: none;
+        }
+        .m-nav a[aria-current="page"] {
+            border-bottom: 3px solid var(--primary-navy);
+        }
+        .m-btn {
+            display: inline-block;
+            background-color: var(--primary-navy);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 900;
+            transition: background-color 0.2s, color 0.2s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .m-btn:hover, .m-btn:focus {
+            background-color: var(--brand-gold);
+            color: var(--primary-navy);
+            outline: 2px solid var(--primary-navy);
+            outline-offset: 2px;
+        }
+
+        /* Lab Specific Modules: The Accessible Form */
+        .m-form-card {
+            background: var(--text-light);
+            border: 2px solid var(--primary-navy);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .m-form-group {
+            margin-bottom: 1.75rem;
+        }
+        
+        /* * The Label Magic: 
+         * Notice we add cursor:pointer. Because the label is semantically bound to the input, 
+         * clicking it will focus the input natively. We highlight this for the experiment.
+         */
+        .m-form-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .m-form-group label:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        
+        .m-input {
+            width: 100%;
+            padding: 0.85rem;
+            font-size: 1rem;
+            border: 2px solid var(--primary-navy);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: var(--text-dark);
+        }
+        .m-input:focus {
+            outline: 4px solid var(--brand-gold);
+            outline-offset: 2px;
+            border-color: var(--primary-navy);
+        }
+
+        .m-sr-simulator {
+            background-color: var(--sr-bg);
+            color: var(--sr-text);
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 2rem;
+            border-left: 4px solid var(--brand-gold);
+        }
+        .m-sr-simulator strong {
+            color: white;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header identical to Home Page -->
+    <header class="l-header">
+        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
+        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
+        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="m-nav" aria-label="Main Navigation">
+        <ul>
+            <li><a href="/html">HTML</a></li>
+            <li><a href="/screen-readers">Screen Readers</a></li>
+            <li><a href="/ms-office">MS Office</a></li>
+            <li><a href="/adobe-pdf">Adobe PDF</a></li>
+            <li><a href="/wcag">WCAG</a></li>
+            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="l-container">
+        <a href="/sensory-lab/form-labels" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
+        
+        <h2>What Good Looks Like: Semantic Bonding</h2>
+        <p>In this accessible form, every <code>&lt;label&gt;</code> element is strictly bound to its corresponding <code>&lt;input&gt;</code> using matching <code>for</code> and <code>id</code> attributes.</p>
+        
+        <div style="background-color: #e6f7ff; padding: 1rem; border-left: 4px solid #0056b3; margin-bottom: 2rem; border-radius: 4px;">
+            <strong>🧪 Lab Experiment:</strong> Try hovering over the text "Full Name" below. Notice it changes color? Now, <strong>click the word "Full Name" instead of the box</strong>. Your cursor will jump directly into the input field! By using real labels, you've just doubled the clickable hit-area for users with motor impairments.
+        </div>
+
+        <div class="m-form-card">
+            <h3>Checkout Details</h3>
+            <p style="color: #666; margin-bottom: 2rem;">Please fill out your shipping information below.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+                <!-- Field 1: Name -->
+                <div class="m-form-group">
+                    <label for="acc-name">Full Name</label>
+                    <!-- Best practice: use autocomplete to help users fill forms faster -->
+                    <input type="text" id="acc-name" class="m-input" autocomplete="name" required>
+                </div>
+
+                <!-- Field 2: Email -->
+                <div class="m-form-group">
+                    <label for="acc-email">Email Address</label>
+                    <input type="email" id="acc-email" class="m-input" autocomplete="email" required>
+                </div>
+
+                <!-- Field 3: Address -->
+                <div class="m-form-group">
+                    <label for="acc-address">Shipping Address</label>
+                    <input type="text" id="acc-address" class="m-input" autocomplete="street-address" required>
+                </div>
+                
+                <!-- Field 4: Optional Notes -->
+                <div class="m-form-group">
+                    <label for="acc-notes">Delivery Notes (Optional)</label>
+                    <textarea id="acc-notes" class="m-input" rows="3" style="resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="m-btn">Complete Purchase</button>
+            </form>
+        </div>
+
+        <!-- Simulator Output -->
+        <div class="m-sr-simulator" aria-hidden="true">
+            <strong>🔊 Screen Reader Output when focusing the first field:</strong><br>
+            "Full Name, edit text, required."<br><br>
+            <em style="color: #ccc; font-size: 0.9rem;">[The screen reader perfectly reads the label because of the `for="acc-name"` attribute bonding it to the input. The user knows exactly what to type, and the label remains visible on the screen even while they are typing.]</em>
+        </div>
+
+    </main>
+
+    <!-- Footer identical to Home Page -->
+    <footer class="l-footer">
+        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
+        <p>View Source to see the semantic structure.</p>
+    </footer>
+
+</body>
+</html>
