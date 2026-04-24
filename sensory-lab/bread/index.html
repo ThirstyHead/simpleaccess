@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensory Lab: A Tale of Two Bread Recipes | SimpleAccess.io</title>
+    <style>
+        /* ==========================================================================
+           SMACSS BASE
+           ========================================================================== */
+        :root {
+            --color-primary-navy: #002D62;
+            --color-brand-gold: #FFD700;
+            --color-text-main: #333333;
+            --color-bg-light: #F8F9FA;
+            --color-white: #FFFFFF;
+            --color-error-red: #D32F2F;
+            --color-success-green: #2E7D32;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: var(--color-text-main);
+            background-color: var(--color-bg-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: var(--color-primary-navy);
+            margin-top: 0;
+        }
+
+        a {
+            color: var(--color-primary-navy);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+        }
+
+        a:hover, a:focus {
+            color: #001a3a;
+            background-color: rgba(255, 215, 0, 0.2);
+            outline: 3px solid var(--color-brand-gold);
+        }
+
+        /* ==========================================================================
+           SMACSS LAYOUT
+           ========================================================================== */
+        .l-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .l-header {
+            background-color: var(--color-primary-navy);
+            color: var(--color-white);
+            padding: 1rem 0;
+            border-bottom: 5px solid var(--color-brand-gold);
+        }
+
+        .l-header__inner {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .l-header__inner {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .l-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .l-nav a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .l-nav a:hover, .l-nav a:focus {
+            color: var(--color-brand-gold);
+            background-color: transparent;
+            outline: 2px dashed var(--color-brand-gold);
+            outline-offset: 4px;
+        }
+
+        .l-main {
+            padding: 3rem 0;
+        }
+
+        .l-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .l-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .l-footer {
+            background-color: var(--color-primary-navy);
+            color: var(--color-white);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .l-footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* ==========================================================================
+           SMACSS MODULES
+           ========================================================================== */
+        /* Skip Link */
+        .a-skip-link {
+            position: absolute;
+            top: -auto;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .a-skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            background-color: var(--color-brand-gold);
+            color: var(--color-primary-navy);
+            padding: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        /* Card Module */
+        .m-card {
+            background: var(--color-white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .m-card--highlight {
+            border-left: 6px solid var(--color-primary-navy);
+            background-color: #f0f4f8;
+            margin-bottom: 3rem;
+        }
+
+        /* Button Module */
+        .m-btn {
+            display: inline-block;
+            background-color: var(--color-primary-navy);
+            color: var(--color-white);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: auto;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .m-btn:hover, .m-btn:focus {
+            background-color: var(--color-white);
+            color: var(--color-primary-navy);
+            border-color: var(--color-primary-navy);
+            outline: none;
+        }
+
+        /* Badge Module */
+        .m-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        .m-badge--pass {
+            background-color: #E8F5E9;
+            color: var(--color-success-green);
+            border: 1px solid var(--color-success-green);
+        }
+
+        .m-badge--fail {
+            background-color: #FFEBEE;
+            color: var(--color-error-red);
+            border: 1px solid var(--color-error-red);
+        }
+
+        /* Code Text */
+        code {
+            background-color: #e9ecef;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #c7254e;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="l-header">
+        <div class="l-container">
+            <a href="#main-content" class="a-skip-link">Skip to main content</a>
+            <div class="l-header__inner">
+                <div style="font-size: 1.25rem; font-weight: bold; letter-spacing: 0.5px;">
+                    SimpleAccess.io <span style="color: var(--color-brand-gold);">|</span> Sensory Lab
+                </div>
+                <nav class="l-nav" aria-label="Main Navigation">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/html">HTML</a></li>
+                        <li><a href="/screen-readers">Screen Readers</a></li>
+                        <li><a href="/wcag">WCAG</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="l-main l-container">
+        <h1>A Tale of Two Bread Recipes</h1>
+        <p style="font-size: 1.25rem; max-width: 800px; margin-bottom: 2rem;">
+            Welcome to the Sensory Lab. In this experiment, we explore the profound difference between code that is merely "visually functional" and code that is genuinely accessible. 
+        </p>
+
+        <section class="m-card m-card--highlight">
+            <h2>The Magic of Intentional Design</h2>
+            <p>
+                When you use HTML as it was designed and as it was intended to be used, you don't just build a visual document—you build a multi-sensory experience. A well-structured webpage gives you a successful visual experience as a sighted user, but crucially, it also provides a rich, navigable auditory experience for a screen reader user. 
+            </p>
+            <p>
+                To the eye, the two recipes below might look identical. But to the ear, they represent two completely different worlds of accessibility.
+            </p>
+        </section>
+
+        <h2>The Experiment: Div-Driven vs. Semantic HTML</h2>
+        <p>Choose an experience below to see (and hear) how underlying code impacts users.</p>
+
+        <div class="l-grid">
+            
+            <!-- Accessible Twin -->
+            <article class="m-card">
+                <div class="m-badge m-badge--pass">✅ Accessible Recipe</div>
+                <h3>The Semantic Standard</h3>
+                <p>This version is built using standard, semantic HTML elements. It leverages <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;ul&gt;</code>, and properly labeled <code>&lt;img&gt;</code> tags.</p>
+                <ul style="margin-bottom: 2rem;">
+                    <li><strong>Navigable Headers:</strong> Screen reader users can bring up their rotor and jump instantly to the "Ingredients" or "Instructions" headings.</li>
+                    <li><strong>Contextual Images:</strong> The alt text beautifully describes <em>"A loaf of no knead bread dusted in flour with artistic cuts in the crust."</em></li>
+                    <li><strong>Spatial Awareness:</strong> When reaching the lists, the screen reader announces <em>"List, 4 items,"</em> giving the user an immediate understanding of how much content to expect.</li>
+                </ul>
+                <a href="accessible/" class="m-btn" aria-label="Experience the properly structured accessible recipe">Experience the Accessible Recipe</a>
+            </article>
+
+            <!-- Inaccessible Twin -->
+            <article class="m-card">
+                <div class="m-badge m-badge--fail">❌ Inaccessible Recipe</div>
+                <h3>The Div-Driven Disaster</h3>
+                <p>This version relies entirely on generic <code>&lt;div&gt;</code> tags and CSS classes (like <code>.big</code> and <code>.bigger</code>) to mimic visual structure.</p>
+                <ul style="margin-bottom: 2rem;">
+                    <li><strong>A Wall of Text:</strong> Visually, you see headers. Auditorily, a screen reader just sees a flat wall of text. There is no way to jump to the Ingredients.</li>
+                    <li><strong>Useless Images:</strong> The image alt text simply reads <em>"bread.jpg"</em>, providing absolutely zero descriptive value to a non-sighted user.</li>
+                    <li><strong>Fake Lists:</strong> Using asterisks and line breaks creates the illusion of a list, but a screen reader will mercilessly read it all as one long, exhausting, run-on paragraph.</li>
+                </ul>
+                <a href="inaccessible/" class="m-btn" aria-label="Experience the div driven inaccessible recipe">Experience the Div-Driven Recipe</a>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="l-footer">
+        <div class="l-container">
+            <p style="font-style: italic; color: var(--color-brand-gold); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                "Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."
+            </p>
+            <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">This site is optimized for Screen Readers and Keyboard Navigation.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
