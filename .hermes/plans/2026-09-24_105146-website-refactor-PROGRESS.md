@@ -6,8 +6,8 @@ Initialized: 2026-09-24
 
 | Batch | Description | Branch | Pages | Suggested Model | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Task 0 | DS Asset Integration & Audit Runner | `refactor/ds-asset-integration` | 0 | Gemma-4-31B Dense | PENDING |
-| Task 1 | Homepage Refactor | `refactor/homepage` | 1 | Gemma-4-31B Dense | PENDING |
+| Task 0 | DS Asset Integration & Audit Runner | `refactor/ds-asset-integration` | 0 | Gemma-4-31B Dense | COMPLETED |
+| Task 1 | Homepage Refactor | `refactor/homepage` | 1 | Gemma-4-31B Dense | COMPLETED |
 | Task 2 | Core Guides & Making Of | `refactor/guides-core` | 6 | Gemma-4-31B Dense | PENDING |
 | Task 3 | Screen Reader Guides | `refactor/guides-screenreaders` | 7 | Gemma-4-26B MoE | PENDING |
 | Task 4 | Office & PDF Productivity Guides | `refactor/guides-productivity` | 5 | Gemma-4-26B MoE | PENDING |

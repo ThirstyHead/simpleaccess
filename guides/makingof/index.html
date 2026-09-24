@@ -4,158 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collaborative Creation | SimpleAccess.io</title>
+    
+    <!-- Design System Assets -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
+
     <style>
-        /* BASE RULES */
-        :root {
-            --color-primary: #002D62; /* SimpleAccess Navy */
-            --color-accent: #FFD700;  /* SimpleAccess Gold */
-            --color-text: #333;
-            --color-bg: #f4f4f4;
-            --color-white: #ffffff;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            line-height: 1.6;
-            color: var(--color-text);
-            background-color: var(--color-bg);
-        }
-
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        a:hover, a:focus {
-            text-decoration: underline;
-            outline: 2px solid var(--color-accent);
-        }
-
-        /* LAYOUT RULES */
-        .l-header {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 2rem 1rem;
-            border-bottom: 5px solid var(--color-accent);
-            text-align: center;
-        }
-
-        .l-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .l-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .l-footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* MODULE RULES */
-        .m-hero {
-            background: var(--color-white);
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            border-top: 5px solid var(--color-primary);
-        }
-
-        .m-hero__title {
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-        }
-
-        .m-hero__lede {
-            font-size: 1.25rem;
-            color: #555;
-            max-width: 800px;
-        }
-
-        .m-card {
-            background: var(--color-white);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 8px solid var(--color-primary);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .m-card__title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-primary);
-        }
-
-        .m-card__icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .m-status-badge {
-            display: inline-block;
-            background: var(--color-accent);
-            color: var(--color-primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .u-sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-
-        .m-skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--color-accent);
-            color: var(--color-primary);
-            padding: 8px;
-            z-index: 100;
-        }
-
-        .m-skip-link:focus {
-            top: 0;
-        }
-
-        /* STORY MODULES */
+        /* 
+           Page-Specific Modules: The Making Of
+           These styles extend the Design System using DS tokens.
+        */
         .m-story {
-            background: var(--color-white);
+            background: var(--ds-color-white);
             padding: 3rem 2rem;
-            border-radius: 8px;
+            border-radius: var(--ds-border-radius-md);
             margin-bottom: 2rem;
-            border-left: 12px solid var(--color-accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 12px solid var(--ds-color-accent);
+            box-shadow: var(--ds-shadow-md);
         }
 
         .m-story__header {
@@ -164,7 +29,7 @@
 
         .m-story__chapter-label {
             font-weight: bold;
-            color: var(--color-primary);
+            color: var(--ds-color-primary);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-size: 0.85rem;
@@ -174,12 +39,13 @@
 
         .m-story__title {
             font-size: 2rem;
-            color: var(--color-primary);
+            color: var(--ds-color-primary);
+            margin: 0;
         }
 
         .m-story__prompt-box {
             background: #fdfdfd;
-            border: 1px solid #eee;
+            border: 1px solid var(--ds-color-border);
             border-left: 5px solid #ccc;
             padding: 1.5rem;
             margin: 1.5rem 0;
@@ -190,7 +56,7 @@
             position: absolute;
             top: -10px;
             left: 20px;
-            background: var(--color-white);
+            background: var(--ds-color-white);
             padding: 0 10px;
             font-size: 0.75rem;
             font-weight: bold;
@@ -203,12 +69,13 @@
             color: #444;
             font-family: Georgia, serif;
             font-size: 1.1rem;
+            margin: 0;
         }
 
         .m-story__perspective-title {
             font-weight: bold;
             font-size: 1.2rem;
-            color: var(--color-primary);
+            color: var(--ds-color-primary);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -217,12 +84,13 @@
         .m-story__perspective-title::before {
             content: "✦";
             margin-right: 10px;
-            color: var(--color-accent);
+            color: var(--ds-color-accent);
         }
 
         .m-history-list {
             margin-top: 1rem;
             list-style: none;
+            padding: 0;
         }
 
         .m-history-list li {
@@ -233,7 +101,7 @@
 
         .m-history-list li::before {
             content: "•";
-            color: var(--color-accent);
+            color: var(--ds-color-accent);
             font-weight: bold;
             position: absolute;
             left: 0;
@@ -242,14 +110,17 @@
 </head>
 <body>
 
-    <a href="#main" class="m-skip-link">Skip to main content</a>
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <header class="l-header">
-        <h1>SimpleAccess.io</h1>
-        <p>Digital Accessibility is Sight, Sound, and Touch.</p>
-    </header>
+    <ds-header></ds-header>
+    
+    <ds-nav>
+        <a href="/">Home</a>
+        <a href="/guides/wcag">WCAG Guides</a>
+        <a href="/guides/makingof" aria-current="page">The Making Of</a>
+    </ds-nav>
 
-    <main id="main" class="l-container">
+    <main id="main-content" class="l-container">
         
         <section class="m-hero">
             <span class="m-status-badge">The Making Of</span>
@@ -314,7 +185,7 @@
             </article>
         </div>
 
-        <hr style="margin: 4rem 0; border: 0; border-top: 1px solid #ddd;">
+        <hr style="margin: 4rem 0; border: 0; border-top: 1px solid var(--ds-color-border);">
 
         <section id="chronicles">
             <h2 class="u-sr-only">Project Chronicles</h2>
@@ -488,7 +359,7 @@
             </article>
         </section>
 
-        <section class="m-hero" style="margin-top: 3rem; border-top: 5px solid var(--color-accent);">
+        <section class="m-hero" style="margin-top: 3rem; border-top: 5px solid var(--ds-color-accent);">
             <h3 class="m-card__title">"Accessibility is already here..."</h3>
             <p>
                 Our collaborative process proves that AI is a powerful tool for inclusivity when guided by <strong>Human Values</strong>. By focusing on the user's experience of sight, sound, and touch, we've created a documentation series that is as accessible as the standards it describes.
@@ -500,9 +371,7 @@
 
     </main>
 
-    <footer class="l-footer">
-        <p>&copy; 2026 SimpleAccess.io | Built cooperatively by Human & AI.</p>
-    </footer>
+    <ds-footer></ds-footer>
 
 </body>
 </html>
