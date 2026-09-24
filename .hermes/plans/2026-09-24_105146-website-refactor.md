@@ -149,6 +149,7 @@ Command to run:
 ## 7. Step-by-Step Refactoring Batches
 
 ### Task 0: Infrastructure & Design System Asset Integration
+- **Suggested Model**: `gemma-4-31b` (Dense) — High reasoning required to import compiled assets, author test runner `scripts/audit-site.mjs`, and verify test pipeline.
 - **Branch**: `refactor/ds-asset-integration`
 - **Actions**:
   1. Build latest `simpleaccess-ds` artifacts.
@@ -161,6 +162,7 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit `chore: import simpleaccess-ds assets and audit runner`.
 
 ### Task 1: Refactor Homepage (`index.html`)
+- **Suggested Model**: `gemma-4-31b` (Dense) — High structural complexity: hero layout, cards, test-suite table, and multi-sensory audio/haptic trigger wiring.
 - **Branch**: `refactor/homepage`
 - **Actions**:
   1. Update `/Users/scott/code/local/simpleaccess/index.html` to link `/assets/ds/simpleaccess.css` and `/assets/ds/simpleaccess.js`.
@@ -173,6 +175,7 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit `refactor: unify homepage with simpleaccess-ds`.
 
 ### Task 2: Refactor Core Guides & Making Of (6 pages)
+- **Suggested Model**: `gemma-4-31b` (Dense) — Core educational architecture: POUR principles hierarchy, navigation grids, and foundational article layout.
 - **Branch**: `refactor/guides-core`
 - **Pages**:
   - `guides/makingof/index.html`
@@ -191,6 +194,7 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit `refactor: apply design system to core guides and makingof`.
 
 ### Task 3: Refactor Screen Reader Guides (7 pages)
+- **Suggested Model**: `gemma-4-26b` (MoE) — High throughput batch: uniform keyboard shortcut tables and standardized Recipe A transformation across VoiceOver, NVDA, JAWS, Narrator, TalkBack.
 - **Branch**: `refactor/guides-screenreaders`
 - **Pages**:
   - `guides/screenreaders/index.html`
@@ -210,6 +214,7 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit `refactor: apply design system to screen reader guides`.
 
 ### Task 4: Refactor Productivity Guides: Office & PDF (5 pages)
+- **Suggested Model**: `gemma-4-26b` (MoE) — Fast execution of standardized guide template Recipe A and responsive figure image conversions.
 - **Branch**: `refactor/guides-productivity`
 - **Pages**:
   - `guides/office/index.html`
@@ -226,6 +231,7 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit `refactor: apply design system to office and pdf guides`.
 
 ### Task 5: Refactor Sensory Lab Hub & Comparison Suites (22 pages)
+- **Suggested Model**: `gemma-4-31b` (Dense) — Critical negative constraint adherence: MUST preserve intentional accessibility barrier markup in `inaccessible/` subpages while cleanly refactoring outer chrome and adding audio/haptic cues.
 - **Branch**: `refactor/sensory-lab`
 - **Pages**:
   - `sensory-lab/index.html`
@@ -240,22 +246,29 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit `refactor: apply design system to sensory lab`.
 
 ### Task 6: Refactor HTML Reference Series (105 pages in Sub-Batches)
+- **Suggested Model**: `gemma-4-26b` (MoE) across all sub-batches — Extremely repetitive, highly uniform Recipe B application across 105 pages. MoE architecture provides maximum generation tokens/second and low latency.
 - **Sub-Task 6A: Sectioning & Grouping (16 pages)**
+  - Suggested Model: `gemma-4-26b` (MoE)
   - Branch: `refactor/html-sectioning-grouping`
   - Elements: `body`, `article`, `section`, `nav`, `aside`, `h1`-`h6`, `hgroup`, `header`, `footer`, `address`, `p`, `hr`, `pre`, `blockquote`, `ol`, `ul`, `menu`, `li`, `dl`, `dt`, `dd`, `figure`, `figcaption`, `main`, `div`
 - **Sub-Task 6B: Text-Level Semantics (29 pages)**
+  - Suggested Model: `gemma-4-26b` (MoE)
   - Branch: `refactor/html-text-semantics`
   - Elements: `a`, `em`, `strong`, `small`, `s`, `cite`, `q`, `dfn`, `abbr`, `ruby`, `rt`, `rp`, `data`, `time`, `code`, `var`, `samp`, `kbd`, `sub`, `sup`, `i`, `b`, `u`, `mark`, `bdi`, `bdo`, `span`, `br`, `wbr`
 - **Sub-Task 6C: Forms & Interactive (17 pages)**
+  - Suggested Model: `gemma-4-26b` (MoE)
   - Branch: `refactor/html-forms-interactive`
   - Elements: `form`, `label`, `input`, `button`, `select`, `datalist`, `optgroup`, `option`, `textarea`, `output`, `progress`, `meter`, `fieldset`, `legend`, `details`, `summary`, `dialog`
 - **Sub-Task 6D: Embedded & Media (11 pages)**
+  - Suggested Model: `gemma-4-26b` (MoE)
   - Branch: `refactor/html-media`
   - Elements: `picture`, `source`, `img`, `iframe`, `embed`, `object`, `video`, `audio`, `track`, `map`, `area`
 - **Sub-Task 6E: Tabular Data (10 pages)**
+  - Suggested Model: `gemma-4-26b` (MoE)
   - Branch: `refactor/html-tables`
   - Elements: `table`, `caption`, `colgroup`, `col`, `tbody`, `thead`, `tfoot`, `tr`, `td`, `th`
 - **Sub-Task 6F: Metadata, Scripting, and Hubs (22 pages)**
+  - Suggested Model: `gemma-4-26b` (MoE)
   - Branch: `refactor/html-meta-scripting`
   - Elements: `html`, `head`, `title`, `base`, `link`, `meta`, `style`, `script`, `noscript`, `template`, `slot`, `canvas`, `html/index.html`
 - **Verification Commands**:
@@ -264,6 +277,7 @@ Command to run:
 - **Bookkeeping**: Append PROGRESS, rewrite RESUME, commit after each sub-task.
 
 ### Task 7: Full-Site WCAG 2.2 AA Audit & Baseline Release
+- **Suggested Model**: `gemma-4-31b` (Dense) — Comprehensive multi-page reasoning: full-site regression triage, link checking, WCAG 2.2 AA verification, and release tag orchestration.
 - **Branch**: `refactor/final-validation`
 - **Actions**:
   1. Run full-site audit across all 146 pages.
@@ -290,9 +304,18 @@ Command to run:
 
 ## 9. Risks, Tradeoffs & Model Guidance
 
-- **Model Context Limits**: Gemma models should only process 5-15 pages per prompt turn. Never feed the entire 146 pages in one prompt.
+### 9.1 Model Assignment Matrix (Dense vs. MoE)
+- **Gemma-4-31B Dense (Architectural & High-Constraint Tasks)**:
+  - Assigned to: **Task 0** (Infra & Audit), **Task 1** (Homepage & Multi-sensory triggers), **Task 2** (Core POUR Guides), **Task 5** (Sensory Lab & barrier preservation), and **Task 7** (Site-wide triage & Release).
+  - Why: Dense parameters preserve complex negative constraints (e.g. *never fix the broken demos in inaccessible/ subpages*) and synthesize semantic landmarks accurately.
+- **Gemma-4-26B MoE (High-Throughput Batch Transformations)**:
+  - Assigned to: **Task 3** (Screen Reader Guides), **Task 4** (Productivity Guides), and **Task 6 (6A–6F)** (All 105 HTML reference pages).
+  - Why: Recipe B transformations are uniform and deterministic. Sparse activation allows 3x–4x higher token generation speed across large sub-batches without quality degradation.
+
+### 9.2 Execution Safeguards
+- **Model Context Limits**: Gemma models should process 5-15 pages per prompt turn. Never feed all 146 pages in one prompt.
 - **Educational Preservation**: Do not erase or simplify the technical explanations or WHATWG spec links on the HTML element pages.
-- **Intentional Inaccessible Demos**: Gemma must NOT "fix" the intentionally broken demos in `sensory-lab/*/inaccessible/`.
+- **Intentional Inaccessible Demos**: Gemma models must NOT "fix" the intentionally broken demos in `sensory-lab/*/inaccessible/`.
 
 ---
 

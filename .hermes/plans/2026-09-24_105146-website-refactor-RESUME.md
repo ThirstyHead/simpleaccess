@@ -6,6 +6,7 @@ Last Updated: 2026-09-24
 
 ## Current State
 - Current Task Index: 0 (`Task 0: Infrastructure & Design System Asset Integration`)
+- Suggested Model for Current Task: `Gemma-4-31B Dense` (or Hermes Agent)
 - Current Branch: `main` (will switch to `refactor/ds-asset-integration`)
 - Last Completed Step: Step 0 (Plan Authoring & Inventory Recon)
 - Base HEAD: `2b7cde6` (Tag `v1.0.0`)

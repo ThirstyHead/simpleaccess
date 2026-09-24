@@ -25,3 +25,14 @@ SimpleAccess is designed for dual consumption: human engineers inspecting markup
   - `<!-- View Source Note: WCAG 2.2 SC 2.4.1 Bypass Blocks - Allows keyboard users to skip nav -->`
   - `<!-- View Source Note: Web Component ds-nav dynamically applies aria-current="page" based on window.location.pathname -->`
 - Conference demo value: Scott demonstrates live how an AI agent uses `llms.txt` + `tokens.json` + `simpleaccess.css` to take an unstyled or drifting page and transform it into an accessible masterpiece.
+
+## 4. Local Model Division of Labor: Gemma-4-31B Dense vs. Gemma-4-26B MoE
+
+| Model | Core Competency | Assigned Refactoring Tasks |
+| :--- | :--- | :--- |
+| **Gemma-4-31B Dense** | Structural synthesis, architectural invariants, negative constraint adherence | **Task 0** (Infra & Audit), **Task 1** (Homepage), **Task 2** (POUR Guides), **Task 5** (Sensory Lab & barrier preservation), **Task 7** (Site-wide triage & Release) |
+| **Gemma-4-26B MoE** | High throughput token generation, repetitive deterministic templating | **Task 3** (Screen Reader Guides), **Task 4** (Productivity Guides), **Task 6A–6F** (105 HTML Reference Pages) |
+
+- **Why this hybrid pairing excels**:
+  - The dense 31B model handles architectural changes where a hallucinated landmark or accidentally "fixing" an intentional barrier in `sensory-lab/*/inaccessible/` would break site purpose.
+  - The 26B MoE model provides 3x–4x generation throughput on repetitive Recipe B sub-batches, processing 105 HTML element pages quickly and cost-effectively without degrading consistency.
