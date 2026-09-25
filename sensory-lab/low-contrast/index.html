@@ -18,7 +18,7 @@
     <ds-header></ds-header>
 
     <!-- Global Nav Component -->
-    <ds-nav></ds-nav>
+    <ds-nav active-url="/sensory-lab/"></ds-nav>
 
     <!-- Page Specific Main Content -->
     <main id="main-content" class="l-main">
@@ -27,41 +27,41 @@
                 <h1 class="m-card__title">Sensory Lab Experiment 1: Low Contrast Text</h1>
             </header>
 
-            <a href="/sensory-lab/" class="m-btn" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Sensory Lab</a>
+            <a href="/sensory-lab/" style="display: inline-block; margin-bottom: 2rem;">&larr; Back to Sensory Lab</a>
             
             <!-- The WebAIM Story Section -->
-            <section class="m-doc-section">
+            <section class="l-section">
                 <h3 class="m-card__title">The #1 Issue on the Web</h3>
-                <p class="m-text-lead">Why are we starting with contrast? Because it is the most ubiquitous accessibility failure on the internet.</p>
-                <p>According to the <a href="https://webaim.org/projects/million/" class="m-wcag-link" target="_blank" rel="noopener noreferrer">2026 WebAIM Million report</a>, an evaluation of the top 1,000,000 home pages, <strong class="m-label">low contrast text is found on a staggering 83.9% of home pages</strong>. It is the most commonly-detected accessibility issue, and its prevalence is actually increasing over time.</p>
+                <p class="u-text-lead">Why are we starting with contrast? Because it is the most ubiquitous accessibility failure on the internet.</p>
+                <p>According to the <a href="https://webaim.org/projects/million/" target="_blank" rel="noopener noreferrer">2026 WebAIM Million report</a>, an evaluation of the top 1,000,000 home pages, <strong class="m-label">low contrast text is found on a staggering 83.9% of home pages</strong>. It is the most commonly-detected accessibility issue, and its prevalence is actually increasing over time.</p>
                 <p>The report notes: <q><em class="m-text-muted">On average, each home page had 34 distinct instances of low-contrast text, up 15% from 2025.</em></q> This happens when designers prioritize subtle, "clean" aesthetics—like light gray text on a white background—over readability. For millions of users with low vision, color blindness, or simply users reading a screen in bright sunlight, these design choices create a completely invisible web.</p>
-                <p><a href="https://webaim.org/projects/million/#contrast" class="m-wcag-link" target="_blank" rel="noopener noreferrer">Read the full Low Contrast data in the WebAIM Million Report</a>.</p>
+                <p><a href="https://webaim.org/projects/million/#contrast" target="_blank" rel="noopener noreferrer">Read the full Low Contrast data in the WebAIM Million Report</a>.</p>
             </section>
 
             <!-- Digital Twins Section -->
-            <section class="m-doc-section">
+            <section class="l-section">
                 <h3 class="m-card__title">The Digital Twins: Feel the Difference</h3>
                 <p>To truly understand the impact of WCAG Success Criterion 1.4.3 (Contrast Minimum), we've built two identical layouts. One follows the standard 4.5:1 ratio, and the other falls into the subtle-gray trap that plagues 84% of the web.</p>
                 
                 <div class="l-grid">
                     <!-- Accessible Twin -->
-                    <section class="m-card">
+                    <article class="m-card">
                         <h3 class="m-card__title">What Good Looks Like</h3>
                         <p class="m-card__text">This layout adheres to WCAG AA standards. Text color, button backgrounds, and form borders maintain a strong mathematical contrast against their backgrounds.</p>
                         <a href="/sensory-lab/low-contrast/accessible" class="m-btn">Experience Accessible Design</a>
-                    </section>
+                    </article>
 
                     <!-- Inaccessible Twin -->
-                    <section class="m-card" style="border-left-color: #cc0000;">
+                    <article class="m-card" style="border-left-color: #cc0000;">
                         <h3 class="m-card__title" style="color: #cc0000; border-bottom-color: #cc0000;">The Inaccessible Twin</h3>
                         <p class="m-card__text">This layout mirrors modern design trends that fail the WCAG threshold. Prepare to strain your eyes to find the content and interactive elements.</p>
                         <a href="/sensory-lab/low-contrast/inaccessible" class="m-btn" style="background-color: #cc0000; border-color: #990000;">Experience Inaccessible Design</a>
-                    </section>
+                    </article>
                 </div>
             </section>
 
             <!-- Color Blindness Resource Section -->
-            <section class="m-doc-section">
+            <section class="l-section">
                 <h3 class="m-card__title">Beyond Grayscale: The Impact of Color Vision Deficiency</h3>
                 <p>Low contrast doesn't just mean "too light." It also applies to colors that blend together for individuals with Color Vision Deficiency (CVD). To see a profound visual example of how the same objects appear radically different depending on visual ability, we highly recommend looking at the famous "colored pencils" comparison.</p>
                 

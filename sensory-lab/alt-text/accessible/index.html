@@ -4,100 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessible Design - Alt Text Lab | SimpleAccess.io</title>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
+
     <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-            --sr-bg: #1E1E1E;
-            --sr-text: #4AF626; /* Terminal green */
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-        .l-container {
-            max-width: 800px; /* Narrower for article readability */
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .l-section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px dashed #ccc;
-        }
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .m-nav a {
-            text-decoration: none;
-        }
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-        .m-btn {
-            display: inline-block;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        .m-btn:hover, .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-
-        /* Lab Specific Modules */
+        /* Lab Specific Modules - Preserved for the Simulator Experience */
         .m-article {
             background: var(--text-light);
             padding: 2rem;
@@ -126,8 +39,8 @@
             font-style: italic;
         }
         .m-sr-simulator {
-            background-color: var(--sr-bg);
-            color: var(--sr-text);
+            background-color: #1E1E1E;
+            color: #4AF626; /* Terminal green */
             padding: 1rem;
             border-radius: 4px;
             font-family: 'Courier New', Courier, monospace;
@@ -137,93 +50,68 @@
         .m-sr-simulator strong {
             color: white;
         }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html">HTML</a></li>
-            <li><a href="/screen-readers">Screen Readers</a></li>
-            <li><a href="/ms-office">MS Office</a></li>
-            <li><a href="/adobe-pdf">Adobe PDF</a></li>
-            <li><a href="/wcag">WCAG</a></li>
-            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <a href="/sensory-lab/alt-text" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
-        
-        <h2>What Good Looks Like: Meaningful Context</h2>
-        <p style="margin-bottom: 2rem;">In this example, we properly differentiate between an <strong>informative image</strong> (which gets a descriptive <code>alt</code> text) and a <strong>decorative image</strong> (which gets an empty <code>alt=""</code> attribute). Check the Screen Reader Simulator boxes below the images to see how this translates to a non-visual user.</p>
+    <!-- Global Nav Component -->
+    <ds-nav active-url="/sensory-lab/"></ds-nav>
 
-        <!-- Simulated News Article -->
-        <article class="m-article">
-            <h1>Global Coffee Consumption Peaks in 2026</h1>
-            <p><strong>By Jane Doe | April 22, 2026</strong></p>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <a href="/sensory-lab/alt-text" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
             
-            <p>The global demand for coffee has reached unprecedented levels this year, driven by a surge in remote work culture and specialized brewing methods. Analysts were shocked by the sheer volume of beans imported in Q1.</p>
+            <h2>What Good Looks Like: Meaningful Context</h2>
+            <p style="margin-bottom: 2rem;">In this example, we properly differentiate between an <strong>informative image</strong> (which gets a descriptive <code>alt</code> text) and a <strong>decorative image</strong> (which gets an empty <code>alt=""</code> attribute). Check the Screen Reader Simulator boxes below the images to see how this translates to a non-visual user.</p>
 
-            <!-- Informative Image Example -->
-            <figure class="m-figure">
-                <img src="https://placehold.co/800x400/002D62/FFFFFF?text=Coffee+Consumption+Line+Graph" 
-                     alt="Line graph titled 'Q1 Imports'. The line begins at 4 million tons in January and spikes sharply to 12 million tons by the end of March."
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'><rect width=\'800\' height=\'400\' fill=\'%23002D62\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\' font-size=\'24\'>Placeholder: Coffee Chart</text></svg>'">
-                <figcaption>Figure 1: Coffee imports over the first quarter of 2026.</figcaption>
+            <!-- Simulated News Article -->
+            <article class="m-article">
+                <h1>Global Coffee Consumption Peaks in 2026</h1>
+                <p><strong>By Jane Doe | April 22, 2026</strong></p>
                 
-                <div class="m-sr-simulator" aria-hidden="true">
-                    <strong>🔊 Screen Reader Output:</strong><br>
-                    "Image. Line graph titled Q1 Imports. The line begins at 4 million tons in January and spikes sharply to 12 million tons by the end of March."
+                <p>The global demand for coffee has reached unprecedented levels this year, driven by a surge in remote work culture and specialized brewing methods. Analysts were shocked by the sheer volume of beans imported in Q1.</p>
+
+                <!-- Informative Image Example -->
+                <figure class="m-figure">
+                    <img src="https://placehold.co/800x400/002D62/FFFFFF?text=Coffee+Consumption+Line+Graph" 
+                         alt="Line graph titled 'Q1 Imports'. The line begins at 4 million tons in January and spikes sharply to 12 million tons by the end of March."
+                         onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\'><rect width=\'800\' height=\'400\' fill=\'%23002D62\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\' font-size=\'24\'>Placeholder: Coffee Chart</text></svg>'">
+                    <figcaption>Figure 1: Coffee imports over the first quarter of 2026.</figcaption>
+                    
+                    <div class="m-sr-simulator" aria-hidden="true">
+                        <strong>🔊 Screen Reader Output:</strong><br>
+                        "Image. Line graph titled Q1 Imports. The line begins at 4 million tons in January and spikes sharply to 12 million tons by the end of March."
+                    </div>
+                </figure>
+
+                <p>As the data clearly shows above, the trend is unmistakable. This sudden increase is forcing suppliers to drastically rethink their logistics networks to prevent global shortages. While the market adjusts, consumers may see a slight bump in their daily latte prices.</p>
+
+                <!-- Decorative Image Example -->
+                <div style="text-align: center; margin: 3rem 0;">
+                    <img src="https://placehold.co/200x50/FFFFFF/CCCCCC?text=~+*+~" 
+                         alt="" 
+                         onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'50\'><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23CCC\' font-family=\'sans-serif\' font-size=\'24\'>~ * ~</text></svg>'">
+                    
+                    <div class="m-sr-simulator" style="text-align: left;" aria-hidden="true">
+                        <strong>🔊 Screen Reader Output:</strong><br>
+                        <em>[ Silence. The screen reader completely ignores this image because the alt attribute is intentionally empty, moving seamlessly to the next paragraph. ]</em>
+                    </div>
                 </div>
-            </figure>
 
-            <p>As the data clearly shows above, the trend is unmistakable. This sudden increase is forcing suppliers to drastically rethink their logistics networks to prevent global shortages. While the market adjusts, consumers may see a slight bump in their daily latte prices.</p>
-
-            <!-- Decorative Image Example -->
-            <div style="text-align: center; margin: 3rem 0;">
-                <img src="https://placehold.co/200x50/FFFFFF/CCCCCC?text=~+*+~" 
-                     alt="" 
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'50\'><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23CCC\' font-family=\'sans-serif\' font-size=\'24\'>~ * ~</text></svg>'">
-                
-                <div class="m-sr-simulator" style="text-align: left;" aria-hidden="true">
-                    <strong>🔊 Screen Reader Output:</strong><br>
-                    <em>[ Silence. The screen reader completely ignores this image because the alt attribute is intentionally empty, moving seamlessly to the next paragraph. ]</em>
-                </div>
-            </div>
-
-            <p>Despite the potential price hikes, cafe owners remain incredibly optimistic about the rest of the year. The coffee boom shows no signs of slowing down.</p>
-            
+                <p>Despite the potential price hikes, cafe owners remain incredibly optimistic about the rest of the year. The coffee boom shows no signs of slowing down.</p>
+            </article>
         </article>
-
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>
