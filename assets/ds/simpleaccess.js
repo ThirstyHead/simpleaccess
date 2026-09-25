@@ -144,7 +144,6 @@ if (typeof customElements !== 'undefined' && !customElements.get('ds-header')) {
   customElements.define('ds-header', DsHeader);
 }
 
-export { DsHeader };
 
 
 /**
@@ -247,7 +246,6 @@ if (typeof customElements !== 'undefined' && !customElements.get('ds-nav')) {
   customElements.define('ds-nav', DsNav);
 }
 
-export { DsNav };
 
 
 /**
@@ -299,7 +297,6 @@ if (typeof customElements !== 'undefined' && !customElements.get('ds-footer')) {
   customElements.define('ds-footer', DsFooter);
 }
 
-export { DsFooter };
 
 
 export {
