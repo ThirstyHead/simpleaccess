@@ -4,229 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessible Design - Low Contrast Lab | SimpleAccess.io</title>
-    <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-            --accessible-gray: #595959; /* 4.6:1 against white */
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-        .l-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .l-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .l-section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px dashed #ccc;
-        }
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .m-nav a {
-            text-decoration: none;
-        }
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-        .m-card {
-            background: var(--text-light);
-            border: 2px solid var(--primary-navy);
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .m-card h3 {
-            color: var(--primary-navy);
-            margin-top: 0;
-            border-bottom: 2px solid var(--brand-gold);
-            padding-bottom: 0.5rem;
-        }
-        .m-btn {
-            display: inline-block;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        .m-btn:hover, .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-        
-        /* Specific Lab Modules */
-        .m-form-group {
-            margin-bottom: 1.5rem;
-        }
-        .m-form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-        .m-input {
-            width: 100%;
-            padding: 0.75rem;
-            font-size: 1rem;
-            border: 2px solid var(--primary-navy); /* High contrast border */
-            border-radius: 4px;
-            box-sizing: border-box;
-            color: var(--text-dark);
-        }
-        .m-input:focus {
-            outline: 3px solid var(--brand-gold);
-            outline-offset: 2px;
-        }
-        .m-badge {
-            display: inline-block;
-            background-color: #198754; /* Accessible green */
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-    </style>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
 <body>
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html">HTML</a></li>
-            <li><a href="/screen-readers">Screen Readers</a></li>
-            <li><a href="/ms-office">MS Office</a></li>
-            <li><a href="/adobe-pdf">Adobe PDF</a></li>
-            <li><a href="/wcag">WCAG</a></li>
-            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <a href="/sensory-lab/low-contrast" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
-        
-        <h2>What Good Looks Like: The 4.5:1 Standard</h2>
-        
-        <section class="l-section">
-            <p>This layout represents a passing grade for WCAG Success Criterion 1.4.3 (Contrast Minimum). The standard requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. In this design, our Primary Navy on White achieves a highly readable <strong>12.6:1 ratio</strong>.</p>
-            <p style="color: var(--accessible-gray);">Even our lighter gray secondary text meets the standard. This text uses a specific shade of gray (#595959) which provides a compliant <strong>4.6:1 ratio</strong> against the white background, ensuring it remains legible without overwhelming the visual hierarchy.</p>
-        </section>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
-        <div class="l-grid">
-            <!-- Example: Card Contrast -->
-            <article class="m-card">
-                <span class="m-badge">Ratio: 12.6:1</span>
-                <h3>High Contrast Typography</h3>
-                <p>Notice how the dark text stands out sharply against the pure white background. The borders around this card use our Primary Navy to clearly define the edge of the interactive area, rather than relying on a faint drop shadow that might blur for users with low vision.</p>
-                <button type="button" class="m-btn">Accessible Button</button>
-            </article>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <a href="/sensory-lab/low-contrast/" class="m-btn" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Experiment Overview</a>
+            
+            <header class="m-doc-section">
+                <h2 class="m-card__title">What Good Looks Like: The 4.5:1 Standard</h2>
+                <p>This layout represents a passing grade for WCAG Success Criterion 1.4.3 (Contrast Minimum). The standard requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. In this design, our Primary Navy on White achieves a highly readable <strong class="m-label">12.6:1 ratio</strong>.</p>
+                <p>Even our lighter gray secondary text meets the standard. This text uses a specific shade of gray (#595959) which provides a compliant <strong class="m-label">4.6:1 ratio</strong> against the white background, ensuring it remains legible without overwhelming the visual hierarchy.</p>
+            </header>
 
-            <!-- Example: Form Contrast -->
-            <article class="m-card">
-                <span class="m-badge">Ratio: 12.6:1</span>
-                <h3>High Contrast Form Elements</h3>
-                <p>Forms are frequent casualties of the "subtle gray" design trend. Here, we define the input field with a solid, 2px Primary Navy border. It's immediately obvious to the user where they are supposed to click and type.</p>
-                <form onsubmit="event.preventDefault();">
-                    <div class="m-form-group">
-                        <label for="accessible-email">Email Address</label>
-                        <input type="email" id="accessible-email" class="m-input" placeholder="name@example.com">
-                    </div>
-                    <button type="submit" class="m-btn">Subscribe</button>
-                </form>
-            </article>
-        </div>
+            <div class="l-grid">
+                <!-- Example: Card Contrast -->
+                <section class="m-card">
+                    <span class="m-badge">Ratio: 12.6:1</span>
+                    <h3 class="m-card__title">High Contrast Typography</h3>
+                    <p class="m-card__text">Notice how the dark text stands out sharply against the pure white background. The borders around this card use our Primary Navy to clearly define the edge of the interactive area, rather than relying on a faint drop shadow that might blur for users with low vision.</p>
+                    <button type="button" class="m-btn">Accessible Button</button>
+                </section>
 
+                <!-- Example: Form Contrast -->
+                <section class="m-card">
+                    <span class="m-badge">Ratio: 12.6:1</span>
+                    <h3 class="m-card__title">High Contrast Form Elements</h3>
+                    <p class="m-card__text">Forms are frequent casualties of the "subtle gray" design trend. Here, we define the input field with a solid, 2px Primary Navy border. It's immediately obvious to the user where they are supposed to click and type.</p>
+                    <form onsubmit="event.preventDefault();">
+                        <div class="m-form-group">
+                            <label for="accessible-email" class="m-label">Email Address</label>
+                            <input type="email" id="accessible-email" class="m-input" placeholder="name@example.com">
+                        </div>
+                        <button type="submit" class="m-btn">Subscribe</button>
+                    </form>
+                </section>
+            </div>
+        </article>
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>

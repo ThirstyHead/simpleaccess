@@ -8,7 +8,7 @@ Initialized: 2026-09-24
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Task 0 | DS Asset Integration & Audit Runner | `refactor/ds-asset-integration` | 0 | Gemma-4-31B Dense | COMPLETED |
 | Task 1 | Homepage Refactor | `refactor/homepage` | 1 | Gemma-4-31B Dense | COMPLETED |
-| Task 2 | Core Guides & Making Of | `refactor/guides-core` | 6 | Gemma-4-31B Dense | PENDING |
+| Task 2 | Core Guides & Making Of | `refactor/guides-core` | 6 | Gemma-4-31B Dense | COMPLETED |
 | Task 3 | Screen Reader Guides | `refactor/guides-screenreaders` | 7 | Gemma-4-26B MoE | PENDING |
 | Task 4 | Office & PDF Productivity Guides | `refactor/guides-productivity` | 5 | Gemma-4-26B MoE | PENDING |
 | Task 5 | Sensory Lab Suite | `refactor/sensory-lab` | 22 | Gemma-4-31B Dense | PENDING |
