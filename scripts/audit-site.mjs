@@ -1,8 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { JSDOM } from 'jsdom';
 
-const ROOT = process.cwd();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ROOT = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT, 'assets/ds');
 const REQUIRED_ASSETS = ['simpleaccess.css', 'simpleaccess.js', 'tokens.json'];
 
