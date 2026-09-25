@@ -4,229 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alt Text Lab | SimpleAccess.io</title>
-    <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-        .l-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .l-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .l-section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px dashed #ccc;
-        }
-        .l-section:last-of-type {
-            border-bottom: none;
-        }
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .m-nav a {
-            text-decoration: none;
-        }
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-        .m-card {
-            background: var(--text-light);
-            border: 2px solid var(--primary-navy);
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .m-card h3 {
-            color: var(--primary-navy);
-            margin-top: 0;
-            border-bottom: 2px solid var(--brand-gold);
-            padding-bottom: 0.5rem;
-        }
-        .m-btn {
-            display: inline-block;
-            margin-top: auto;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .m-btn:hover, .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-        .m-btn--danger {
-            background-color: #cc0000;
-            color: white;
-            border: 2px solid #990000;
-        }
-        .m-btn--danger:hover, .m-btn--danger:focus {
-            background-color: #ffcccc;
-            color: #cc0000;
-            outline-color: #cc0000;
-        }
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-        .u-text-lead {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--primary-navy);
-        }
-    </style>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
 <body>
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html">HTML</a></li>
-            <li><a href="/screen-readers">Screen Readers</a></li>
-            <li><a href="/ms-office">MS Office</a></li>
-            <li><a href="/adobe-pdf">Adobe PDF</a></li>
-            <li><a href="/wcag">WCAG</a></li>
-            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <a href="/sensory-lab" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Sensory Lab</a>
-        
-        <h2>Sensory Lab Experiment 2: Missing Alternative Text</h2>
-        
-        <!-- The WebAIM Story Section -->
-        <section class="l-section" aria-labelledby="webaim-story-heading">
-            <h3 id="webaim-story-heading">The Silent Web</h3>
-            <p class="u-text-lead">What happens when a picture is worth a thousand words, but your screen reader can't say any of them?</p>
-            <p>According to the <a href="https://webaim.org/projects/million/" target="_blank" rel="noopener noreferrer">2026 WebAIM Million report</a>, missing alternative text is the second most common accessibility failure, found on <strong>53.1% of home pages</strong>.</p>
-            <p>When an image tag lacks an <code>alt</code> attribute entirely, screen readers are forced to guess. Sometimes they simply announce "graphic" or "image," leaving the user to wonder if they just missed a crucial chart, a promotional banner, or a "Buy Now" button. Even worse, some screen readers will default to reading the raw file path—forcing a user to listen to <em>"graphic, images slash assets slash hero underscore 1920x1080 underscore final underscore v2 dot j p g."</em></p>
-            <p><a href="https://webaim.org/projects/million/#images" target="_blank" rel="noopener noreferrer">Read the full Alternative Text data in the WebAIM Million Report</a>.</p>
-        </section>
+    <!-- Global Nav Component -->
+    <ds-nav active-url="/sensory-lab/"></ds-nav>
 
-        <!-- Digital Twins Section -->
-        <section class="l-section" aria-labelledby="digital-twins-heading">
-            <h3 id="digital-twins-heading">The Digital Twins: Hear the Difference</h3>
-            <p>To truly understand the impact of WCAG Success Criterion 1.1.1 (Non-text Content), we'll look at two visually identical news articles. However, when we strip away the visual layer and experience them through a screen reader simulator, their differences will become glaringly obvious.</p>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <a href="/sensory-lab" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Sensory Lab</a>
             
-            <div class="l-grid">
-                <!-- Accessible Twin -->
-                <article class="m-card">
-                    <h3>What Good Looks Like</h3>
-                    <p>This layout uses meaningful <code>alt</code> text to describe informative images, ensuring that screen reader users get the exact same context and emotional impact as sighted users.</p>
-                    <a href="/sensory-lab/alt-text/accessible" class="m-btn">Experience Accessible Imagery</a>
-                </article>
-
-                <!-- Inaccessible Twin -->
-                <article class="m-card" style="border-color: #cc0000;">
-                    <h3 style="color: #cc0000; border-bottom-color: #cc0000;">The Inaccessible Twin</h3>
-                    <p>This layout omits the <code>alt</code> attribute entirely or uses terrible, auto-generated file names. Prepare to be frustrated as crucial context is hidden behind "Image 404."</p>
-                    <a href="/sensory-lab/alt-text/inaccessible" class="m-btn m-btn--danger">Experience Missing Alt Text</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- Decorative vs Informative Section -->
-        <section class="l-section" aria-labelledby="decorative-heading">
-            <h3 id="decorative-heading">The Golden Rule: Informative vs. Decorative</h3>
-            <p>Not all images need a description. In fact, over-describing images can create auditory clutter for screen reader users. The key to mastering alternative text is understanding the difference between an <em>informative</em> image and a <em>decorative</em> one.</p>
+            <h2>Sensory Lab Experiment 2: Missing Alternative Text</h2>
             
-            <div class="l-grid">
-                <div class="m-card">
-                    <h3>Informative Images</h3>
-                    <p>These images convey meaning that isn't present in the surrounding text. This includes charts, graphs, infographics, and photographs that tell a story. They <strong>must</strong> have a descriptive <code>alt</code> attribute (e.g., <code>alt="A golden retriever catching a frisbee in mid-air"</code>).</p>
-                </div>
-                <div class="m-card">
-                    <h3>Decorative Images</h3>
-                    <p>These images are purely for visual flair. They might be abstract background shapes, thematic stock photos, or icons that sit directly next to text explaining the same thing. They must have an <strong>empty</strong> alt attribute (<code>alt=""</code>), which tells the screen reader to safely ignore them.</p>
-                </div>
-            </div>
-        </section>
+            <!-- The WebAIM Story Section -->
+            <section class="l-section" aria-labelledby="webaim-story-heading">
+                <h3 id="webaim-story-heading">The Silent Web</h3>
+                <p class="u-text-lead">What happens when a picture is worth a thousand words, but your screen reader can't say any of them?</p>
+                <p>According to the <a href="https://webaim.org/projects/million/" target="_blank" rel="noopener noreferrer">2026 WebAIM Million report</a>, missing alternative text is the second most common accessibility failure, found on <strong>53.1% of home pages</strong>.</p>
+                <p>When an image tag lacks an <code>alt</code> attribute entirely, screen readers are forced to guess. Sometimes they simply announce "graphic" or "image," leaving the user to wonder if they just missed a crucial chart, a promotional banner, or a "Buy Now" button. Even worse, some screen readers will default to reading the raw file path—forcing a user to listen to <em>"graphic, images slash assets slash hero underscore 1920x1080 underscore final underscore v2 dot j p g."</em></p>
+                <p><a href="https://webaim.org/projects/million/#images" target="_blank" rel="noopener noreferrer">Read the full Alternative Text data in the WebAIM Million Report</a>.</p>
+            </section>
 
+            <!-- Digital Twins Section -->
+            <section class="l-section" aria-labelledby="digital-twins-heading">
+                <h3 id="digital-twins-heading">The Digital Twins: Hear the Difference</h3>
+                <p>To truly understand the impact of WCAG Success Criterion 1.1.1 (Non-text Content), we'll look at two visually identical news articles. However, when we strip away the visual layer and experience them through a screen reader simulator, their differences will become glaringly obvious.</p>
+                
+                <div class="l-grid">
+                    <!-- Accessible Twin -->
+                    <article class="m-card">
+                        <h3>What Good Looks Like</h3>
+                        <p>This layout uses meaningful <code>alt</code> text to describe informative images, ensuring that screen reader users get the exact same context and emotional impact as sighted users.</p>
+                        <a href="/sensory-lab/alt-text/accessible" class="m-btn">Experience Accessible Imagery</a>
+                    </article>
+
+                    <!-- Inaccessible Twin -->
+                    <article class="m-card" style="border-color: #cc0000;">
+                        <h3 style="color: #cc0000; border-bottom-color: #cc0000;">The Inaccessible Twin</h3>
+                        <p>This layout omits the <code>alt</code> attribute entirely or uses terrible, auto-generated file names. Prepare to be frustrated as crucial context is hidden behind "Image 404."</p>
+                        <a href="/sensory-lab/alt-text/inaccessible" class="m-btn m-btn--danger">Experience Missing Alt Text</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Decorative vs Informative Section -->
+            <section class="l-section" aria-labelledby="decorative-heading">
+                <h3 id="decorative-heading">The Golden Rule: Informative vs. Decorative</h3>
+                <p>Not all images need a description. In fact, over-describing images can create auditory clutter for screen reader users. The key to mastering alternative text is understanding the difference between an <em>informative</em> image and a <em>decorative</em> one.</p>
+                
+                <div class="l-grid">
+                    <div class="m-card">
+                        <h3>Informative Images</h3>
+                        <p>These images convey meaning that isn't present in the surrounding text. This includes charts, graphs, infographics, and photographs that tell a story. They <strong>must</strong> have a descriptive <code>alt</code> attribute (e.g., <code>alt="A golden retriever catching a frisbee in mid-air"</code>).</p>
+                    </div>
+                    <div class="m-card">
+                        <h3>Decorative Images</h3>
+                        <p>These images are purely for visual flair. They might be abstract background shapes, thematic stock photos, or icons that sit directly next to text explaining the same thing. They must have an <strong>empty</strong> alt attribute (<code>alt=""</code>), which tells the screen reader to safely ignore them.</p>
+                    </div>
+                </div>
+            </section>
+        </article>
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>

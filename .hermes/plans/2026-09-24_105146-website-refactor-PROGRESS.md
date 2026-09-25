@@ -10,11 +10,11 @@ Reconciled: 2026-09-25
 | Task 0 | DS Asset Integration & Audit Runner | `refactor/ds-asset-integration` | 0 | Gemma-4-31B Dense | COMPLETED (PR #1) |
 | Task 1 | Homepage Refactor | `refactor/homepage` | 1 | Gemma-4-31B Dense | COMPLETED (1/1 pass, PR #2) |
 | Task 2 | Core Guides & Making Of (Hubs) | `refactor/guides-core` | 2 | Gemma-4-31B Dense | COMPLETED (2/2 pass, PR #3) |
-| Task 2-R | WCAG Principle Sub-Guides (Remediation) | `refactor/wcag-principles` | 4 | Gemma-4-31B Dense | PENDING |
+|| Task 2-R | WCAG Principle Sub-Guides (Remediation) | `refactor/wcag-principles` | 4 | Gemma-4-31B Dense | COMPLETED (4/4 pass) |
 | Task 3 | Screen Reader Guides | `refactor/guides-screenreaders` | 7 | Gemma-4-26B MoE | COMPLETED (7/7 pass, PR #6) |
 | Task 4 | Office & PDF Productivity Guides | `refactor/guides-productivity` | 5 | Gemma-4-31B Dense / web-dev | COMPLETED (5/5 pass, PR #7) |
 | Task 5 | Sensory Lab Suite (Comparisons) | `refactor/sensory-lab` | 15 | Gemma-4-31B Dense | COMPLETED (15/15 pass, PR #5) |
-| Task 5-R | Sensory Lab Hubs & Demos (Remediation) | `refactor/sensory-lab-hubs` | 7 | Gemma-4-31B Dense | PENDING |
+|| Task 5-R | Sensory Lab Hubs & Demos (Remediation) | `refactor/sensory-lab-hubs` | 7 | Gemma-4-31B Dense | COMPLETED (22/22 pass) |
 | Task 6A | HTML Elements: Sectioning & Grouping | `refactor/html-sectioning-grouping` | 16 | Gemma-4-31B Dense | PENDING |
 | Task 6B | HTML Elements: Text-Level Semantics | `refactor/html-text-semantics` | 29 | Gemma-4-31B Dense | PENDING |
 | Task 6C | HTML Elements: Forms & Interactive | `refactor/html-forms-interactive` | 17 | Gemma-4-31B Dense | PENDING |
