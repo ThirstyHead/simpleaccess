@@ -1,245 +1,73 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inaccessible Design - Form Labels Lab | SimpleAccess.io</title>
-    <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-            --sr-bg: #1E1E1E;
-            --sr-text: #FF5555; /* Terminal red for errors/bad output */
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-        .l-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .l-section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px dashed #ccc;
-        }
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .m-nav a {
-            text-decoration: none;
-        }
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-        .m-btn {
-            display: inline-block;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s;
-            border: 2px solid transparent;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-        .m-btn:hover, .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-        .m-btn--danger {
-            background-color: #cc0000;
-            border-color: #cc0000;
-        }
-        .m-btn--danger:hover, .m-btn--danger:focus {
-            background-color: #ffcccc;
-            color: #cc0000;
-            outline-color: #cc0000;
-        }
-
-        /* Lab Specific Modules: The Inaccessible Form */
-        .m-form-card {
-            background: var(--text-light);
-            border: 2px solid #cc0000; /* Red border to signify the failing twin */
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        .m-form-group {
-            margin-bottom: 1.75rem;
-        }
-        .m-input {
-            width: 100%;
-            padding: 0.85rem;
-            font-size: 1rem;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            background-color: #fff;
-            color: var(--text-dark);
-        }
-        .m-input:focus {
-            outline: 2px solid #999;
-            outline-offset: 2px;
-            border-color: #999;
-        }
-
-        .m-sr-simulator {
-            background-color: var(--sr-bg);
-            color: var(--sr-text);
-            padding: 1.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 2rem;
-            border-left: 4px solid #cc0000;
-        }
-        .m-sr-simulator strong {
-            color: white;
-        }
-        .m-sr-explanation {
-            color: #ccc;
-            font-style: italic;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-    </style>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
-<body>
+<body class="m-inaccessible-context">
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html">HTML</a></li>
-            <li><a href="/screen-readers">Screen Readers</a></li>
-            <li><a href="/ms-office">MS Office</a></li>
-            <li><a href="/adobe-pdf">Adobe PDF</a></li>
-            <li><a href="/wcag">WCAG</a></li>
-            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <a href="/sensory-lab/form-labels" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
-        
-        <h2 style="color: #cc0000;">The Inaccessible Twin: The Vanishing Context Trap</h2>
-        <p>This form represents the "clean, minimalist" anti-pattern that causes 51% of forms to fail basic accessibility checks. It relies entirely on the HTML <code>placeholder</code> attribute instead of semantic <code>&lt;label&gt;</code> elements.</p>
-        
-        <div style="background-color: #ffe6e6; padding: 1rem; border-left: 4px solid #cc0000; margin-bottom: 2rem; border-radius: 4px;">
-            <strong>🧪 Lab Experiment:</strong> Click into the first box, type your first name, then hit the "Tab" key. Now, pretend you got distracted by a text message and look away. Look back at the screen: <strong>What is the empty box for? Email? Address? Phone number?</strong> Because there are no persistent labels, the context has vanished entirely.
-        </div>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
-        <div class="m-form-card">
-            <h3 style="color: #cc0000; margin-top: 0;">Checkout Details</h3>
-            <p style="color: #666; margin-bottom: 2rem;">Please fill out your shipping information below.</p>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <a href="/sensory-lab/form-labels/" class="m-btn" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Experiment Overview</a>
             
-            <form onsubmit="event.preventDefault();">
-                <!-- ACCESSIBILITY FAILURE: No labels, only placeholders. No autocomplete attributes either. -->
-                <div class="m-form-group">
-                    <input type="text" class="m-input" placeholder="Full Name" aria-label="Simulated bad input">
-                </div>
+            <header class="m-doc-section">
+                <h2 class="m-card__title" style="color: #cc0000;">The Inaccessible Twin: The Vanishing Context Trap</h2>
+                <p>This form represents the "clean, minimalist" anti-pattern that causes 51% of forms to fail basic accessibility checks. It relies entirely on the HTML <code class="m-code">placeholder</code> attribute instead of semantic <code class="m-code">&lt;label&gt;</code> elements.</p>
+            </header>
 
-                <div class="m-form-group">
-                    <input type="text" class="m-input" placeholder="Email Address" aria-label="Simulated bad input">
-                </div>
-
-                <div class="m-form-group">
-                    <input type="text" class="m-input" placeholder="Shipping Address" aria-label="Simulated bad input">
-                </div>
+            <!-- Simulated Form -->
+            <div class="m-form-card" style="background-color: #ffe6e6; border: 2px solid #cc0000; border-radius: 8px; padding: 2.5rem; margin-bottom: 2rem;">
+                <h3 class="m-card__title" style="color: #cc0000; margin-top: 0;">Checkout Details</h3>
+                <p class="m-card__text" style="color: #666; margin-bottom: 2rem;">Please fill out your shipping information below.</p>
                 
-                <div class="m-form-group">
-                    <textarea class="m-input" rows="3" style="resize: vertical;" placeholder="Delivery Notes (Optional)" aria-label="Simulated bad input"></textarea>
-                </div>
+                <form onsubmit="event.preventDefault();">
+                    <!-- ACCESSIBILITY FAILURE: No labels, only placeholders. -->
+                    <div class="m-form-group">
+                        <input type="text" class="m-input" placeholder="Full Name" aria-label="Simulated bad input" style="border: 2px solid #ccc;">
+                    </div>
 
-                <button type="submit" class="m-btn m-btn--danger">Complete Purchase</button>
-            </form>
-        </div>
+                    <div class="m-form-group">
+                        <input type="text" class="m-input" placeholder="Email Address" aria-label="Simulated bad input" style="border: 2px solid #ccc;">
+                    </div>
 
-        <!-- Simulator Output -->
-        <div class="m-sr-simulator" aria-hidden="true">
-            <strong>🔊 Screen Reader Output when tabbing back to a partially filled field:</strong><br>
-            "Jane, edit text."<br><br>
-            <span class="m-sr-explanation">[Because there is no permanent `&lt;label&gt;`, the screen reader only announces the text currently inside the box. The user hears their own name, but has no idea if this field was supposed to be "First Name", "Full Name", or "Username". The accessibility tree lost its semantic name the moment the placeholder vanished.]</span>
-        </div>
+                    <div class="m-form-group">
+                        <input type="text" class="m-input" placeholder="Shipping Address" aria-label="Simulated bad input" style="border: 2px solid #ccc;">
+                    </div>
+                    
+                    <div class="m-form-group">
+                        <textarea class="m-input" rows="3" placeholder="Delivery Notes (Optional)" aria-label="Simulated bad input" style="border: 2px solid #ccc; resize: vertical;"></textarea>
+                    </div>
 
+                    <button type="submit" class="m-btn" style="background-color: #cc0000; border-color: #990000;">Complete Purchase</button>
+                </form>
+            </div>
+
+            <!-- Simulator Output -->
+            <div class="m-sr-simulator" aria-hidden="true" style="background-color: #1E1E1E; color: #FF5555; border-left: 4px solid #cc0000;">
+                <strong style="color: white;">🔊 Screen Reader Output when tabbing back to a partially filled field:</strong><br>
+                "Jane, edit text."<br><br>
+                <span class="m-sr-explanation" style="color: #ccc; font-style: italic; font-size: 0.9rem; margin-top: 0.5rem; display: block;">[Because there is no permanent `&lt;label&gt;`, the screen reader only announces the text currently inside the box. The user hears their own name, but has no idea if this field was supposed to be "First Name", "Full Name", or "Username". The accessibility tree lost its semantic name the moment the placeholder vanished.]</span>
+            </div>
+        </article>
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>

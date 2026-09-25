@@ -4,281 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inaccessible Design - Empty Links Lab | SimpleAccess.io</title>
-    <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-            --sr-bg: #1E1E1E;
-            --sr-text: #FF5555; /* Terminal red for errors/bad output */
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-        .l-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .m-nav a {
-            text-decoration: none;
-        }
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-        .m-btn {
-            display: inline-block;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        .m-btn:hover, .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-
-        /* Lab Specific Modules: Product Card */
-        .m-product {
-            background: var(--text-light);
-            border: 2px solid #cc0000; /* Red border indicates failing twin */
-            border-radius: 8px;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        .m-product-image {
-            width: 200px;
-            height: 200px;
-            background-color: #EBEBEB;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #CCC;
-        }
-        .m-product-details {
-            flex: 1;
-        }
-        .m-product h3 {
-            margin-top: 0;
-            color: var(--primary-navy);
-            font-size: 1.5rem;
-        }
-        .m-action-bar {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        /* Icon Only Button Styling */
-        .m-icon-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: #F0F4F8;
-            color: var(--primary-navy);
-            border: 2px solid transparent;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .m-icon-btn:hover, .m-icon-btn:focus {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-        .m-icon-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        .m-sr-simulator {
-            background-color: var(--sr-bg);
-            color: var(--sr-text);
-            padding: 1.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 2rem;
-            border-left: 4px solid #cc0000;
-        }
-        .m-sr-simulator strong {
-            color: white;
-        }
-        .m-sr-explanation {
-            color: #ccc;
-            font-style: italic;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        @media (max-width: 600px) {
-            .m-product {
-                flex-direction: column;
-                text-align: center;
-            }
-            .m-action-bar {
-                justify-content: center;
-            }
-        }
-    </style>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
-<body>
+<body class="m-inaccessible-context">
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html">HTML</a></li>
-            <li><a href="/screen-readers">Screen Readers</a></li>
-            <li><a href="/ms-office">MS Office</a></li>
-            <li><a href="/adobe-pdf">Adobe PDF</a></li>
-            <li><a href="/wcag">WCAG</a></li>
-            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <a href="/sensory-lab/empty-links" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
-        
-        <h2 style="color: #cc0000;">The Inaccessible Twin: Navigation Roulette</h2>
-        
-        <div style="background-color: #ffe6e6; padding: 1rem; border-left: 4px solid #cc0000; margin-bottom: 2rem; border-radius: 4px;">
-            <strong>🧪 Lab Experiment:</strong> Visually, this product card looks identical to the accessible twin. But we have removed the hidden context attributes. Review the Screen Reader Simulator output below to understand why navigating this interface non-visually feels like playing roulette.
-        </div>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
-        <!-- Inaccessible Product Card -->
-        <div class="m-product">
-            <div class="m-product-image">
-                <!-- Informative Image, but missing Alt Text for consistency in failure -->
-                <img src="https://placehold.co/150x150/002D62/FFFFFF?text=Coffee+Bag" style="border-radius: 4px;">
-            </div>
-            <div class="m-product-details">
-                <h3 style="color: #cc0000;">Premium Reserve Beans</h3>
-                <p><strong>$19.99</strong> | A rich, full-bodied espresso blend with notes of dark chocolate and toasted caramel.</p>
-                
-                <div class="m-action-bar">
-                    <!-- ACCESSIBILITY FAILURE: No aria-label, raw link to a URL parameter -->
-                    <a href="https://simpleaccess.io/action/share?item=8675309" class="m-icon-btn">
-                        <!-- ACCESSIBILITY FAILURE: No aria-hidden="true", so the SR might read "group" or "graphic" -->
-                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
-                    </a>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <a href="/sensory-lab/empty-links/" class="m-btn" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Experiment Overview</a>
+            
+            <header class="m-doc-section">
+                <h2 class="m-card__title" style="color: #cc0000;">The Inaccessible Twin: Navigation Roulette</h2>
+                <p>Visually, this product card looks identical to the accessible twin. But we have removed the hidden context attributes. Review the Screen Reader Simulator output below to understand why navigating this interface non-visually feels like playing roulette.</p>
+            </header>
 
-                    <!-- ACCESSIBILITY FAILURE: No sr-only span, completely empty button -->
-                    <button type="button" class="m-icon-btn">
-                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    </button>
+            <!-- Inaccessible Product Card -->
+            <div class="m-product" style="background-color: #ffe6e6; border: 2px solid #cc0000; border-radius: 8px; padding: 2rem; display: flex; align-items: center; gap: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                <div class="m-product-image" style="width: 200px; height: 200px; background-color: #EBEBEB; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid #CCC;">
+                    <!-- ACCESSIBILITY FAILURE: No aria-hidden="true", so the SR might read "group" or "graphic" -->
+                    <img src="https://placehold.co/150x150/002D62/FFFFFF?text=Coffee+Bag" style="border-radius: 4px;">
+                </div>
+                <div class="m-product-details">
+                    <h3 style="color: #cc0000; margin-top: 0;">Premium Reserve Beans</h3>
+                    <p><strong style="color: #222222;">$19.99</strong> | A rich, full-bodied espresso blend with notes of dark chocolate and toasted caramel.</p>
+                    
+                    <div class="m-action-bar" style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <!-- ACCESSIBILITY FAILURE: No aria-label, raw link to a URL parameter -->
+                        <a href="https://simpleaccess.io/action/share?item=8675309" class="m-icon-btn" style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background-color: #F0F4F8; color: var(--primary-navy); border: 2px solid transparent; text-decoration: none;">
+                            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                        </a>
 
-                    <!-- ACCESSIBILITY FAILURE: No sr-only span, completely empty button -->
-                    <button type="button" class="m-icon-btn">
-                        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                    </button>
+                        <!-- ACCESSIBILITY FAILURE: No sr-only span, completely empty button -->
+                        <button type="button" class="m-icon-btn" style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background-color: #F0F4F8; color: var(--primary-navy); border: 2px solid transparent; cursor: pointer;">
+                            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </button>
+
+                        <!-- ACCESSIBILITY FAILURE: No sr-only span, completely empty button -->
+                        <button type="button" class="m-icon-btn" style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background-color: #F0F4F8; color: var(--primary-navy); border: 2px solid transparent; cursor: pointer;">
+                            <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: currentColor;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s-.9 2-2 .9-2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Simulator Output -->
-        <div class="m-sr-simulator" aria-hidden="true">
-            <strong>🔊 Screen Reader Output when tabbing through the action bar:</strong><br><br>
-            "Link. https slash slash simpleaccess dot io slash action slash share question mark item equals 8675309"<br>
-            <span class="m-sr-explanation">[Because there is no text, the screen reader tries to be helpful by reading the raw URL path. This creates massive auditory clutter.]</span><br><br>
-            
-            "Button. Unlabeled 1 button."<br>
-            <span class="m-sr-explanation">[The screen reader detects a button, but has absolutely no idea what it does. Clicking this is a complete guess.]</span><br><br>
-            
-            "Button. Unlabeled 2 button."<br>
-            <span class="m-sr-explanation">[Another mystery button. Does this delete the item? Add it to the cart? Flag it? The user is left entirely in the dark.]</span>
-        </div>
-
+        </article>
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>

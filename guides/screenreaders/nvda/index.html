@@ -3,216 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NVDA Screen Reader Tutorial | SimpleAccess.io</title>
+    <title>NVDA Tutorial | SimpleAccess.io</title>
     
-    <style>
-        /* ==========================================================================
-           1. BASE RULES (Synced with Baseline 0.3)
-           ========================================================================== */
-        :root {
-            --color-primary: #002d62; /* SimpleAccess Navy */
-            --color-accent: #ffd700;  /* SimpleAccess Gold */
-            --color-nvda: #4b367c;    /* NVDA Thematic Indigo */
-            --color-text: #1a1a1a;
-            --color-bg: #f4f4f4;
-            --color-white: #ffffff;
-            --color-focus: #d4af37;
-            --font-main: system-ui, -apple-system, sans-serif;
-            --line-height: 1.7;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-main);
-            line-height: var(--line-height);
-            color: var(--color-text);
-            background-color: var(--color-bg);
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2, h3 { line-height: 1.2; margin-bottom: 1rem; color: var(--color-primary); }
-
-        /* Keyboard Cap Style */
-        kbd {
-            background-color: #eee;
-            border-radius: 3px;
-            border: 1px solid #b4b4b4;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
-            color: #333;
-            display: inline-block;
-            font-size: 0.9em;
-            font-weight: 700;
-            line-height: 1;
-            padding: 4px 6px;
-            white-space: nowrap;
-            font-family: monospace;
-            margin: 0 2px;
-        }
-
-        /* ==========================================================================
-           2. LAYOUT RULES (Baseline 0.3 Consistent)
-           ========================================================================== */
-        .l-header {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 6px solid var(--color-accent);
-        }
-
-        .l-nav {
-            background: var(--color-white);
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .l-main {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .l-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .l-footer {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 4rem 1rem;
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        /* ==========================================================================
-           3. MODULE RULES
-           ========================================================================== */
-        
-        .m-skip-link {
-            position: absolute;
-            top: -100px;
-            left: 10px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 10px 20px;
-            z-index: 1000;
-            text-decoration: none;
-            border: 2px solid var(--color-accent);
-        }
-        .m-skip-link:focus { top: 10px; }
-
-        /* Assistant Notification Bubble */
-        .m-status-tag {
-            display: inline-flex;
-            align-items: center;
-            background: #f4f0ff;
-            color: var(--color-nvda);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            border: 1.5px solid var(--color-nvda);
-        }
-
-        /* Feature Card */
-        .m-card {
-            background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            border-left: 8px solid var(--color-nvda); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .m-card h3 { color: var(--color-nvda); margin-top: 0; }
-
-        /* Shortcut Legend Table */
-        .m-shortcut-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-        .m-shortcut-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        .m-shortcut-label { font-weight: bold; }
-
-        /* Action Steps */
-        .m-steps {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-            counter-reset: nvda-step;
-        }
-        .m-steps li {
-            padding: 1rem 0 1rem 3.5rem;
-            position: relative;
-            border-bottom: 1px solid #eee;
-        }
-        .m-steps li::before {
-            content: counter(nvda-step);
-            counter-increment: nvda-step;
-            position: absolute;
-            left: 0;
-            top: 0.8rem;
-            width: 2.2rem;
-            height: 2.2rem;
-            background: var(--color-nvda);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Callout Box */
-        .m-info-box {
-            background: #fffdf0;
-            border: 2px solid var(--color-accent);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-        }
-
-        /* ==========================================================================
-           4. STATE
-           ========================================================================== */
-        :focus-visible {
-            outline: 4px solid var(--color-focus);
-            outline-offset: 4px;
-        }
-    </style>
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
 <body>
 
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
     <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <header class="l-header">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <h1 style="color: white; margin: 0;">NVDA Screen Reader Essentials</h1>
-            <p>SimpleAccess.io Hear the Web Series</p>
-        </div>
-    </header>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <nav class="l-nav" aria-label="Breadcrumb">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <a href="/guides/screenreaders/" style="color: var(--color-primary); font-weight: bold; text-decoration: none;">← Back to Screen Reader Hub</a>
-        </div>
-    </nav>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
+    <!-- Page Specific Main Content -->
     <main id="main-content" class="l-main">
         
         <section class="m-doc-section">
@@ -227,37 +35,37 @@
             
             <!-- 1. LAUNCH AND CLOSE -->
             <article class="m-card">
-                <h3>1. Launch and Close</h3>
-                <p>NVDA is a standalone application. Use these shortcuts to quickly toggle the tool as you test or browse.</p>
+                <h3 class="m-card__title">1. Launch and Close</h3>
+                <p class="m-card__text">NVDA is a standalone application. Use these shortcuts to quickly toggle the tool as you test or browse.</p>
                 <ul class="m-steps">
-                    <li><strong>To Launch:</strong> Press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>N</kbd>.</li>
-                    <li><strong>To Close:</strong> Press <kbd>NVDA</kbd> + <kbd>Q</kbd>. A dialogue will appear to confirm you want to exit.</li>
+                    <li><strong class="m-label">To Launch:</</strong> Press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>N</kbd>.</li>
+                    <li><strong class="m-label">To Close:</strong> Press <kbd>NVDA</kbd> + <kbd>Q</kbd>. A dialogue will appear to confirm you want to exit.</li>
                 </ul>
             </article>
 
             <!-- 2. MUTE -->
             <article class="m-card">
-                <h3>2. Muting (Stop Speech)</h3>
-                <p>If NVDA is reading and you want it to stop immediately without turning it off:</p>
+                <h3 class="m-card__title">2. Muting (Stop Speech)</h3>
+                <p class="m-card__text">If NVDA is reading and you want it to stop immediately without turning it off:</p>
                 <ul class="m-steps">
-                    <li><strong>To Silence:</strong> Tap the <kbd>Ctrl</kbd> key once. This instantly stops the current speech buffer.</li>
+                    <li><strong class="m-label">To Silence:</strong> Tap the <kbd>Ctrl</kbd> key once. This instantly stops the current speech buffer.</li>
                 </ul>
             </article>
 
             <!-- 3. SCREEN CURTAIN -->
             <article class="m-card">
-                <h3>3. Screen Curtain</h3>
-                <p>For privacy in public or to ensure you are testing without visual bias, NVDA can black out the screen while remaining fully active.</p>
+                <h3 class="m-card__title">3. Screen Curtain</h3>
+                <p class="m-card__text">For privacy in public or to ensure you are testing without visual bias, NVDA can black out the screen while remaining fully active.</p>
                 <ul class="m-steps">
-                    <li><strong>To Toggle:</strong> This feature is found under <strong>NVDA Settings > Vision</strong>. Select "Make screen black" to enable.</li>
-                    <li><em>Note: Users frequently assign a shortcut to this via the <strong>Input Gestures</strong> menu for quicker access.</em></li>
+                    <li><strong class="m-label">To Toggle:</strong> This feature is found under <strong class="m-label">NVDA Settings > Vision</strong>. Select "Make screen black" to enable.</li>
+                    <li><em class="m-text-muted">(Note: Users frequently assign a shortcut to this via the Input Gestures menu for quicker access.)</em></li>
                 </ul>
             </article>
 
             <!-- 4. NAVIGATION BY HEADERS -->
             <article class="m-card">
-                <h3>4. Heading Navigation</h3>
-                <p>Scan through page structure by jumping from header to header.</p>
+                <h3 class="m-card__title">4. Heading Navigation</h3>
+                <p class="m-card__text">Scan through page structure by jumping from header to header.</p>
                 <ul class="m-shortcut-list">
                     <li class="m-shortcut-item">
                         <span class="m-shortcut-label">Next Header</span>
@@ -272,8 +80,8 @@
 
             <!-- 5. NAVIGATION BY LINKS -->
             <article class="m-card">
-                <h3>5. Link Navigation</h3>
-                <p>Move quickly through the interactive destinations on a page.</p>
+                <h3 class="m-card__title">5. Link Navigation</h3>
+                <p class="m-card__text">Move quickly through the interactive destinations on a page.</p>
                 <ul class="m-shortcut-list">
                     <li class="m-shortcut-item">
                         <span class="m-shortcut-label">Next Link</span>
@@ -288,8 +96,8 @@
 
             <!-- 6. FORM NAVIGATION -->
             <article class="m-card">
-                <h3>6. Form Fields</h3>
-                <p>Jump between inputs, buttons, and other interactive form controls.</p>
+                <h3 class="m-card__title">6. Form Fields</h3>
+                <p class="m-card__text">Jump between inputs, buttons, and other interactive form controls.</p>
                 <ul class="m-shortcut-list">
                     <li class="m-shortcut-item">
                         <span class="m-shortcut-label">Next Form Field</span>
@@ -309,22 +117,17 @@
         </div>
 
         <section class="m-info-box">
-            <h3>SimpleAccess Insight: The "NVDA" Key</h3>
+            <h3 class="m-card__title">SimpleAccess Insight: The "NVDA" Key</h3>
             <p>
-                The <strong>NVDA Modifier Key</strong> is essential for almost all commands. By default, this is the <kbd>Insert</kbd> key (found above the arrow keys or on the numpad) or the <kbd>Caps Lock</kbd> key. 
+                The <strong class="m-label">NVDA Modifier Key</strong> is essential for almost all commands. By default, this is the <kbd>Insert</kbd> key (found above the arrow keys or on the numpad) or the <kbd>Caps Lock</kbd> key. 
             </p>
-            <p><strong>Testing Tip:</strong> Use the <strong>Elements List</strong> (<kbd>NVDA</kbd> + <kbd>F7</kbd>) on this page. It's an excellent way to verify that your heading hierarchy and link descriptions are clear and meaningful for non-visual users.</p>
+            <p><strong class="m-label">Testing Tip:</strong> Use the <strong class="m-label">Elements List</strong> (<kbd>NVDA</kbd> + <kbd>F7</kbd>) on this page. It's an excellent way to verify that your heading hierarchy and link descriptions are clear and meaningful for non-visual users.</p>
         </section>
 
     </main>
 
-    <footer class="l-footer">
-        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
-        <div style="margin-top: 1rem;">
-            <a href="../index.html" style="color: var(--color-white); text-decoration: underline; margin-right: 20px;">Home</a>
-            <a href="../elements_index.html" style="color: var(--color-accent); font-weight: bold;">Elements Index</a>
-        </div>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>

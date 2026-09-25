@@ -5,17 +5,17 @@ Location: `/Users/scott/code/local/simpleaccess`
 Last Updated: 2026-09-24
 
 ## Current State
-- Current Task Index: 2 (`Task 2: Refactor Core Guides & Making Of`)
-- Suggested Model for Current Task: `Gemma-4-31B Dense` (or Hermes Agent)
-- Current Branch: `refactor/homepage` (Task 1 complete)
-- Last Completed Step: Task 1 (Homepage Refactor)
-- Base HEAD: `2b7cde6` (Tag `v1.0.0`)
+- Current Task Index: 3 (`Task 3: Refactor Screen Reader Guides`)
+- Suggested Model for Current Task: `Gemma-4-26B MoE` (or Hermes Agent)
+- Current Branch: `main`
+- Last Completed Step: Task 2 (Core Guides & Making Of)
+- Base HEAD: `4db4ddf`
 
 ## State-Probe Block
 Run these commands to verify state before taking any action:
 ```bash
 git -C /Users/scott/code/local/simpleaccess status
-# Expected: On branch refactor/homepage, changes to index.html and package.json committed
+# Expected: On branch main, clean working directory
 
 node /Users/scott/code/local/simpleaccess/scripts/audit-site.mjs --file index.html
 # Expected: Audit complete. 1/1 files passed. Total errors: 0
@@ -24,9 +24,9 @@ node /Users/scott/code/local/simpleaccess/scripts/audit-site.mjs --file index.ht
 **STOP-AND-ASK RULE**: If the state probe contradicts this file, stop immediately and ask the user.
 
 ## Dependency
-Ensure the `refactor/homepage` branch is committed and merged (or used as base) before starting Task 2.
+Ensure `main` is up to date with all merged PRs from Task 0, 1, and 2.
 
 ## Next Exact Command
 ```bash
-cd /Users/scott/code/local/simpleaccess && git checkout -b refactor/guides-core
+cd /Users/scott/code/local/simpleaccess && git checkout -b refactor/guides-screenreaders
 ```

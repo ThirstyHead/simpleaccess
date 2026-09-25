@@ -1,257 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inaccessible Design - Document Language Lab | SimpleAccess.io</title>
-    <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-            --sr-bg: #1E1E1E;
-            --sr-text: #FF5555; /* Terminal red for errors/bad output */
-        }
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-        
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-        .l-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .m-nav a {
-            text-decoration: none;
-        }
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-        .m-btn {
-            display: inline-block;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s, outline 0.2s;
-            border: 2px solid transparent;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        .m-btn:hover, .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 3px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-
-        /* Lab Specific Modules: Menu Card */
-        .m-menu-card {
-            background: var(--text-light);
-            border: 2px solid #cc0000; /* Red border to signify failure */
-            border-radius: 8px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        .m-menu-card h3 {
-            margin-top: 0;
-            color: #cc0000;
-            font-size: 1.8rem;
-            border-bottom: 2px solid #cc0000;
-            padding-bottom: 1rem;
-            text-align: center;
-        }
-        .m-menu-item {
-            margin-bottom: 1.5rem;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 1.5rem;
-        }
-        .m-menu-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .m-menu-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.5rem;
-        }
-        .m-menu-item-name {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--primary-navy);
-        }
-        .m-menu-item-price {
-            font-weight: bold;
-            color: #444;
-        }
-        .m-menu-item-desc {
-            color: #666;
-            margin: 0;
-        }
-
-        .m-sr-simulator {
-            background-color: var(--sr-bg);
-            color: var(--sr-text);
-            padding: 1.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 2rem;
-            border-left: 4px solid #cc0000;
-        }
-        .m-sr-simulator strong {
-            color: white;
-        }
-        .m-sr-explanation {
-            color: #ccc;
-            font-style: italic;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: block;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-    </style>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
-<body>
+<body class="m-inaccessible-context">
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html">HTML</a></li>
-            <li><a href="/screen-readers">Screen Readers</a></li>
-            <li><a href="/ms-office">MS Office</a></li>
-            <li><a href="/adobe-pdf">Adobe PDF</a></li>
-            <li><a href="/wcag">WCAG</a></li>
-            <li><a href="/sensory-lab" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <a href="/sensory-lab/document-language" style="display: inline-block; margin-bottom: 1rem;">&larr; Back to Experiment Overview</a>
-        
-        <h2 style="color: #cc0000;">The Inaccessible Twin: The Accent Trap</h2>
-        
-        <div style="background-color: #ffe6e6; padding: 1rem; border-left: 4px solid #cc0000; margin-bottom: 2rem; border-radius: 4px;">
-            <strong>🧪 Lab Experiment:</strong> If you "View Source" on this page, you will notice the <code>&lt;html&gt;</code> tag is completely missing a <code>lang</code> attribute, and the French dishes lack any inline language tags. Review the Screen Reader Simulator output to hear what happens when a screen reader tries to read French using English phonetic rules.
-        </div>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
-        <!-- Inaccessible Menu -->
-        <div class="m-menu-card">
-            <h3>Le Petit Bistro</h3>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <a href="/sensory-lab/document-language/" class="m-btn" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Experiment Overview</a>
             
-            <div class="m-menu-item">
-                <div class="m-menu-item-header">
-                    <!-- ACCESSIBILITY FAILURE: Missing lang="fr" attribute -->
-                    <span class="m-menu-item-name">Soupe à l'oignon</span>
-                    <span class="m-menu-item-price">$12.00</span>
+            <header class="m-doc-section">
+                <h2 class="m-card__title" style="color: #cc0000;">The Inaccessible Twin: The Accent Trap</h2>
+                <p>If you "View Source" on this page, you will notice the <code class="m-code">&lt;html&gt;</code> tag is completely missing a <code class="m-code">lang</code> attribute, and the French dishes lack any inline language tags. Review the Screen Reader Simulator output to hear what happens when a screen reader tries to read French using English phonetic rules.</p>
+            </header>
+
+            <!-- Inaccessible Menu -->
+            <div class="m-modal" style="background-color: #fff; border: 2px solid #cc0000; border-radius: 8px; padding: 2.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.15); margin-bottom: 2rem;">
+                <h3 class="m-card__title" style="color: #cc0000; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 1rem;">Le Petit Bistro</h3>
+                
+                <div class="m-menu-item">
+                    <div class="m-menu-item-header">
+                        <!-- ACCESSIBILITY FAILURE: Missing lang="fr" attribute -->
+                        <span class="m-menu-item-name">Soupe à l'oignon</span>
+                        <span class="m-menu-item-price">$12.00</span>
+                    </div>
+                    <p class="m-menu-item-desc">A classic French onion soup based on meat stock and onions, served gratinéed with croutons and cheese on top.</p>
                 </div>
-                <p class="m-menu-item-desc">A classic French onion soup based on meat stock and onions, served gratinéed with croutons and cheese on top.</p>
+
+                <div class="m-menu-item">
+                    <div class="m-menu-item-header">
+                        <!-- ACCESSIBILITY FAILURE: Missing lang="fr" attribute -->
+                        <span class="m-menu-item-name">Coq au Vin</span>
+                        <span class="m-menu-item-price">$28.00</span>
+                    </div>
+                    <p class="m-menu-item-desc">Chicken braised with wine, lardons, mushrooms, and optionally garlic. Served with a side of roasted root vegetables.</p>
+                </div>
+
+                <div class="m-menu-item">
+                    <div class="m-menu-item-header">
+                        <!-- ACCESSIBILITY FAILURE: Missing lang="fr" attribute -->
+                        <span class="m-menu-item-name">Crème Brûlée</span>
+                        <span class="m-menu-item-price">$10.00</span>
+                    </div>
+                    <p class="m-menu-item-desc">A rich custard base topped with a texturally contrasting layer of hardened caramelized sugar.</p>
+                </div>
             </div>
 
-            <div class="m-menu-item">
-                <div class="m-menu-item-header">
-                    <!-- ACCESSIBILITY FAILURE: Missing lang="fr" attribute -->
-                    <span class="m-menu-item-name">Coq au Vin</span>
-                    <span class="m-menu-item-price">$28.00</span>
-                </div>
-                <p class="m-menu-item-desc">Chicken braised with wine, lardons, mushrooms, and optionally garlic. Served with a side of roasted root vegetables.</p>
+            <!-- Simulator Output -->
+            <div class="m-sr-simulator" aria-hidden="true" style="border-left-color: #cc0000;">
+                <strong style="color: white;">🔊 Screen Reader Output when reading the first menu item:</strong><br><br>
+                "Soop aye el-oyg-non"<br>
+                <em class="m-text-muted" style="color: #ccc; font-size: 0.9rem;">[Because no language is declared, the screen reader defaults to the user's system language (English). It attempts to apply hard English phonetic rules to the French words, resulting in complete gibberish that ruins the dining experience.]</em>
             </div>
-
-            <div class="m-menu-item">
-                <div class="m-menu-item-header">
-                    <!-- ACCESSIBILITY FAILURE: Missing lang="fr" attribute -->
-                    <span class="m-menu-item-name">Crème Brûlée</span>
-                    <span class="m-menu-item-price">$10.00</span>
-                </div>
-                <p class="m-menu-item-desc">A rich custard base topped with a texturally contrasting layer of hardened caramelized sugar.</p>
-            </div>
-        </div>
-
-        <!-- Simulator Output -->
-        <div class="m-sr-simulator" aria-hidden="true">
-            <strong>🔊 Screen Reader Output when reading the first menu item:</strong><br><br>
-            "Soop aye el-oyg-non"<br>
-            "Twelve dollars. A classic French onion soup based on meat stock..."<br><br>
-            <span class="m-sr-explanation">[Because no language is declared, the screen reader defaults to the user's system language (English). It attempts to apply hard English phonetic rules to the French words, resulting in complete gibberish that ruins the dining experience.]</span>
-        </div>
-
+        </article>
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
 </html>

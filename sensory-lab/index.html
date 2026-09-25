@@ -1,259 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensory Lab | SimpleAccess.io</title>
-    <style>
-        /* Base */
-        :root {
-            --primary-navy: #002D62;
-            --brand-gold: #FFD700;
-            --bg-color: #F8F9FA;
-            --text-dark: #222222;
-            --text-light: #FFFFFF;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        a {
-            color: var(--primary-navy);
-            text-decoration: underline;
-            font-weight: bold;
-        }
-
-        /* Layout */
-        .l-header {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 5px solid var(--brand-gold);
-        }
-
-        .l-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .l-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .l-footer {
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            border-top: 5px solid var(--brand-gold);
-        }
-
-        /* Modules */
-        .m-nav {
-            background-color: #eee;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .m-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .m-nav a {
-            text-decoration: none;
-        }
-
-        .m-nav a[aria-current="page"] {
-            border-bottom: 3px solid var(--primary-navy);
-        }
-
-        .m-card {
-            background: var(--text-light);
-            border: 2px solid var(--primary-navy);
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .m-card h3 {
-            color: var(--primary-navy);
-            margin-top: 0;
-            border-bottom: 2px solid var(--brand-gold);
-            padding-bottom: 0.5rem;
-        }
-
-        .m-btn {
-            display: inline-block;
-            margin-top: auto;
-            background-color: var(--primary-navy);
-            color: var(--text-light);
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 900;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .m-btn:hover,
-        .m-btn:focus {
-            background-color: var(--brand-gold);
-            color: var(--primary-navy);
-            outline: 2px solid var(--primary-navy);
-            outline-offset: 2px;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-    </style>
+    
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
-
 <body>
 
-    <!-- Header identical to Home Page -->
-    <header class="l-header">
-        <a href="#main-content" class="sr-only m-btn">Skip to main content</a>
-        <h1>SimpleAccess.io | Accessibility is Already Here</h1>
-        <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong>
-        </p>
-    </header>
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
+    <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
-    <nav class="m-nav" aria-label="Main Navigation">
-        <ul>
-            <li><a href="/html/">HTML</a></li>
-            <li><a href="/guides/screenreaders/">Screen Readers</a></li>
-            <li><a href="/guides/office/">MS Office</a></li>
-            <li><a href="/guides/adobe/pdf/">Adobe PDF</a></li>
-            <li><a href="/guides/wcag/">WCAG</a></li>
-            <li><a href="/sensory-lab/" aria-current="page">Sensory Lab</a></li>
-        </ul>
-    </nav>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="l-container">
-        <section class="l-hero">
-            <div class="l-container">
-                <h2>A Tale of Two Bread Recipes</h2>
-                <p>Welcome to the Tale of Two Bread Recipes, an interactive experiment in our Sensory Lab where you can
-                    experience the profound difference between "technically functional" and "humanly accessible." On the
-                    surface, the two recipes below are visually identical. To the eyes, they both offer a perfectly
-                    formatted list of ingredients and step-by-step instructions for baking a beautiful loaf of bread.
-                    But when we step away from the screen and experience the web through sound and touch, their
-                    underlying structures tell two completely different stories. </p>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
-                <p>This is the power of the "Digital Twin" experience. On one side, you have the Accessible Twin, built
-                    with semantic HTML that natively translates into a rich, intuitive experience for screen readers and
-                    keyboard navigation. On the other side sits the Inaccessible Twin, a structural illusion that looks
-                    the part but leaves assistive technologies completely in the dark. Dive in, toggle the sensory test,
-                    and experience firsthand how a few lines of accessible code can make all the difference in the
-                    world. </p>
+    <!-- Page Specific Main Content -->
+    <main id="main-content" class="l-main">
+        <article class="l-container">
+            <header class="m-hero">
+                <h1>SimpleAccess.io | Accessibility is Already Here</h1>
+                <p><strong>"Accessibility isn't extra work. Accessibility is already here, waiting for you to notice."</strong></p>
+            </header>
 
-                <a href="/sensory-lab/bread/" class="m-btn m-btn--primary">Explore the Bread
-                    Recipes</a>
+            <section class="m-doc-section">
+                <h2 class="m-card__title">The Sensory Lab: Fix the Six</h2>
+                <p>Welcome to the Sensory Lab. This is a kinesthetic, experiential playground where you can feel the difference between "technically functional" and "humanly accessible." Explore our six digital twin experiments based on the top accessibility errors identified in the 2026 <a href="https://webaim.org/projects/million/" class="m-wcag-link" target="_blank" rel="noopener noreferrer">WebAIM Million report</a>.</p>
+            </section>
+
+            <div class="l-grid">
+                <!-- Card 1 -->
+                <section class="m-card">
+                    <h3 class="m-card__title">1. Low Contrast Text</h3>
+                    <p class="m-card__text"><strong class="m-label">WebAIM Impact:</strong> Found on 83.9% of home pages.</p>
+                    <p class="m-card__text">Experience the web through the lens of visual impairment. See how subtle grays on white backgrounds create invisible barriers for millions of users.</p>
+                    <a href="/sensory-lab/low-contrast/" class="m-btn">Launch Low Contrast Lab</a>
+                </section>
+
+                <!-- Card 2 -->
+                <section class="m-card">
+                    <h3 class="m-card__title">2. Missing Alternative Text</h3>
+                    <p class="m-card__text"><strong class="m-label">WebAIM Impact:</strong> Found on 53.1% of home pages.</p>
+                    <p class="m-card__text">Turn off your monitor and navigate purely by sound. Discover what happens when crucial context is trapped inside an unlabeled graphic.</p>
+                    <a href="/sensory-lab/alt-text/" class="m-btn">Explore Alt Text Lab</a>
+                </section>
+
+                <!-- Card 3 -->
+                <section class="m-card">
+                    <h3 class="m-card__title">3. Missing Form Labels</h3>
+                    <p class="m-card__text"><strong class="m-label">WebAIM Impact:</strong> Affects 51% of form inputs.</p>
+                    <p class="m-card__text">Attempt to checkout of a shopping cart using only placeholder text. Feel the frustration when context disappears the moment you start typing.</p>
+                    <a href="/sensory-lab/form-labels/" class="m-btn">Test Form Label Lab</a>
+                </section>
+
+                <!-- Card 4 -->
+                <section class="m-card">
+                    <h3 class="m-card__title">4. Empty Links</h3>
+                    <p class="m-card__text"><strong class="m-label">WebAIM Impact:</strong> Present on 46.3% of home pages.</p>
+                    <p class="m-card__text">Navigate a page using a screen reader's links menu. Try to determine where you are going when every destination is read aloud as "click here."</p>
+                    <a href="/sensory-lab/empty-links/" class="m-btn">Experience Empty Links Lab</a>
+                </section>
+
+                <!-- Card 5 -->
+                <section class="m-card">
+                    <h3 class="m-card__title">5. Empty Buttons</h3>
+                    <p class="m-card__text"><strong class="m-label">WebAIM Impact:</strong> Affects 30.6% of home pages.</p>
+                    <p class="m-card__text">Interact with a site entirely by keyboard. Discover the trap of visually styled `div` elements that lack native button focus and semantics.</p>
+                    <a href="/sensory-lab/empty-buttons/" class="m-btn">Launch Empty Button Lab</a>
+                </section>
+
+                <!-- Card 6 -->
+                <section class="m-card">
+                    <h3 class="m-card__title">6. Missing Document Language</h3>
+                    <p class="m-card__text"><strong class="m-label">WebAIM Impact:</strong> Missing on 13.5% of home pages.</p>
+                    <p class="m-card__text">Listen as a screen reader attempts to read French content using an English pronunciation engine. Hear why declaring your HTML language is vital.</p>
+                    <a href="/sensory-lab/document-language/" class="m-btn">Examine Language Lab</a>
+                </section>
             </div>
-        </section>
 
-        <h2>The Sensory Lab: Fix the Six</h2>
-        <p>Welcome to the Sensory Lab. This is a kinesthetic, experiential playground where you can feel the difference
-            between "technically functional" and "humanly accessible." Explore our six digital twin experiments based on
-            the top accessibility errors identified in the 2026 <a href="https://webaim.org/projects/million/">WebAIM
-                Million report</a>.</p>
-
-        <div class="l-grid">
-            <!-- Card 1 -->
-            <article class="m-card">
-                <h3>1. Low Contrast Text</h3>
-                <p><strong>WebAIM Impact:</strong> Found on 83.9% of home pages.</p>
-                <p>Experience the web through the lens of visual impairment. See how subtle grays on white backgrounds
-                    create invisible barriers for millions of users.</p>
-                <a href="/sensory-lab/low-contrast" class="m-btn">Launch Low Contrast Lab</a>
-            </article>
-
-            <!-- Card 2 -->
-            <article class="m-card">
-                <h3>2. Missing Alternative Text</h3>
-                <p><strong>WebAIM Impact:</strong> Found on 53.1% of home pages.</p>
-                <p>Turn off your monitor and navigate purely by sound. Discover what happens when crucial context is
-                    trapped inside an unlabeled graphic.</p>
-                <a href="/sensory-lab/alt-text" class="m-btn">Explore Alt Text Lab</a>
-            </article>
-
-            <!-- Card 3 -->
-            <article class="m-card">
-                <h3>3. Missing Form Labels</h3>
-                <p><strong>WebAIM Impact:</strong> Affects 51% of form inputs.</p>
-                <p>Attempt to checkout of a shopping cart using only placeholder text. Feel the frustration when context
-                    disappears the moment you start typing.</p>
-                <a href="/sensory-lab/form-labels" class="m-btn">Test Form Label Lab</a>
-            </article>
-
-            <!-- Card 4 -->
-            <article class="m-card">
-                <h3>4. Empty Links</h3>
-                <p><strong>WebAIM Impact:</strong> Present on 46.3% of home pages.</p>
-                <p>Navigate a page using a screen reader's links menu. Try to determine where you are going when every
-                    destination is read aloud as "click here."</p>
-                <a href="/sensory-lab/empty-links" class="m-btn">Experience Empty Links Lab</a>
-            </article>
-
-            <!-- Card 5 -->
-            <article class="m-card">
-                <h3>5. Empty Buttons</h3>
-                <p><strong>WebAIM Impact:</strong> Affects 30.6% of home pages.</p>
-                <p>Interact with a site entirely by keyboard. Discover the trap of visually styled `div` elements that
-                    lack native button focus and semantics.</p>
-                <a href="/sensory-lab/empty-buttons" class="m-btn">Launch Empty Button Lab</a>
-            </article>
-
-            <!-- Card 6 -->
-            <article class="m-card">
-                <h3>6. Missing Document Language</h3>
-                <p><strong>WebAIM Impact:</strong> Missing on 13.5% of home pages.</p>
-                <p>Listen as a screen reader attempts to read French content using an English pronunciation engine. Hear
-                    why declaring your HTML language is vital.</p>
-                <a href="/sensory-lab/document-language" class="m-btn">Examine Language Lab</a>
-            </article>
-        </div>
+            <section class="m-info-box" style="margin-top: 4rem;">
+                <h3 class="m-card__title">A Tale of Two Bread Recipes</h3>
+                <p>Welcome to the Tale of Two Bread Recipes, an interactive experiment in our Sensory Lab where you can experience the profound difference between "technically functional" and "humanly accessible."</p>
+                <a href="/sensory-lab/bread/" class="m-btn">Explore the Bread Recipes</a>
+            </section>
+        </article>
     </main>
 
-    <!-- Footer identical to Home Page -->
-    <footer class="l-footer">
-        <p>© 2026 SimpleAccess.io — Native Standards for Everyone. This site is optimized for Screen Readers and
-            Keyboard Navigation.</p>
-        <p>View Source to see the semantic structure.</p>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
 </body>
-
 </html>
