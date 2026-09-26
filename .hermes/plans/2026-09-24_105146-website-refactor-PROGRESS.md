@@ -15,7 +15,7 @@ Reconciled: 2026-09-25
 | Task 4 | Office & PDF Productivity Guides | `refactor/guides-productivity` | 5 | Gemma-4-31B Dense / web-dev | COMPLETED (5/5 pass, PR #7) |
 | Task 5 | Sensory Lab Suite (Comparisons) | `refactor/sensory-lab` | 15 | Gemma-4-31B Dense | COMPLETED (15/15 pass, PR #5) |
 || Task 5-R | Sensory Lab Hubs & Demos (Remediation) | `refactor/sensory-lab-hubs` | 7 | Gemma-4-31B Dense | COMPLETED (22/22 pass) |
-| Task 6A | HTML Elements: Sectioning & Grouping | `refactor/html-sectioning-grouping` | 16 | Gemma-4-31B Dense | PENDING |
+|| Task 6A | HTML Elements: Sectioning & Grouping | `refactor/html-sectioning-grouping` | 16 | Gemma-4-31B Dense | COMPLETED (11/11 pass, PR #8) |
 | Task 6B | HTML Elements: Text-Level Semantics | `refactor/html-text-semantics` | 29 | Gemma-4-31B Dense | PENDING |
 | Task 6C | HTML Elements: Forms & Interactive | `refactor/html-forms-interactive` | 17 | Gemma-4-31B Dense | PENDING |
 | Task 6D | HTML Elements: Embedded & Media | `refactor/html-media` | 11 | Gemma-4-31B Dense | PENDING |
