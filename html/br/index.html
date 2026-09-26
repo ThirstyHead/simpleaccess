@@ -5,189 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BR Tag Guide | SimpleAccess.io</title>
     
-    <style>
-        /* ==========================================================================
-           1. BASE RULES (Synced with SMACSS Baseline)
-           ========================================================================== */
-        :root {
-            --color-primary: #002d62;
-            --color-accent: #ffd700;
-            --color-text: #1a1a1a;
-            --color-bg: #f4f4f4;
-            --color-white: #ffffff;
-            --color-focus: #d4af37;
-            --font-main: system-ui, -apple-system, sans-serif;
-            --line-height: 1.7;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-main);
-            line-height: var(--line-height);
-            color: var(--color-text);
-            background-color: var(--color-bg);
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
-
-        code {
-            background: #eee;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-        }
-
-        /* ==========================================================================
-           2. LAYOUT RULES
-           ========================================================================== */
-        .l-header {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border-bottom: 4px solid var(--color-accent);
-        }
-
-        .l-main {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .l-footer {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 3rem 1rem;
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        /* ==========================================================================
-           3. MODULE RULES
-           ========================================================================== */
-        
-        /* Skip Link */
-        .m-skip-link {
-            position: absolute;
-            top: -100px;
-            left: 10px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 10px 20px;
-            z-index: 1000;
-            text-decoration: none;
-        }
-        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
-
-        /* Documentation Block */
-        .m-doc-section {
-            background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        /* Demo Module */
-        .m-demo {
-            border-left: 4px solid var(--color-accent);
-            padding: 1rem 1.5rem;
-            background: #fffdf0;
-            margin: 1.5rem 0;
-        }
-
-        /* Code Sample Module */
-        .m-code-block {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 1.5rem;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: monospace;
-            margin: 1rem 0;
-            display: block;
-            white-space: pre;
-        }
-
-        /* Accessibility Sidebar Module */
-        .m-a11y-callout {
-            background: #e8f0fe;
-            border: 2px solid var(--color-primary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-
-        /* Reference Link Module */
-        .m-ref-link {
-            display: inline-flex;
-            align-items: center;
-            background: #f1f5f9;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            color: var(--color-primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            border: 1px solid #cbd5e1;
-        }
-        .m-ref-link:hover, .m-ref-link:focus {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        /* ==========================================================================
-           4. STATE
-           ========================================================================== */
-        :focus-visible {
-            outline: 4px solid var(--color-focus);
-            outline-offset: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
 <body>
 
     <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <header class="l-header">
+    <ds-header>
         <div class="l-container">
             <h1 style="color: white; margin: 0;">HTML Standards: The BR Tag</h1>
             <p>SimpleAccess.io Elements Series</p>
         </div>
-    </header>
+    </ds-header>
 
-    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
-        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
-    </nav>
+    <ds-nav>
+        <a href="/html/index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
+    </ds-nav>
 
     <main id="main-content" class="l-main">
         
         <section class="m-doc-section">
             <h2>The <code>&lt;br&gt;</code> Element</h2>
             <p>
-                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;br&gt;</code> element represents a line break. It should only be used for line breaks that are actually part of the content, as in poems or addresses.
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;br&gt;</code> element produces a line break in text (i.e., it typically forces a new line). It is a void element, meaning it has no closing tag.
             </p>
             
             <div class="m-demo">
-                <strong>Correct Semantic Usage:</strong><br>
+                <strong>Visual Example (Poetry/Address):</strong><br>
                 <p>
-                    Roses are red,<br>
-                    Violets are blue,<br>
-                    Semantic HTML,<br>
-                    Is good for you.
+                    123 Accessibility Way<br>
+                    Web Standards City<br>
+                    Internet, 10101
                 </p>
+                <p><small>(Note: The line breaks here are semantic; they are part of the content's structure, not just for visual spacing.)</small></p>
             </div>
 
             <code class="m-code-block">&lt;p&gt;
-  Roses are red,&lt;br&gt;
-  Violets are blue,&lt;br&gt;
-  Semantic HTML,&lt;br&gt;
-  Is good for you.
+  123 Accessibility Way&lt;br&gt;
+  Web Standards City&lt;br&gt;
+  Internet, 10101
 &lt;/p&gt;</code>
 
             <a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element" target="_blank" class="m-ref-link">
@@ -196,50 +53,54 @@
         </section>
 
         <section class="m-doc-section">
-            <h3>Usage & Accessibility Rules</h3>
+            <h3>The "Visual Spacing" Trap</h3>
+            <p>
+                One of the most common mistakes in web development is using <code>&lt;br&gt;</code> to create vertical space between paragraphs or sections.
+            </p>
             <ul>
-                <li><strong>Void Element:</strong> The <code>&lt;br&gt;</code> tag has no content and no closing tag.</li>
-                <li><strong>Spacing vs. Meaning:</strong> Do not use <code>&lt;br&gt;</code> to create visual "white space" between paragraphs or sections. This is a violation of the separation of concerns between HTML (structure) and CSS (presentation).</li>
-                <li><strong>Clearfix:</strong> Never use <code>&lt;br clear="all"&gt;</code>. This is an obsolete presentational attribute. Use modern CSS Layouts (Flexbox or Grid) instead.</li>
+                <li><strong>Incorrect:</strong> Using <code>&lt;br&gt;&lt;br&gt;</code> to push content down.</li>
+                <li><strong>Correct:</strong> Using CSS <code>margin</code> or <code>padding</code> on block-level elements (like <code>&lt;p&gt;</code> or <code>&lt;div&gt;</code>).</li>
             </ul>
 
             <div class="m-a11y-callout">
-                <h4>WCAG Requirement: Info and Relationships</h4>
+                <h4>WCAG Requirement: Meaningful Sequence</h4>
                 <p>
-                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                    <strong>Success Criterion 1.3.2 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be achieved in different ways that can be programmatically determined.
                 </p>
                 <p>
-                    When line breaks are used to force a specific visual layout (like creating columns or vertical gaps), screen readers may struggle to present the content in a meaningful sequence. Using CSS margins for spacing ensures the programmatic structure remains clean and accessible.
+                    When a screen reader encounters a <code>&lt;br&gt;</code>, it may announce "break" or simply pause. If you use multiple <code>&lt;br&gt;</code> tags for layout, you are adding "noise" to the experience for assistive technology users without adding any semantic value.
                 </p>
-                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
-                    Understand SC 1.3.1: Info and Relationships
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html" target="_blank" class="m-ref-link">
+                    Understand SC 1.3.2: Meaningful Sequence
                 </a>
             </div>
         </section>
 
         <section class="m-doc-section">
-            <h3>Visual Presentation Warning</h3>
+            <h3>Best Practices for Layout</h3>
             <p>
-                Using multiple <code>&lt;br&gt;</code> elements to simulate paragraph spacing is a common anti-pattern that creates barriers for users of assistive technology.
+                If you find yourself reaching for the <code>&lt;br&gt;</code> tag, ask yourself: "Is this break part of the content's meaning, or am I trying to change how it looks?"
             </p>
             
+            <code class="m-code-block">/* Instead of &lt;br&gt;&lt;br&gt; */\n.m-doc-section {\n  margin-bottom: 2rem;\n}</code>
+
             <div class="m-a11y-callout" style="border-color: #d4af37;">
-                <h4>A11y Warning: Screen Reader Navigation</h4>
+                <h4>A11y Tip: The "Address" Exception</h4>
                 <p>
-                    Many screen reader users navigate by paragraph (using the 'P' key). If you use <code>&lt;br&gt;&lt;br&gt;</code> to separate text instead of <code>&lt;p&gt;</code> tags, the screen reader treats the entire block as a single paragraph, making navigation and digestion of the content much more difficult.
+                    The <code>&lt;br&gt;</code> tag is perfectly acceptable and semantic within an <code>&lt;address&gt;</code> element or when formatting poetry, where the line break is a requirement of the format itself.
                 </p>
             </div>
         </section>
 
     </main>
 
-    <footer class="l-footer">
+    <ds-footer>
         <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
         <div style="margin-top: 1rem;">
-            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
-            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
+            <a href="/html/index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
+            <a href="/html/index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
         </div>
-    </footer>
+    </ds-footer>
 
 </body>
 </html>
