@@ -5,301 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Tag Guide | SimpleAccess.io</title>
     
-    <style>
-        /* ==========================================================================
-           1. BASE RULES (Synced with SMACSS Baseline)
-           ========================================================================== */
-        :root {
-            --color-primary: #002d62;
-            --color-accent: #ffd700;
-            --color-text: #1a1a1a;
-            --color-bg: #f4f4f4;
-            --color-white: #ffffff;
-            --color-focus: #d4af37;
-            --font-main: system-ui, -apple-system, sans-serif;
-            --line-height: 1.7;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-main);
-            line-height: var(--line-height);
-            color: var(--color-text);
-            background-color: var(--color-bg);
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
-
-        code {
-            background: #eee;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-        }
-
-        /* ==========================================================================
-           2. LAYOUT RULES
-           ========================================================================== */
-        .l-header {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border-bottom: 4px solid var(--color-accent);
-        }
-
-        .l-main {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .l-footer {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 3rem 1rem;
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        /* ==========================================================================
-           3. MODULE RULES
-           ========================================================================== */
-        
-        .m-skip-link {
-            position: absolute;
-            top: -100px;
-            left: 10px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 10px 20px;
-            z-index: 1000;
-            text-decoration: none;
-        }
-        .m-skip-link:focus { top: 10px; border: 2px solid var(--color-accent); }
-
-        .m-doc-section {
-            background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        /* Demo Module */
-        .m-demo {
-            border-left: 4px solid var(--color-accent);
-            padding: 1.5rem 2rem;
-            background: #fffdf0;
-            margin: 2rem 0;
-        }
-
-        .m-btn {
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: inherit;
-            margin-bottom: 1rem;
-        }
-        .m-btn:hover { background-color: #004494; }
-
-        .m-container-result {
-            border: 1px dashed #ccc;
-            padding: 1rem;
-            min-height: 50px;
-            background: #fff;
-        }
-
-        /* Item Module for Demo */
-        .m-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 0.5rem;
-            border-bottom: 1px solid #eee;
-            animation: fadeIn 0.3s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Code Sample Module */
-        .m-code-block {
-            background: #2d2d2d;
-            color: #f8f8f2;
-            padding: 1.5rem;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: monospace;
-            margin: 1rem 0;
-            display: block;
-            white-space: pre;
-        }
-
-        /* Accessibility Sidebar Module */
-        .m-a11y-callout {
-            background: #e8f0fe;
-            border: 2px solid var(--color-primary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-
-        /* Reference Link Module */
-        .m-ref-link {
-            display: inline-flex;
-            align-items: center;
-            background: #f1f5f9;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            color: var(--color-primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            border: 1px solid #cbd5e1;
-        }
-        .m-ref-link:hover, .m-ref-link:focus {
-            background: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        /* ==========================================================================
-           4. STATE
-           ========================================================================== */
-        :focus-visible {
-            outline: 4px solid var(--color-focus);
-            outline-offset: 4px;
-        }
-    </style>
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
 <body>
 
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
     <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <header class="l-header">
-        <div class="l-container">
-            <h1 style="color: white; margin: 0;">HTML Standards: The Template Tag</h1>
-            <p>SimpleAccess.io Elements Series</p>
-        </div>
-    </header>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
-    <nav style="background: white; padding: 1rem; border-bottom: 1px solid #ddd; text-align: center;">
-        <a href="elements_index.html" style="color: var(--color-primary); text-decoration: underline; font-weight: bold;">Elements Index</a>
-    </nav>
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
 
+    <!-- Page Specific Main Content -->
     <main id="main-content" class="l-main">
         
         <section class="m-doc-section">
             <h2>The <code>&lt;template&gt;</code> Element</h2>
             <p>
-                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;template&gt;</code> element is used to declare fragments of HTML that can be cloned and inserted into the document by script. The contents of the element are not processed by the browser until the template is used.
+                As defined in the <strong>HTML Living Standard</strong>, the <code>&lt;template&gt;</code> element holds HTML content that is not rendered when the page loads, but can be instantiated later via JavaScript.
             </p>
             
             <div class="m-demo">
-                <strong>Interactive Example:</strong><br>
-                <p>Click the button to instantiate a new item from a hidden template.</p>
-                <button type="button" class="m-btn" id="add-item">Add New Entry</button>
-                <div id="result-container" class="m-container-result" aria-live="polite">
-                    <!-- Cloned items appear here -->
-                </div>
-
-                <template id="row-template">
-                    <div class="m-item">
-                        <span style="color: #2e7d32">✅</span>
-                        <span>Standard verified on April 13, 2026</span>
-                    </div>
-                </template>
+                <strong>Example:</strong>
+                <pre class="m-code-block"><code>&lt;template id="row-template"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Data 1&lt;/td&gt;
+    &lt;td&gt;Data 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/template&gt;</code></pre>
             </div>
 
-            <code class="m-code-block">&lt;template id="my-template"&gt;
-  &lt;div class="card"&gt;
-    &lt;h2&gt;Dynamic Title&lt;/h2&gt;
-  &lt;/div&gt;
-&lt;/template&gt;</code>
-
-            <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element" target="_blank" class="m-ref-link">
+            <p>Templates are highly efficient for creating repetitive UI elements without cluttering the initial DOM.</p>
+            <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-template-element" target="_blank" rel="noopener noreferrer" class="m-ref-link">
                 View HTML Living Standard: The template element
             </a>
         </section>
 
         <section class="m-doc-section">
-            <h3>Accessibility: The Hidden Benefit</h3>
+            <h3>Accessibility Impact: The "Invisible" Content</h3>
             <p>
-                Before the <code>&lt;template&gt;</code> element, developers often used <code>&lt;div style="display:none"&gt;</code> or script tags to store HTML fragments.
+                Because content inside a <code>&lt;template&gt;</code> is not part of the document until it is cloned, it is completely invisible to screen readers and search engines.
             </p>
 
             <div class="m-a11y-callout">
-                <h4>WCAG Requirement: Info and Relationships</h4>
+                <h4>WCAG Requirement: Predictable Navigation</h4>
                 <p>
-                    <strong>Success Criterion 1.3.1 (Level A):</strong> Information, structure, and relationships conveyed through presentation can be programmatically determined.
+                    <strong>Success Criterion 3.2.3 (Level AA):</strong> Consistent Navigation.
                 </p>
                 <p>
-                    The <code>&lt;template&gt;</code> element is <strong>truly inert</strong>. Its content is not part of the Document Object Model (DOM) in the traditional sense and, crucially, it is not part of the <strong>Accessibility Tree</strong>. This means screen readers will not find or announce template content, preventing "ghost" elements from confusing the user before they are actually needed in the UI.
+                    When you use a template to inject new content into the page, you must ensure that the new content follows the same structural and navigational patterns as the rest of the site. If a template injects a new form or a set of controls, you must manage the focus so the user knows where the new content has appeared.
                 </p>
-                <a href="https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships.html" target="_blank" class="m-ref-link">
-                    Understand SC 1.3.1: Info and Relationships
+                <a href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-navigation.html" target="_blank" rel="noopener noreferrer" class="m-ref-link">
+                    Understand SC 3.2.3: Consistent Navigation
                 </a>
             </div>
         </section>
 
         <section class="m-doc-section">
-            <h3>Technical Implementation</h3>
-            <p>To use a template, you must use JavaScript to clone its <code>content</code>:</p>
-            <pre class="m-code-block"><code>const temp = document.getElementById("my-template");
-const clone = temp.content.cloneNode(true);
-document.body.appendChild(clone);</code></pre>
-            
+            <h3>Best Practices for Accessible Templates</h3>
             <ul>
-                <li><strong>Performance:</strong> Because the content is not rendered, images inside templates are not downloaded and scripts are not executed until the template is cloned and inserted into the active DOM.</li>
-                <li><strong>Reusability:</strong> Templates are the foundation for modern web components and client-side rendering patterns.</li>
-            </ul>
-        </section>
-
-        <section class="m-doc-section">
-            <h3>Best Practices</h3>
-            <ul>
-                <li><strong>Naming:</strong> Use descriptive IDs for your templates so their purpose is clear in the source code.</li>
-                <li><strong>ARIA Live Regions:</strong> When inserting cloned content that provides important updates, ensure the container uses <code>aria-live</code> to notify screen reader users of the addition, satisfying <strong>WCAG SC 4.1.2 (Name, Role, Value)</strong>.</li>
-                <li><strong>Empty Templates:</strong> Never put content that should be indexed by search engines or read immediately by screen readers inside a <code>&lt;template&gt;</code>.</li>
+                <li><strong>Focus Management:</strong> After cloning a template and appending it to the DOM, move the focus to the first interactive element in the new content.</li>
+                <li><strong>ARIA Live Regions:</strong> If a template is used to add a notification or a status update, append the cloned content to an <code aria-live="polite"></code> region.</li>
+                <li><strong>Semantic Integrity:</strong> Ensure the content inside the template is fully semantic. A template of a table row must still use <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> to maintain the table's accessibility tree.</li>
             </ul>
 
-            <div class="m-a11y-callout" style="border-color: #d4af37;">
-                <h4>A11y Tip: Initial State</h4>
+            <div class="m-a11y-callout" style="border-color: var(--color-accent);">
+                <h4>A11y Tip: Template vs. Hidden</h4>
                 <p>
-                    If a template represents a complex widget (like a modal), ensure that the cloned instance has all the necessary ARIA attributes (like <code>role="dialog"</code>) already included in the template markup.
+                    Unlike <code style="color: var(--color-text);">display: none;</code>, which hides an element but keeps it in the DOM, the <code>&lt;template&gt;</code> tag is truly inert. This is better for performance and ensures that screen readers don't accidentally find "hidden" content that isn't yet ready for interaction.
                 </p>
             </div>
         </section>
 
     </main>
 
-    <footer class="l-footer">
-        <p>&copy; 2026 SimpleAccess.io — Native Standards for Everyone.</p>
-        <div style="margin-top: 1rem;">
-            <a href="elements_index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Back to Index</a>
-            <a href="index.html" style="color: var(--color-white); text-decoration: underline;">Home</a>
-        </div>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
-    <script>
-        const btn = document.getElementById('add-item');
-        const container = document.getElementById('result-container');
-        const template = document.getElementById('row-template');
-
-        btn.addEventListener('click', () => {
-            const clone = template.content.cloneNode(true);
-            container.appendChild(clone);
-        });
-    </script>
 </body>
 </html>

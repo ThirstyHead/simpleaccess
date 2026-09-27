@@ -5,522 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Elements Index | SimpleAccess.io</title>
     
-    <style>
-        /* ==========================================================================
-           1. BASE RULES (Design Tokens)
-           ========================================================================== */
-        :root {
-            --color-primary: #002d62;
-            --color-accent: #ffd700;
-            --color-text: #1a1a1a;
-            --color-bg: #f4f4f4;
-            --color-white: #ffffff;
-            --color-focus: #d4af37;
-            --font-main: system-ui, -apple-system, sans-serif;
-            --line-height: 1.7;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: var(--font-main);
-            line-height: var(--line-height);
-            color: var(--color-text);
-            background-color: var(--color-bg);
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2 { color: var(--color-primary); }
-
-        /* ==========================================================================
-           2. LAYOUT RULES
-           ========================================================================== */
-        .l-header {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 2.5rem 1rem;
-            text-align: center;
-            border-bottom: 6px solid var(--color-accent);
-        }
-
-        .l-main {
-            max-width: 1100px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .l-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .l-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 1.25rem;
-            margin-top: 2.5rem;
-        }
-
-        .l-footer {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 4rem 1rem;
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        /* ==========================================================================
-           3. MODULE RULES
-           ========================================================================== */
-        
-        /* Skip Link */
-        .m-skip-link {
-            position: absolute;
-            top: -100px;
-            left: 10px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 10px 20px;
-            z-index: 1000;
-            text-decoration: none;
-            border: 2px solid var(--color-accent);
-        }
-        .m-skip-link:focus { top: 10px; }
-
-        /* Element Card Module */
-        .m-element-card {
-            background: var(--color-white);
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            display: flex;
-        }
-
-        .m-element-link {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            text-align: center;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-family: monospace;
-            font-size: 1.1rem;
-        }
-
-        .m-element-link:hover {
-            background-color: #f0f7ff;
-            color: #004494;
-        }
-
-        .m-element-link:focus {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            outline: 4px solid var(--color-focus);
-            outline-offset: -4px;
-        }
-
-        /* Intro Box */
-        .m-intro-box {
-            background: var(--color-white);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 8px solid var(--color-accent);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        /* Search Module */
-        .m-search-landmark {
-            margin-bottom: 3rem;
-            background: #eef2f6;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #cbd5e1;
-        }
-
-        .m-search-form {
-            display: flex;
-            gap: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .m-search-input {
-            flex-grow: 1;
-            padding: 0.75rem 1rem;
-            border: 2px solid #94a3b8;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        .m-search-input:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(0, 45, 98, 0.2);
-        }
-
-        .m-search-btn {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .m-search-btn:hover { background: #004494; }
-
-        /* Utility: Accessibility Hidden */
-        .u-sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* ==========================================================================
-           4. STATE
-           ========================================================================== */
-        @media (max-width: 600px) {
-            .l-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 0.75rem;
-            }
-            .m-element-link {
-                padding: 0.75rem;
-                font-size: 1rem;
-            }
-            .m-search-form {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <!-- SimpleAccess Design System: WCAG 2.2 AA Multi-Sensory Standards -->
+    <link rel="stylesheet" href="/assets/ds/simpleaccess.css">
+    <script type="module" src="/assets/ds/simpleaccess.js" defer></script>
 </head>
 <body>
 
+    <!-- Accessible Skip Link: SC 2.4.1 Bypass Blocks -->
     <a href="#main-content" class="m-skip-link">Skip to main content</a>
 
-    <header class="l-header">
-        <div class="l-container">
-            <h1 style="color: white; margin: 0;">HTML Elements Index</h1>
-            <p>Native Standards Reference for Developers</p>
-        </div>
-    </header>
+    <!-- Global Header Component -->
+    <ds-header></ds-header>
 
+    <!-- Global Nav Component -->
+    <ds-nav></ds-nav>
+
+    <!-- Page Specific Main Content -->
     <main id="main-content" class="l-main">
-        <section class="m-intro-box">
-            <h2>The Periodic Table of the Web</h2>
+        
+        <section class="m-doc-section">
+            <h1>HTML Elements Reference</h1>
             <p>
-                Below is an alphabetical list of every standard HTML element. Each link leads to a detailed technical guide focused on semantic usage and WCAG accessibility standards, as defined in the <strong>HTML Living Standard</strong>.
+                A comprehensive guide to HTML elements, focused on semantic correctness and universal accessibility.
+            </p>
+            <p>
+                Each guide explains the element's purpose according to the <strong>HTML Living Standard</strong> and provides specific <strong>WCAG 2.2</strong> implementation patterns to ensure your content is accessible to everyone.
             </p>
         </section>
 
-        <!-- ACCESSIBLE SEARCH SECTION -->
-        <search class="m-search-landmark" aria-label="Elements search">
-            <form class="m-search-form" id="search-form" role="search">
-                <label for="el-search" class="u-sr-only">Search HTML elements by name</label>
-                <input type="search" 
-                       id="el-search" 
-                       class="m-search-input" 
-                       list="element-options" 
-                       placeholder="Jump to element (e.g. <dialog> or article)..."
-                       autocomplete="off"
-                       aria-autocomplete="list">
-                
-                <datalist id="element-options">
-                    <option value="a">
-                    <option value="abbr">
-                    <option value="address">
-                    <option value="area">
-                    <option value="article">
-                    <option value="aside">
-                    <option value="audio">
-                    <option value="b">
-                    <option value="base">
-                    <option value="bdi">
-                    <option value="bdo">
-                    <option value="blockquote">
-                    <option value="body">
-                    <option value="br">
-                    <option value="button">
-                    <option value="canvas">
-                    <option value="caption">
-                    <option value="cite">
-                    <option value="code">
-                    <option value="col">
-                    <option value="colgroup">
-                    <option value="data">
-                    <option value="datalist">
-                    <option value="dd">
-                    <option value="del">
-                    <option value="details">
-                    <option value="dfn">
-                    <option value="dialog">
-                    <option value="div">
-                    <option value="dl">
-                    <option value="dt">
-                    <option value="em">
-                    <option value="embed">
-                    <option value="fieldset">
-                    <option value="figcaption">
-                    <option value="figure">
-                    <option value="footer">
-                    <option value="form">
-                    <option value="h1">
-                    <option value="h2">
-                    <option value="h3">
-                    <option value="h4">
-                    <option value="h5">
-                    <option value="h6">
-                    <option value="head">
-                    <option value="header">
-                    <option value="hgroup">
-                    <option value="hr">
-                    <option value="html">
-                    <option value="i">
-                    <option value="iframe">
-                    <option value="img">
-                    <option value="input">
-                    <option value="ins">
-                    <option value="kbd">
-                    <option value="label">
-                    <option value="legend">
-                    <option value="li">
-                    <option value="link">
-                    <option value="main">
-                    <option value="map">
-                    <option value="mark">
-                    <option value="menu">
-                    <option value="meta">
-                    <option value="meter">
-                    <option value="nav">
-                    <option value="noscript">
-                    <option value="object">
-                    <option value="ol">
-                    <option value="optgroup">
-                    <option value="option">
-                    <option value="output">
-                    <option value="p">
-                    <option value="picture">
-                    <option value="pre">
-                    <option value="progress">
-                    <option value="q">
-                    <option value="ruby">
-                    <option value="s">
-                    <option value="samp">
-                    <option value="script">
-                    <option value="search">
-                    <option value="section">
-                    <option value="select">
-                    <option value="slot">
-                    <option value="small">
-                    <option value="source">
-                    <option value="span">
-                    <option value="strong">
-                    <option value="style">
-                    <option value="sub">
-                    <option value="summary">
-                    <option value="sup">
-                    <option value="table">
-                    <option value="tbody">
-                    <option value="td">
-                    <option value="template">
-                    <option value="textarea">
-                    <option value="tfoot">
-                    <option value="th">
-                    <option value="thead">
-                    <option value="time">
-                    <option value="title">
-                    <option value="tr">
-                    <option value="track">
-                    <option value="u">
-                    <option value="ul">
-                    <option value="var">
-                    <option value="video">
-                    <option value="wbr">
-                </datalist>
-                <button type="submit" class="m-search-btn">Jump to Element</button>
-            </form>
-        </search>
+        <div class="m-index-grid">
+            <!-- Root & Meta -->
+            <section class="m-index-category">
+                <h2>Root & Metadata</h2>
+                <ul>
+                    <li><a href="/html/html/index.html">&lt;html&gt;</a> - The root element</li>
+                    <li><a href="/html/head/index.html">&lt;head&gt;</a> - Document metadata container</li>
+                    <li><a href="/html/title/index.html">&lt;title&gt;</a> - Document title</li>
+                    <li><a href="/html/base/index.html">&lt;base&gt;</a> - Base URL for relative links</li>
+                    <li><a href="/html/link/index.html">&lt;link&gt;</a> - External resource relationship</li>
+                    <li><a href="/html/meta/index.html">&lt;meta&gt;</a> - Metadata information</li>
+                    <li><a href="/html/style/index.html">&lt;style&gt;</a> - Internal CSS</li>
+                </ul>
+            </section>
 
-        <nav aria-label="Alphabetical element list">
-            <div class="l-grid">
-                <!-- A -->
-                <div class="m-element-card"><a href="/html/a" class="m-element-link">&lt;a&gt;</a></div>
-                <div class="m-element-card"><a href="/html/abbr" class="m-element-link">&lt;abbr&gt;</a></div>
-                <div class="m-element-card"><a href="/html/address" class="m-element-link">&lt;address&gt;</a></div>
-                <div class="m-element-card"><a href="/html/area" class="m-element-link">&lt;area&gt;</a></div>
-                <div class="m-element-card"><a href="/html/article" class="m-element-link">&lt;article&gt;</a></div>
-                <div class="m-element-card"><a href="/html/aside" class="m-element-link">&lt;aside&gt;</a></div>
-                <div class="m-element-card"><a href="/html/audio" class="m-element-link">&lt;audio&gt;</a></div>
-                
-                <!-- B -->
-                <div class="m-element-card"><a href="/html/b" class="m-element-link">&lt;b&gt;</a></div>
-                <div class="m-element-card"><a href="/html/base" class="m-element-link">&lt;base&gt;</a></div>
-                <div class="m-element-card"><a href="/html/bdi" class="m-element-link">&lt;bdi&gt;</a></div>
-                <div class="m-element-card"><a href="/html/bdo" class="m-element-link">&lt;bdo&gt;</a></div>
-                <div class="m-element-card"><a href="/html/blockquote" class="m-element-link">&lt;blockquote&gt;</a></div>
-                <div class="m-element-card"><a href="/html/body" class="m-element-link">&lt;body&gt;</a></div>
-                <div class="m-element-card"><a href="/html/br" class="m-element-link">&lt;br&gt;</a></div>
-                <div class="m-element-card"><a href="/html/button" class="m-element-link">&lt;button&gt;</a></div>
+            <!-- Sectioning -->
+            <section class="m-index-category">
+                <h2>Sectioning & Grouping</h2>
+                <ul>
+                    <li><a href="/html/body/index.html">&lt;body&gt;</a> - Document body</li>
+                    <li><a href="/html/article/index.html">&lt;article&gt;</a> - Independent content</li>
+                    <li><a href="/html/section/index.html">&lt;section&gt;</a> - Generic section</li>
+                    <li><a href="/html/nav/index.html">&lt;nav&gt;</a> - Navigation links</li>
+                    <li><a href="/html/aside/index.html">&lt;aside&gt;</a> - Indirectly related content</li>
+                    <li><a href="/html/header/index.html">&lt;header&gt;</a> - Introductory content</li>
+                    <li><a href="/html/footer/index.html">&lt;footer&gt;</a> - Footer content</li>
+                    <li><a href="/html/main/index.html">&lt;main&gt;</a> - Primary content</li>
+                    <li><a href="/html/hgroup/index.html">&lt;hgroup&gt;</a> - Heading group</li>
+                    <li><a href="/html/div/index.html">&lt;div&gt;</a> - Generic container</li>
+                </ul>
+            </section>
 
-                <!-- C -->
-                <div class="m-element-card"><a href="/html/canvas" class="m-element-link">&lt;canvas&gt;</a></div>
-                <div class="m-element-card"><a href="/html/caption" class="m-element-link">&lt;caption&gt;</a></div>
-                <div class="m-element-card"><a href="/html/cite" class="m-element-link">&lt;cite&gt;</a></div>
-                <div class="m-element-card"><a href="/html/code" class="m-element-link">&lt;code&gt;</a></div>
-                <div class="m-element-card"><a href="/html/col" class="m-element-link">&lt;col&gt;</a></div>
-                <div class="m-element-card"><a href="/html/colgroup" class="m-element-link">&lt;colgroup&gt;</a></div>
+            <!-- Text Content -->
+            <section class="m-index-category">
+                <h2>Text Content</h2>
+                <ul>
+                    <li><a href="/html/h1/index.html">Heading 1</a></li>
+                    <li><a href="/html/h2/index.html">Heading 2</a></li>
+                    <li><a href="/html/h3/index.html">Heading 3</a></li>
+                    <li><a href="/html/h4/index.html">Heading 4</a></li>
+                    <li><a href="/html/h5/index.html">Heading 5</a></li>
+                    <li><a href="/html/h6/index.html">Heading 6</a></li>
+                    <li><a href="/html/p/index.html">&lt;p&gt;</a> - Paragraph</li>
+                    <li><a href="/html/hr/index.html">&lt;hr&gt;</a> - Thematic break</li>
+                    <li><a href="/html/pre/index.html">&lt;pre&gt;</a> - Preformatted text</li>
+                    <li><a href="/html/blockquote/index.html">&lt;blockquote&gt;</a> - Extended quotation</li>
+                    <li><a href="/html/ol/index.html">&lt;ol&gt;</a> - Ordered list</li>
+                    <li><a href="/html/ul/index.html">&lt;ul&gt;</a> - Unordered list</li>
+                    <li><a href="/html/li/index.html">&lt;li&gt;</a> - List item</li>
+                    <li><a href="/html/dl/index.html">&lt;dl&gt;</a> - Description list</li>
+                    <li><a href="/html/dt/index.html">&lt;dt&gt;</a> - Description term</li>
+                    <li><a href="/html/dd/index.html">&lt;dd&gt;</a> - Description details</li>
+                    <li><a href="/html/figure/index.html">&lt;figure&gt;</a> - Self-contained content</li>
+                    <li><a href="/html/figcaption/index.html">&lt;figcaption&gt;</a> - Figure caption</li>
+                    <li><a href="/html/div/index.html">&lt;div&gt;</a> - Generic container</li>
+                </ul>
+            </section>
 
-                <!-- D -->
-                <div class="m-element-card"><a href="/html/data" class="m-element-link">&lt;data&gt;</a></div>
-                <div class="m-element-card"><a href="/html/datalist" class="m-element-link">&lt;datalist&gt;</a></div>
-                <div class="m-element-card"><a href="/html/dd" class="m-element-link">&lt;dd&gt;</a></div>
-                <div class="m-element-card"><a href="/html/del" class="m-element-link">&lt;del&gt;</a></div>
-                <div class="m-element-card"><a href="/html/details" class="m-element-link">&lt;details&gt;</a></div>
-                <div class="m-element-card"><a href="/html/dfn" class="m-element-link">&lt;dfn&gt;</a></div>
-                <div class="m-element-card"><a href="/html/dialog" class="m-element-link">&lt;dialog&gt;</a></div>
-                <div class="m-element-card"><a href="/html/div" class="m-element-link">&lt;div&gt;</a></div>
-                <div class="m-element-card"><a href="/html/dl" class="m-element-link">&lt;dl&gt;</a></div>
-                <div class="m-element-card"><a href="/html/dt" class="m-element-link">&lt;dt&gt;</a></div>
+            <!-- Inline Text -->
+            <section class="m-index-category">
+                <h2>Inline Text Semantics</h2>
+                <ul>
+                    <li><a href="/html/a/index.html">&lt;a&gt;</a> - Hyperlink</li>
+                    <li><a href="/html/em/index.html">&lt;em&gt;</a> - Emphasized text</li>
+                    <li><a href="/html/strong/index.html">&lt;strong&gt;</a> - Strong importance</li>
+                    <li><a href="/html/small/index.html">&lt;small&gt;</a> - Side comments</li>
+                    <li><a href="/html/s/index.html">&lt;s&gt;</a> - Strikethrough</li>
+                    <li><a href="/html/abbr/index.html">&lt;abbr&gt;</a> - Abbreviation</li>
+                    <li><a href="/html/cite/index.html">&lt;cite&gt;</a> - Citation</li>
+                    <li><a href="/html/q/index.html">&lt;q&gt;</a> - Inline quotation</li>
+                    <li><a href="/html/dfn/index.html">&lt;dfn&gt;</a> - Definition term</li>
+                    <li><a href="/html/code/index.html">&lt;code&gt;</a> - Computer code</li>
+                    <li><a href="/html/var/index.html">&lt;var&gt;</a> - Variable</li>
+                    <li><a href="/html/samp/index.html">&lt;samp&gt;</a> - Sample output</li>
+                    <li><a href="/html/kbd/index.html">&lt;kbd&gt;</a> - Keyboard input</li>
+                    <li><a href="/html/sub/index.html">&lt;sub&gt;</a> - Subscript</li>
+                    <li><a href="/html/sup/index.html">&lt;sup&gt;</a> - Superscript</li>
+                    <li><a href="/html/i/index.html">&lt;i&gt;</a> - Idiomatic text</li>
+                    <li><a href="/html/b/index.html">&lt;b&gt;</a> - Stylistically offset</li>
+                    <li><a href="/html/u/index.html">&lt;u&gt;</a> - Unarticulated annotation</li>
+                    <li><a href="/html/mark/index.html">&lt;mark&gt;</a> - Highlighted text</li>
+                    <li><a href="/html/span/index.html">&lt;span&gt;</a> - Generic inline container</li>
+                    <li><a href="/html/br/index.html">&lt;br&gt;</a> - Line break</li>
+                    <li><a href="/html/wbr/index.html">&lt;wbr&gt;</a> - Word break opportunity</li>
+                </ul>
+            </section>
 
-                <!-- E -->
-                <div class="m-element-card"><a href="/html/em" class="m-element-link">&lt;em&gt;</a></div>
-                <div class="m-element-card"><a href="/html/embed" class="m-element-link">&lt;embed&gt;</a></div>
+            <!-- Forms & Interactive -->
+            <section class="m-index-category">
+                <h2>Forms & Interactive</h2>
+                <ul>
+                    <li><a href="/html/form/index.html">&lt;form&gt;</a> - Form container</li>
+                    <li><a href="/html/label/index.html">&lt;label&gt;</a> - Input label</li>
+                    <li><a href="/html/input/index.html">&lt;input&gt;</a> - Input field</li>
+                    <li><a href="/html/button/index.html">&lt;button&gt;</a> - Clickable button</li>
+                    <li><a href="/html/select/index.html">&lt;select&gt;</a> - Dropdown list</li>
+                    <li><a href="/html/option/index.html">&lt;option&gt;</a> - Select option</li>
+                    <li><a href="/html/optgroup/index.html">&lt;optgroup&gt;</a> - Option group</li>
+                    <li><a href="/html/textarea/index.html">&lt;textarea&gt;</a> - Multi-line text</li>
+                    <li><a href="/html/fieldset/index.html">&lt;fieldset&gt;</a> - Grouped inputs</li>
+                    <li><a href="/html/legend/index.html">&lt;legend&gt;</a> - Fieldset caption</li>
+                    <li><a href="/html/datalist/index.html">&lt;datalist&gt;</a> - Input suggestions</li>
+                    <li><a href="/html/output/index.html">&lt;output&gt;</a> - Calculation result</li>
+                    <li><a href="/html/progress/index.html">&lt;progress&gt;</a> - Progress bar</li>
+                    <li><a href="/html/meter/index.html">&lt;meter&gt;</a> - Scalar measurement</li>
+                    <li><a href="/html/details/index.html">&lt;details&gt;</a> - Disclosure widget</li>
+                    <li><a href="/html/summary/index.html">&lt;summary&gt;</a> - Disclosure label</li>
+                    <li><a href="/html/dialog/index.html">&lt;dialog&gt;</a> - Dialog box</li>
+                </ul>
+            </section>
 
-                <!-- F -->
-                <div class="m-element-card"><a href="/html/fieldset" class="m-element-link">&lt;fieldset&gt;</a></div>
-                <div class="m-element-card"><a href="/html/figcaption" class="m-element-link">&lt;figcaption&gt;</a></div>
-                <div class="m-element-card"><a href="/html/figure" class="m-element-link">&lt;figure&gt;</a></div>
-                <div class="m-element-card"><a href="/html/footer" class="m-element-link">&lt;footer&gt;</a></div>
-                <div class="m-element-card"><a href="/html/form" class="m-element-link">&lt;form&gt;</a></div>
+            <!-- Tables -->
+            <section class="m-index-category">
+                <h2>Tables & Data</h2>
+                <ul>
+                    <li><a href="/html/table/index.html">&lt;table&gt;</a> - Tabular data</li>
+                    <li><a href="/html/caption/index.html">&lt;caption&gt;</a> - Table title</li>
+                    <li><a href="/html/thead/index.html">&lt;thead&gt;</a> - Table header group</li>
+                    <li><a href="/html/tbody/index.html">&lt;tbody&gt;</a> - Table body group</li>
+                    <li><a href="/html/tfoot/index.html">&lt;tfoot&gt;</a> - Table footer group</li>
+                    <li><a href="/html/tr/index.html">&lt;tr&gt;</a> - Table row</li>
+                    <li><a href="/html/th/index.html">&lt;th&gt;</a> - Table header cell</li>
+                    <li><a href="/html/td/index.html">&lt;td&gt;</a> - Table data cell</li>
+                    <li><a href="/html/colgroup/index.html">&lt;colgroup&gt;</a> - Column group</li>
+                    <li><a href="/html/col/index.html">&lt;col&gt;</a> - Column properties</li>
+                </ul>
+            </section>
 
-                <!-- H -->
-                <div class="m-element-card"><a href="/html/h1-h6" class="m-element-link">&lt;h1&gt;-&lt;h6&gt;</a></div>
-                <div class="m-element-card"><a href="/html/head" class="m-element-link">&lt;head&gt;</a></div>
-                <div class="m-element-card"><a href="/html/header" class="m-element-link">&lt;header&gt;</a></div>
-                <div class="m-element-card"><a href="/html/hgroup" class="m-element-link">&lt;hgroup&gt;</a></div>
-                <div class="m-element-card"><a href="/html/hr" class="m-element-link">&lt;hr&gt;</a></div>
-                <div class="m-element-card"><a href="/html/html" class="m-element-link">&lt;html&gt;</a></div>
+            <!-- Embedded & Scripting -->
+            <section class="m-index-category">
+                <h2>Embedded & Scripting</h2>
+                <ul>
+                    <li><a href="/html/picture/index.html">&lt;picture&gt;</a> - Responsive images</li>
+                    <li><a href="/html/img/index.html">&lt;img&gt;</a> - Image</li>
+                    <li><a href="/html/source/index.html">&lt;source&gt;</a> - Media source</li>
+                    <li><a href="/html/iframe/index.html">&lt;iframe&gt;</a> - Inline frame</li>
+                    <li><a href="/html/embed/index.html">&lt;embed&gt;</a> - External application</li>
+                    <li><a href="/html/object/index.html">&lt;object&gt;</a> - External resource</li>
+                    <li><a href="/html/video/index.html">&lt;video&gt;</a> - Video player</li>
+                    <li><a href="/html/audio/index.html">&lt;audio&gt;</a> - Audio player</li>
+                    <li><a href="/html/track/index.html">&lt;track&gt;</a> - Media track</li>
+                    <li><a href="/html/map/index.html">&lt;map&gt;</a> - Image map</li>
+                    <li><a href="/html/area/index.html">&lt;area&gt;</a> - Image map area</li>
+                    <li><a href="/html/canvas/index.html">&lt;canvas&gt;</a> - Bitmap canvas</li>
+                    <li><a href="/html/script/index.html">&lt;script&gt;</a> - Executable script</li>
+                    <li><a href="/html/noscript/index.html">&lt;noscript&gt;</a> - No-JS fallback</li>
+                    <li><a href="/html/template/index.html">&lt;template&gt;</a> - HTML template</li>
+                    <li><a href="/html/slot/index.html">&lt;slot&gt;</a> - Component slot</li>
+                </ul>
+            </section>
+        </div>
 
-                <!-- I -->
-                <div class="m-element-card"><a href="/html/i" class="m-element-link">&lt;i&gt;</a></div>
-                <div class="m-element-card"><a href="/html/iframe" class="m-element-link">&lt;iframe&gt;</a></div>
-                <div class="m-element-card"><a href="/html/img" class="m-element-link">&lt;img&gt;</a></div>
-                <div class="m-element-card"><a href="/html/input" class="m-element-link">&lt;input&gt;</a></div>
-                <div class="m-element-card"><a href="/html/ins" class="m-element-link">&lt;ins&gt;</a></div>
-
-                <!-- K -->
-                <div class="m-element-card"><a href="/html/kbd" class="m-element-link">&lt;kbd&gt;</a></div>
-
-                <!-- L -->
-                <div class="m-element-card"><a href="/html/label" class="m-element-link">&lt;label&gt;</a></div>
-                <div class="m-element-card"><a href="/html/legend" class="m-element-link">&lt;legend&gt;</a></div>
-                <div class="m-element-card"><a href="/html/li" class="m-element-link">&lt;li&gt;</a></div>
-                <div class="m-element-card"><a href="/html/link" class="m-element-link">&lt;link&gt;</a></div>
-
-                <!-- M -->
-                <div class="m-element-card"><a href="/html/main" class="m-element-link">&lt;main&gt;</a></div>
-                <div class="m-element-card"><a href="/html/map" class="m-element-link">&lt;map&gt;</a></div>
-                <div class="m-element-card"><a href="/html/mark" class="m-element-link">&lt;mark&gt;</a></div>
-                <div class="m-element-card"><a href="/html/menu" class="m-element-link">&lt;menu&gt;</a></div>
-                <div class="m-element-card"><a href="/html/meta" class="m-element-link">&lt;meta&gt;</a></div>
-                <div class="m-element-card"><a href="/html/meter" class="m-element-link">&lt;meter&gt;</a></div>
-
-                <!-- N -->
-                <div class="m-element-card"><a href="/html/nav" class="m-element-link">&lt;nav&gt;</a></div>
-                <div class="m-element-card"><a href="/html/noscript" class="m-element-link">&lt;noscript&gt;</a></div>
-
-                <!-- O -->
-                <div class="m-element-card"><a href="/html/object" class="m-element-link">&lt;object&gt;</a></div>
-                <div class="m-element-card"><a href="/html/ol" class="m-element-link">&lt;ol&gt;</a></div>
-                <div class="m-element-card"><a href="/html/optgroup" class="m-element-link">&lt;optgroup&gt;</a></div>
-                <div class="m-element-card"><a href="/html/option" class="m-element-link">&lt;option&gt;</a></div>
-                <div class="m-element-card"><a href="/html/output" class="m-element-link">&lt;output&gt;</a></div>
-
-                <!-- P -->
-                <div class="m-element-card"><a href="/html/p" class="m-element-link">&lt;p&gt;</a></div>
-                <div class="m-element-card"><a href="/html/picture" class="m-element-link">&lt;picture&gt;</a></div>
-                <div class="m-element-card"><a href="/html/pre" class="m-element-link">&lt;pre&gt;</a></div>
-                <div class="m-element-card"><a href="/html/progress" class="m-element-link">&lt;progress&gt;</a></div>
-
-                <!-- Q -->
-                <div class="m-element-card"><a href="/html/q" class="m-element-link">&lt;q&gt;</a></div>
-
-                <!-- R -->
-                <div class="m-element-card"><a href="/html/ruby" class="m-element-link">&lt;ruby&gt;</a></div>
-
-                <!-- S -->
-                <div class="m-element-card"><a href="/html/s" class="m-element-link">&lt;s&gt;</a></div>
-                <div class="m-element-card"><a href="/html/samp" class="m-element-link">&lt;samp&gt;</a></div>
-                <div class="m-element-card"><a href="/html/script" class="m-element-link">&lt;script&gt;</a></div>
-                <div class="m-element-card"><a href="/html/search" class="m-element-link">&lt;search&gt;</a></div>
-                <div class="m-element-card"><a href="/html/section" class="m-element-link">&lt;section&gt;</a></div>
-                <div class="m-element-card"><a href="/html/select" class="m-element-link">&lt;select&gt;</a></div>
-                <div class="m-element-card"><a href="/html/slot" class="m-element-link">&lt;slot&gt;</a></div>
-                <div class="m-element-card"><a href="/html/small" class="m-element-link">&lt;small&gt;</a></div>
-                <div class="m-element-card"><a href="/html/source" class="m-element-link">&lt;source&gt;</a></div>
-                <div class="m-element-card"><a href="/html/span" class="m-element-link">&lt;span&gt;</a></div>
-                <div class="m-element-card"><a href="/html/strong" class="m-element-link">&lt;strong&gt;</a></div>
-                <div class="m-element-card"><a href="/html/style" class="m-element-link">&lt;style&gt;</a></div>
-                <div class="m-element-card"><a href="/html/sub" class="m-element-link">&lt;sub&gt;</a></div>
-                <div class="m-element-card"><a href="/html/summary" class="m-element-link">&lt;summary&gt;</a></div>
-                <div class="m-element-card"><a href="/html/sup" class="m-element-link">&lt;sup&gt;</a></div>
-
-                <!-- T -->
-                <div class="m-element-card"><a href="/html/table" class="m-element-link">&lt;table&gt;</a></div>
-                <div class="m-element-card"><a href="/html/tbody" class="m-element-link">&lt;tbody&gt;</a></div>
-                <div class="m-element-card"><a href="/html/td" class="m-element-link">&lt;td&gt;</a></div>
-                <div class="m-element-card"><a href="/html/template" class="m-element-link">&lt;template&gt;</a></div>
-                <div class="m-element-card"><a href="/html/textarea" class="m-element-link">&lt;textarea&gt;</a></div>
-                <div class="m-element-card"><a href="/html/tfoot" class="m-element-link">&lt;tfoot&gt;</a></div>
-                <div class="m-element-card"><a href="/html/th" class="m-element-link">&lt;th&gt;</a></div>
-                <div class="m-element-card"><a href="/html/thead" class="m-element-link">&lt;thead&gt;</a></div>
-                <div class="m-element-card"><a href="/html/time" class="m-element-link">&lt;time&gt;</a></div>
-                <div class="m-element-card"><a href="/html/title" class="m-element-link">&lt;title&gt;</a></div>
-                <div class="m-element-card"><a href="/html/tr" class="m-element-link">&lt;tr&gt;</a></div>
-                <div class="m-element-card"><a href="/html/track" class="m-element-link">&lt;track&gt;</a></div>
-
-                <!-- U -->
-                <div class="m-element-card"><a href="/html/u" class="m-element-link">&lt;u&gt;</a></div>
-                <div class="m-element-card"><a href="/html/ul" class="m-element-link">&lt;ul&gt;</a></div>
-
-                <!-- V -->
-                <div class="m-element-card"><a href="/html/var" class="m-element-link">&lt;var&gt;</a></div>
-                <div class="m-element-card"><a href="/html/video" class="m-element-link">&lt;video&gt;</a></div>
-
-                <!-- W -->
-                <div class="m-element-card"><a href="/html/wbr" class="m-element-link">&lt;wbr&gt;</a></div>
-            </div>
-        </nav>
     </main>
 
-    <footer class="l-footer">
-        <p>&copy; 2026 SimpleAccess.io — Standardizing Accessibility for Everyone.</p>
-        <div style="margin-top: 1rem;">
-            <a href="index.html" style="color: var(--color-accent); font-weight: bold; margin-right: 20px;">Home</a>
-        </div>
-    </footer>
+    <!-- Global Footer Component -->
+    <ds-footer></ds-footer>
 
-    <script>
-        const searchForm = document.getElementById('search-form');
-        const searchInput = document.getElementById('el-search');
-
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const val = searchInput.value.toLowerCase().replace(/[<>]/g, '').trim();
-            // Direct jump to the production URL structure
-            if(val){
-                window.location.href = `/html/${val}`;
-            }
-        });
-    </script>
 </body>
 </html>
