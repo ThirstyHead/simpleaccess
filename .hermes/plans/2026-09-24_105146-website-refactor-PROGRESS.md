@@ -17,9 +17,9 @@ Reconciled: 2026-09-25
 || Task 5-R | Sensory Lab Hubs & Demos (Remediation) | `refactor/sensory-lab-hubs` | 7 | Gemma-4-31B Dense | COMPLETED (22/22 pass) |
 || Task 6A | HTML Elements: Sectioning & Grouping | `refactor/html-sectioning-grouping` | 16 | Gemma-4-31B Dense | COMPLETED (11/11 pass, PR #8) |
 || Task 6B | HTML Elements: Text-Level Semantics | `refactor/html-text-semantics` | 29 | Gemma-4-31B Dense | COMPLETED (29/29 pass, PR #9) |
-| Task 6C | HTML Elements: Forms & Interactive | `refactor/html-forms-interactive` | 17 | Gemma-4-31B Dense | PENDING |
-| Task 6D | HTML Elements: Embedded & Media | `refactor/html-media` | 11 | Gemma-4-31B Dense | PENDING |
-| Task 6E | HTML Elements: Tabular Data | `refactor/html-tables` | 10 | Gemma-4-31B Dense | PENDING |
+|| Task 6C | HTML Elements: Forms & Interactive | `refactor/html-forms-interactive` | 17 | Gemma-4-31B Dense | COMPLETED (17/17 pass, PR #10) |
+|| Task 6D | HTML Elements: Embedded & Media | `refactor/html-media` | 11 | Gemma-4-31B Dense | COMPLETED (11/11 pass, PR #11) |
+|| Task 6E | HTML Elements: Tabular Data | `refactor/html-tables` | 10 | Gemma-4-31B Dense | COMPLETED (10/10 pass, PR #12) |
 | Task 6F | HTML Elements: Meta, Scripting, Hubs | `refactor/html-meta-scripting` | 22 | Gemma-4-31B Dense | PENDING |
 | Task 7 | Full-Site Audit & v2.0.0 Release | `refactor/final-validation` | 154 | Gemma-4-31B Dense | PENDING |
 
