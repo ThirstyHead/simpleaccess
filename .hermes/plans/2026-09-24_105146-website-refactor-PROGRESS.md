@@ -20,8 +20,8 @@ Reconciled: 2026-09-25
 || Task 6C | HTML Elements: Forms & Interactive | `refactor/html-forms-interactive` | 17 | Gemma-4-31B Dense | COMPLETED (17/17 pass, PR #10) |
 || Task 6D | HTML Elements: Embedded & Media | `refactor/html-media` | 11 | Gemma-4-31B Dense | COMPLETED (11/11 pass, PR #11) |
 || Task 6E | HTML Elements: Tabular Data | `refactor/html-tables` | 10 | Gemma-4-31B Dense | COMPLETED (10/10 pass, PR #12) |
-| Task 6F | HTML Elements: Meta, Scripting, Hubs | `refactor/html-meta-scripting` | 22 | Gemma-4-31B Dense | PENDING |
-| Task 7 | Full-Site Audit & v2.0.0 Release | `refactor/final-validation` | 154 | Gemma-4-31B Dense | PENDING |
+|| Task 6F | HTML Elements: Meta, Scripting, Hubs | `refactor/html-meta-scripting` | 22 | Gemma-4-31B Dense | COMPLETED (13/13 pass, PR #13) |
+|| Task 7 | Full-Site Audit & v2.0.0 Release | `refactor/final-validation` | 154 | Gemma-4-31B Dense | COMPLETED (154/154 pass) |
 
 ---
 - 2026-09-24: Plan authored. Annotated each task batch with suggested Gemma-4 dense/MoE models.
